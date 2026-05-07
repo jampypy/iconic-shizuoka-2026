@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>出店者募集 | Iconic Shizuoka 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+      background: #faf8f5;
+      color: #2a2a2a;
+      line-height: 1.8;
+    }
+
+    /* ヘッダー */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: white;
+      text-align: center;
+      padding: 64px 20px 56px;
+    }
+    .header-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 3px;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.8);
+    }
+    header h1 {
+      font-size: clamp(24px, 5vw, 40px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    header .subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #f5c842;
+      color: #1a1a2e;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; }
+    .flower-line {
+      margin: 28px auto 0;
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, transparent, #f5c842, transparent);
+    }
+
+    /* ステップバー */
+    .steps {
+      background: white;
+      border-bottom: 1px solid #f0ede8;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #888;
+    }
+    .step-item a {
+      color: #888;
+      text-decoration: none;
+    }
+    .step-item a:hover { color: #1a1a2e; }
+    .step-arrow { color: #ccc; font-size: 10px; }
+
+    /* メイン */
+    main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* セクション */
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f0ede8;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon { font-size: 20px; }
+
+    .sub-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #555;
+      margin: 20px 0 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* イベント概要 */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 500px) { .overview-grid { grid-template-columns: 1fr; } }
+    .overview-card {
+      background: #faf8f5;
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .overview-card .label {
+      font-size: 11px;
+      color: #999;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .overview-card .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+    .overview-card.full { grid-column: 1 / -1; }
+
+    /* コンセプト */
+    .concept-box {
+      background: linear-gradient(135deg, #1a1a2e, #0f3460);
+      border-radius: 12px;
+      padding: 24px;
+      color: white;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .concept-box .concept-main {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .concept-box p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.8; }
+
+    /* 募集枠 */
+    .recruit-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 500px) { .recruit-cards { grid-template-columns: 1fr; } }
+    .recruit-card {
+      border: 2px solid #f0ede8;
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .recruit-card.highlight { border-color: #f5c842; background: #fffdf0; }
+    .recruit-card .rc-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 6px;
+    }
+    .recruit-card.highlight .rc-label { color: #b8860b; }
+    .recruit-card .rc-title { font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+    .recruit-card .rc-count { font-size: 13px; color: #666; }
+    .recruit-card.full { grid-column: 1 / -1; }
+
+    /* 料金テーブル */
+    .price-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+    .price-table th {
+      background: #1a1a2e; color: white;
+      padding: 10px 14px; text-align: left; font-size: 13px;
+    }
+    .price-table th:first-child { border-radius: 8px 0 0 0; }
+    .price-table th:last-child { border-radius: 0 8px 0 0; }
+    .price-table td { padding: 12px 14px; border-bottom: 1px solid #f0ede8; }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tr:nth-child(even) td { background: #faf8f5; }
+    .free-badge { background: #e8f5e9; color: #2e7d32; font-weight: 700; padding: 3px 12px; border-radius: 20px; font-size: 12px; }
+    .price-badge { font-weight: 700; color: #1a1a2e; font-size: 15px; }
+    .price-sub { font-size: 11px; color: #999; display: block; margin-top: 2px; }
+
+    /* タイムライン */
+    .timeline { position: relative; padding-left: 24px; }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 6px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, #1a1a2e, #f5c842);
+    }
+    .timeline-item { display: flex; gap: 16px; margin-bottom: 16px; position: relative; }
+    .timeline-item::before {
+      content: ''; position: absolute;
+      left: -20px; top: 7px;
+      width: 8px; height: 8px;
+      background: #f5c842; border-radius: 50%;
+      border: 2px solid #1a1a2e;
+    }
+    .timeline-item.main-event::before { background: #1a1a2e; border-color: #f5c842; width: 10px; height: 10px; left: -21px; top: 6px; }
+    .timeline-time { font-weight: 700; color: #1a1a2e; min-width: 60px; font-size: 14px; }
+    .timeline-desc { font-size: 14px; color: #444; }
+    .timeline-desc strong { color: #1a1a2e; }
+
+    /* チェックリスト */
+    .checklist { list-style: none; }
+    .checklist li {
+      display: flex; align-items: flex-start;
+      gap: 12px; padding: 10px 0;
+      border-bottom: 1px solid #f5f5f5;
+      font-size: 14px; color: #333;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .chk-box {
+      width: 20px; height: 20px;
+      border: 2px solid #ccc; border-radius: 4px;
+      flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* 流れ矢印 */
+    .flow {
+      display: flex; align-items: center;
+      gap: 8px; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .flow-step {
+      background: #1a1a2e; color: white;
+      padding: 8px 16px; border-radius: 24px;
+      font-size: 13px; font-weight: 700;
+    }
+    .flow-step.accent { background: #f5c842; color: #1a1a2e; }
+    .flow-arrow { color: #bbb; font-size: 14px; }
+
+    /* ノート */
+    .note {
+      background: #fffbea; border-left: 3px solid #f5c842;
+      padding: 10px 14px; border-radius: 0 8px 8px 0;
+      font-size: 13px; color: #666; margin-top: 12px;
+    }
+
+    /* 規約 */
+    .rules { list-style: none; }
+    .rules li {
+      font-size: 13px; padding: 8px 0 8px 16px;
+      border-bottom: 1px solid #f5f5f5;
+      position: relative; color: #555; line-height: 1.7;
+    }
+    .rules li:last-child { border-bottom: none; }
+    .rules li::before { content: '・'; position: absolute; left: 0; color: #bbb; }
+
+    .banned-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .banned-item {
+      background: #fff5f5; border: 1px solid #ffcccc;
+      border-radius: 8px; padding: 8px 12px;
+      font-size: 13px; color: #c62828;
+    }
+
+    /* フォームセクション */
+    .form-section {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    .form-header {
+      background: linear-gradient(135deg, #1a1a2e, #0f3460);
+      color: white; text-align: center;
+      padding: 32px 20px 24px;
+    }
+    .form-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .form-header p { font-size: 13px; color: rgba(255,255,255,0.7); }
+    .form-header .form-items {
+      display: flex; flex-wrap: wrap;
+      gap: 6px; justify-content: center;
+      margin-top: 16px;
+    }
+    .form-item-tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.9);
+      padding: 4px 12px; border-radius: 20px;
+      font-size: 12px;
+    }
+    .form-body { padding: 0; }
+    .form-body iframe { width: 100%; min-height: 900px; border: none; display: block; }
+
+    /* お問い合わせ */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 500px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-card {
+      background: #faf8f5; border-radius: 10px; padding: 16px;
+    }
+    .contact-card .label { font-size: 11px; color: #999; letter-spacing: 1px; margin-bottom: 4px; }
+    .contact-card .value { font-size: 14px; font-weight: 600; color: #1a1a2e; }
+    .contact-card a { color: #1a1a2e; text-decoration: none; }
+
+    /* フッター */
+    footer {
+      text-align: center; padding: 40px 20px;
+      color: #aaa; font-size: 12px;
+    }
+    footer .tagline { font-size: 14px; color: #888; margin-bottom: 8px; font-style: italic; }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-tag">出店者募集中</div>
+  <h1>Iconic Shizuoka 2026<br>出店者要項</h1>
+  <p class="subtitle">2026.10.11(日) · 10.12(月·祝) ｜ 呉服町通り</p>
+  <a href="#form" class="cta-btn">応募フォームへ進む</a>
+  <div class="flower-line"></div>
+</header>
+
+<!-- ページ内ナビ -->
+<div class="steps">
+  <div class="step-item"><a href="#about">イベント概要</a></div>
+  <div class="step-arrow">›</div>
+  <div class="step-item"><a href="#recruit">募集内容・料金</a></div>
+  <div class="step-arrow">›</div>
+  <div class="step-item"><a href="#day">当日の流れ</a></div>
+  <div class="step-arrow">›</div>
+  <div class="step-item"><a href="#rules">規約</a></div>
+  <div class="step-arrow">›</div>
+  <div class="step-item"><a href="#form">応募フォーム</a></div>
+</div>
+
+<main>
+
+  <!-- 1. イベント概要 -->
+  <div class="section" id="about">
+    <div class="section-title"><span class="icon">🌸</span>Iconic Shizuoka 2026 とは</div>
+
+    <div class="concept-box">
+      <div class="concept-main">「挑戦の１ページを彩る」</div>
+      <p>静岡の高校生・大学生に地元の魅力を五感で体験してもらうイベントです。<br>
+      出店者様の「挑戦の１ページ」を若者に届け、静岡への誇りと繋がりを生み出します。</p>
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="label">開催日</div>
+        <div class="value">2026年10月11日(日)<br>10月12日(月・祝)</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">時間</div>
+        <div class="value">11:30 〜 17:00</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">会場</div>
+        <div class="value">呉服町通り（静岡市）</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">目標来場者数</div>
+        <div class="value">30,000人</div>
+      </div>
+      <div class="overview-card full">
+        <div class="label">主催</div>
+        <div class="value">I see's（Iconic Shizuoka 2026 実行委員会）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 募集内容 -->
+  <div class="section" id="recruit">
+    <div class="section-title"><span class="icon">📢</span>募集内容</div>
+
+    <p class="sub-title">■ こんな方を募集しています（約30組）</p>
+    <div class="recruit-cards">
+      <div class="recruit-card highlight">
+        <div class="rc-label">初出店者様</div>
+        <div class="rc-title">はじめて出店に挑戦する方</div>
+        <div class="rc-count">物販 3〜6組 ／ 出店料：無料</div>
+      </div>
+      <div class="recruit-card highlight">
+        <div class="rc-label">学生枠</div>
+        <div class="rc-title">学生出店者</div>
+        <div class="rc-count">先着3組・希望制 ／ 出店料：無料</div>
+      </div>
+      <div class="recruit-card">
+        <div class="rc-label">おまち外の出店者様</div>
+        <div class="rc-title">静岡の新しい側面を持つ方</div>
+        <div class="rc-count">飲食 14〜16組 / 物販 5〜7組</div>
+      </div>
+      <div class="recruit-card">
+        <div class="rc-label">コラボ出店</div>
+        <div class="rc-title">異業界コラボレーション</div>
+        <div class="rc-count">4〜6組</div>
+      </div>
+    </div>
+    <div class="note">応募対象：「Iconic Shizuoka 2026」の趣旨にご賛同いただける県内の方・法人</div>
+  </div>
+
+  <!-- 3. 出店料 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">💴</span>出店料</div>
+
+    <table class="price-table">
+      <tr><th>区分</th><th>料金（1日あたり）</th></tr>
+      <tr>
+        <td>飲食出店者様</td>
+        <td><span class="price-badge">3,000円</span><span class="price-sub">2日間出店の場合は6,000円</span></td>
+      </tr>
+      <tr>
+        <td>物販出店者様</td>
+        <td><span class="price-badge">2,000円</span><span class="price-sub">2日間出店の場合は4,000円</span></td>
+      </tr>
+      <tr>
+        <td>初出店者様 / 学生枠</td>
+        <td><span class="free-badge">無料</span></td>
+      </tr>
+    </table>
+    <div class="note">※ 出店料は当日のお支払いとなります。</div>
+
+    <p class="sub-title" style="margin-top:24px;">■ ブース仕様・備品</p>
+    <div style="font-size:14px;color:#444;padding:8px 0;border-bottom:1px solid #f5f5f5;">
+      ブースサイズ：最大 <strong>3m × 3m</strong>（原則、1出店者様につき1小間）
+    </div>
+    <div style="font-size:14px;color:#444;padding:8px 0;">
+      備品の貸出：テント <strong>5,000円</strong> ／ 長机 <strong>2,000円</strong> ／ アウトドアチェア <strong>1,000円</strong>
+    </div>
+    <div class="note">※ 備品の貸出はイベント初出店者様を優先させていただきます。テント等を各自でご用意いただくことも可能です。</div>
+  </div>
+
+  <!-- 4. 購買導線 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🎯</span>来場者の購買導線</div>
+    <div class="flow">
+      <span class="flow-step">割引券の配布</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">商品購入</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step accent">ラッキードロー参加</span>
+    </div>
+    <div style="font-size:14px;color:#555;">
+      1,000円以上のお買い上げでガチャガチャに参加できます。景品は静岡にゆかりのある豪華景品をご用意します。<br>
+      運営から出店者様への<strong>SNS紹介</strong>（昨年インサイト30万以上）もあります。
+    </div>
+  </div>
+
+  <!-- 5. 当日の流れ -->
+  <div class="section" id="day">
+    <div class="section-title"><span class="icon">📅</span>当日の流れ</div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-time">07:30〜</span>
+        <span class="timeline-desc">搬入<br><small style="color:#999;">①7:30〜8:15　②8:30〜9:15　③9:30〜10:00（各10店舗）</small></span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">09:45</span>
+        <span class="timeline-desc">挨拶</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">10:15</span>
+        <span class="timeline-desc">全体最終確認・写真撮影</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">11:00</span>
+        <span class="timeline-desc">オープニングセレモニー</span>
+      </div>
+      <div class="timeline-item main-event">
+        <span class="timeline-time">11:30</span>
+        <span class="timeline-desc"><strong>イベントスタート</strong></span>
+      </div>
+      <div class="timeline-item main-event">
+        <span class="timeline-time">17:00</span>
+        <span class="timeline-desc"><strong>イベント終了・搬出準備</strong></span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">17:30〜</span>
+        <span class="timeline-desc">搬出<br><small style="color:#999;">①17:30〜17:50　②17:50〜18:10　③18:10〜18:30（各10店舗）</small></span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">18:30</span>
+        <span class="timeline-desc">完全撤収</span>
+      </div>
+    </div>
+    <div class="note">搬入・搬出の希望時間は応募フォームにてお選びください。</div>
+  </div>
+
+  <!-- 6. 当日の持ち物 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🎒</span>当日の持ち物・準備事項</div>
+    <ul class="checklist">
+      <li><span class="chk-box"></span>テント・机・椅子（貸出利用の場合は応募フォームで申込）</li>
+      <li><span class="chk-box"></span>おもり（強風対策として必須）</li>
+      <li><span class="chk-box"></span>各店名の表示板（立看板は店前50cm以内 / テントより高いのぼり旗等は禁止）</li>
+      <li><span class="chk-box"></span>消火器（火器を使用する場合のみ）</li>
+      <li><span class="chk-box"></span>花瓶または花を置けるもの（フラワード・ストリート企画参加のため）</li>
+      <li><span class="chk-box"></span>【食品出店者】アレルギーの有無の掲示</li>
+      <li><span class="chk-box"></span>【食品出店者】保健所への届出・保険加入等（各自でご対応ください）</li>
+    </ul>
+  </div>
+
+  <!-- 7. 規約 -->
+  <div class="section" id="rules">
+    <div class="section-title"><span class="icon">📋</span>会場使用に関する規約</div>
+    <ul class="rules">
+      <li>当日は主催者の判断を優先させていただきます。</li>
+      <li>出展ブースの配置は主催者に一任いただきます。（競合する出店同士の場合はブースを離す等の対応を取ります）</li>
+      <li>各店名の表示板は出店者でご準備ください。立看板等は店前から50cm以内とし、テントより高いのぼり旗・店名等の設置は禁止です。</li>
+      <li>会場内の調理行為・火器の使用は可能です。ただし、消火器をご用意ください。</li>
+      <li>排水が出る場合は食べ残し・飲み残しを含めお持ち帰りいただきます。</li>
+      <li>酒類を扱う場合は未成年への販売禁止および過度な飲酒につながる販売はお控えください。</li>
+      <li>食品提供においては食中毒発生防止の措置（保健所届出・保険加入等）は各自でお取りください。</li>
+      <li>テントや看板の強風対策は各自でお願いします。</li>
+      <li>営業・販売・PR行為は会場敷地内でお願いします。</li>
+      <li>イベント終了後はブース内の清掃・原状復帰をお願いします。</li>
+      <li>会場敷地内は禁煙です。指定の喫煙所をご利用ください。</li>
+      <li>ブース内の備品・貴重品の管理は出店者各自でお願いします。紛失・破損・盗難等の責任は負いかねます。</li>
+      <li>写真・動画撮影があります。SNS等にアップする場合は撮影対象者の許可を必ず取るようお願いします。</li>
+    </ul>
+
+    <p class="sub-title" style="margin-top:24px;">■ 販売禁止商品</p>
+    <div class="banned-grid">
+      <div class="banned-item">動物・化粧品・医薬品</div>
+      <div class="banned-item">危険な刃物類・モデルガン</div>
+      <div class="banned-item">アダルト関連・盗品</div>
+      <div class="banned-item">ブランド造品・複製ソフト</div>
+      <div class="banned-item" style="grid-column:1/-1;">政治・宗教活動に関わる商品・勧誘等</div>
+    </div>
+
+    <p class="sub-title" style="margin-top:24px;">■ キャンセル・中止について</p>
+    <ul class="rules">
+      <li>キャンセルされる場合は、<strong>前日までに</strong>事務局へメールまたはお電話でご連絡ください。</li>
+      <li>当日体調不良の場合は無理せず出店をお控えください。その際は速やかにご連絡ください。</li>
+      <li>小雨決行。荒天（警報レベルの風雨）の場合は延期とします。</li>
+      <li>台風・暴風・暴雨・雷等の警報発令、熱中症・食中毒の集団発生等、実行委員会が実施不可能と判断した場合はマルシェの全部または一部を中止・一時中断します。</li>
+      <li>中止・延期によって生じた損害について、実行委員会は補償しません。</li>
+    </ul>
+  </div>
+
+  <!-- 8. お問い合わせ -->
+  <div class="section">
+    <div class="section-title"><span class="icon">✉️</span>お問い合わせ</div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="label">担当</div>
+        <div class="value">マルシェ担当部　大村彩音</div>
+      </div>
+      <div class="contact-card">
+        <div class="label">TEL</div>
+        <div class="value">090-3935-2911<br><small style="color:#999;">代表：樋川</small></div>
+      </div>
+      <div class="contact-card" style="grid-column:1/-1;">
+        <div class="label">MAIL</div>
+        <div class="value"><a href="mailto:iconicshizuoka@gmail.com">iconicshizuoka@gmail.com</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. 応募フォーム -->
+  <div class="form-section" id="form">
+    <div class="form-header">
+      <h2>応募フォーム</h2>
+      <p>以下のフォームに必要事項をご記入のうえ、送信してください。</p>
+      <div class="form-items">
+        <span class="form-item-tag">お店の紹介文</span>
+        <span class="form-item-tag">販売商品</span>
+        <span class="form-item-tag">Instagram写真</span>
+        <span class="form-item-tag">出店場所の希望</span>
+        <span class="form-item-tag">搬入時間の希望</span>
+        <span class="form-item-tag">備品の貸出希望</span>
+        <span class="form-item-tag">アレルギー情報</span>
+      </div>
+    </div>
+    <div class="form-body">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScXxyOD5OSisDfNcvLKYtnclnZ-plgHi2D9zim-bAVKj5_XKQ/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p class="tagline">おいしく、たのしく、彩やかに。― 静岡に「わ」の1ページを。</p>
+  <p>© 2026 I see's / Iconic Shizuoka 2026 実行委員会</p>
+</footer>
+
+</body>
+</html>
