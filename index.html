@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="ja"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>出店者募集 | Iconic Shizuoka 2026</title>
@@ -530,7 +528,7 @@
     <h2>出店料</h2>
 
     <table class="price-table">
-      <tr><th>区分</th><th>料金（1日あたり）</th></tr>
+      <tbody><tr><th>区分</th><th>料金（1日あたり）</th></tr>
       <tr>
         <td>飲食出店者様</td>
         <td><span class="price-badge">3,000円</span><span class="price-sub">2日間出店の場合は6,000円</span></td>
@@ -543,7 +541,7 @@
         <td>初出店者様 / 学生枠</td>
         <td><span class="free-badge">無料</span></td>
       </tr>
-    </table>
+    </tbody></table>
     <div class="note">※ 出店料は<strong>現金のみ</strong>となります。イベント終了後、本部にてお支払いください。</div>
     <div class="note">※「初出店者様」とは、イベントやマルシェへの出店自体が初めての方を指します。他イベントでの出店経験がある方は通常の出店料が適用されます。</div>
 
@@ -621,8 +619,8 @@
     <p style="font-size:14px; color:var(--color-text-sub); margin-bottom:4px;"><strong>会場（呉服町通り）からの近さ順</strong>に10箇所をご案内します。ピンをタップすると詳細が表示されます。</p>
     <p style="font-size:13px; color:var(--color-text-mute); margin-bottom:16px;">イベント当日は満車が予想されます。できるだけ<strong>公共交通機関</strong>のご利用をおすすめします。</p>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <div id="parking-map" style="height:380px; border-radius:10px; overflow:hidden; border:1px solid var(--color-border); margin-bottom:8px;"></div>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <div id="parking-map" style="height: 380px; border-radius: 10px; overflow: hidden; border: 1px solid var(--color-border); margin-bottom: 8px; position: relative;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="https://a.tile.openstreetmap.org/16/57959/25963.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(107px, -130px, 0px); opacity: 1;"><img alt="" src="https://b.tile.openstreetmap.org/16/57959/25964.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(107px, 126px, 0px); opacity: 1;"><img alt="" src="https://c.tile.openstreetmap.org/16/57958/25963.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-149px, -130px, 0px); opacity: 1;"><img alt="" src="https://b.tile.openstreetmap.org/16/57960/25963.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(363px, -130px, 0px); opacity: 1;"><img alt="" src="https://a.tile.openstreetmap.org/16/57958/25964.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-149px, 126px, 0px); opacity: 1;"><img alt="" src="https://c.tile.openstreetmap.org/16/57960/25964.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(363px, 126px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -18px; margin-top: -18px; width: 36px; height: 36px; transform: translate3d(266px, 189px, 0px); z-index: 189;"><div style="background:#e84393;color:white;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.35);">★</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(274px, 160px, 0px); z-index: 160;"><div style="background:#2e7d32;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">1</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(207px, 134px, 0px); z-index: 134;"><div style="background:#2e7d32;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">2</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(192px, 153px, 0px); z-index: 153;"><div style="background:#2e7d32;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">3</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(377px, 205px, 0px); z-index: 205;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">4</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(383px, 212px, 0px); z-index: 212;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">5</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(148px, 156px, 0px); z-index: 156;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">6</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(150px, 117px, 0px); z-index: 117;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">7</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(298px, 322px, 0px); z-index: 322;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">8</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(598px, 262px, 0px); z-index: 262;"><div style="background:#c62828;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">9</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(606px, 209px, 0px); z-index: 209;"><div style="background:#c62828;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">10</div></div></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.48377e+07px, 6.64685e+06px, 0px) scale(32768);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors</div></div></div></div>
     <p style="font-size:11px; color:var(--color-text-mute); text-align:right; margin-bottom:20px;">
       <span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><span style="display:inline-block;width:12px;height:12px;background:#e84393;border-radius:50%;"></span> 会場</span>
       <span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><span style="display:inline-block;width:12px;height:12px;background:#2e7d32;border-radius:50%;"></span> 徒歩3分以内</span>
@@ -813,18 +811,18 @@
   <section class="section">
     <h2>お問い合わせ</h2>
     <table style="font-size:14px; color:#555; border-collapse:collapse; line-height:1.6;">
-      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">代表</td><td style="padding:6px 0;">樋川 翔</td></tr>
+      <tbody><tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">代表</td><td style="padding:6px 0;">樋川 翔</td></tr>
       <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">副代表</td><td style="padding:6px 0;">石川</td></tr>
       <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">マルシェ担当部長</td><td style="padding:6px 0;">大村</td></tr>
       <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">TEL</td><td style="padding:6px 0;">090-3935-2911</td></tr>
       <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">MAIL</td><td style="padding:6px 0;"><a href="mailto:iconicshizuoka@gmail.com" style="color:var(--color-text);">iconicshizuoka@gmail.com</a></td></tr>
-    </table>
+    </tbody></table>
   </section>
 
   <!-- 安全管理・衛生管理に関する注意事項 -->
-  <details style="margin-bottom:24px; background:white; border-radius:12px; padding:24px 28px; box-shadow:0 2px 12px rgba(232,67,147,0.06); border-left:4px solid var(--color-primary); font-size:12px; color:var(--color-text-sub); line-height:1.9;">
+  <details open="" style="margin-bottom:24px; background:white; border-radius:12px; padding:24px 28px; box-shadow:0 2px 12px rgba(232,67,147,0.06); border-left:4px solid var(--color-primary); font-size:12px; color:var(--color-text-sub); line-height:1.9;">
     <summary style="cursor:pointer; font-size:14px; font-weight:700; color:var(--color-text); list-style:none; display:flex; align-items:center; gap:8px;">
-      <span style="color:var(--color-primary);">&#9656;</span> 事故防止及び公衆衛生のための措置に関する事項
+      <span style="color:var(--color-primary);">▸</span> 事故防止及び公衆衛生のための措置に関する事項
     </summary>
     <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--color-border);">
       <p style="font-weight:600; margin-bottom:8px; color:var(--color-text-sub);">I see's（Iconic Shizuoka 2026）における安全管理及び公衆衛生対策について</p>
@@ -887,7 +885,7 @@
 
 <footer>
   <p class="tagline">おいしく、たのしく、彩やかに。― 静岡に「わ」の1ページを。</p>
-  <p style="margin-bottom:10px;"><a href="takeout.html" style="color:var(--color-primary);text-decoration:none;font-size:13px;">&#127860; 草薙駅周辺 テイクアウトガイド</a></p>
+  <p style="margin-bottom:10px;"><a href="/takeout" style="color:var(--color-primary);text-decoration:none;font-size:13px;">🍴 草薙駅周辺 テイクアウトガイド</a></p>
   <p>© 2026 I see's / Iconic Shizuoka 2026 実行委員会</p>
 </footer>
 
@@ -913,5 +911,6 @@
     }
   });
 </script>
-</body>
-</html>
+
+
+</body></html>
