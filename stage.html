@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ステージ出演者募集 | Iconic Shizuoka 2026</title>
+  <style>
+    /* ===== カラートークン ===== */
+    :root {
+      --color-primary:      #e84393;
+      --color-primary-dark: #c2185b;
+      --color-bg-light:     #fdf5f8;
+      --color-bg-accent:    #fce4ec;
+      --color-green:        #2e7d32;
+      --color-green-light:  #e8f5e9;
+      --color-text:         #2a2a2a;
+      --color-text-sub:     #555;
+      --color-text-mute:    #777;
+      --color-border:       #f0dde6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+      background: var(--color-bg-light);
+      color: var(--color-text);
+      line-height: 1.8;
+    }
+
+    /* ヘッダー */
+    header {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #f06aaa 100%);
+      color: white;
+      text-align: center;
+      padding: 64px 20px 56px;
+    }
+    .header-tag {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 3px;
+      border: 1px solid rgba(255,255,255,0.7);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      color: white;
+    }
+    header h1 {
+      font-size: clamp(24px, 5vw, 40px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    header .subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.95);
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    }
+    .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .cta-btn:focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    .flower-line {
+      margin: 28px auto 0;
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    }
+
+    /* ステップバー */
+    nav.steps {
+      background: white;
+      border-bottom: 1px solid #f5e6ed;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #666;
+    }
+    .step-item a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.15s ease-out;
+    }
+    .step-item a:hover { color: var(--color-primary); }
+    .step-item a:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    .step-arrow { color: #ccc; font-size: 10px; }
+
+    /* メイン */
+    main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* セクション */
+    section.section {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(232,67,147,0.06);
+    }
+    section.section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      padding-left: 14px;
+      border-left: 4px solid var(--color-primary);
+      margin-bottom: 24px;
+    }
+
+    .sub-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 24px 0 10px;
+      letter-spacing: 0.5px;
+    }
+    .sub-title--spaced { margin-top: 24px; }
+
+    /* イベント概要 */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 500px) { .overview-grid { grid-template-columns: 1fr; } }
+    .overview-card {
+      background: var(--color-bg-light);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .overview-card .label {
+      font-size: 11px;
+      color: var(--color-text-sub);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .overview-card .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .overview-card.full { grid-column: 1 / -1; }
+
+    /* コンセプト */
+    .concept-box {
+      background: linear-gradient(135deg, var(--color-bg-accent), #fdf0f5);
+      border-radius: 12px;
+      padding: 24px;
+      color: var(--color-text);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .concept-box .concept-main {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      color: var(--color-primary);
+    }
+    .concept-box p { font-size: 13px; color: var(--color-text-sub); line-height: 1.9; }
+
+    /* ジャンルタグ */
+    .genre-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .genre-tag {
+      background: var(--color-bg-accent);
+      color: var(--color-primary-dark);
+      border: 1px solid #f5c6d8;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* 出演枠カード */
+    .slot-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 560px) { .slot-cards { grid-template-columns: 1fr; } }
+    .slot-card {
+      border: 2px solid #f5e6ed;
+      border-radius: 12px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .slot-card.highlight { border-color: var(--color-primary); background: #fef9fb; }
+    .slot-card .slot-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .slot-card .slot-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 4px;
+    }
+    .slot-card.highlight .slot-label { color: var(--color-primary); }
+    .slot-card .slot-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+    .slot-card .slot-desc {
+      font-size: 12px;
+      color: var(--color-text-sub);
+      line-height: 1.7;
+    }
+
+    /* 評価ポイント */
+    .criteria-list { list-style: none; }
+    .criteria-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f5f5f5;
+      font-size: 14px;
+      color: #333;
+    }
+    .criteria-item:last-child { border-bottom: none; }
+    .criteria-num {
+      width: 26px; height: 26px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .criteria-body { flex: 1; }
+    .criteria-body strong { display: block; font-size: 14px; color: var(--color-text); margin-bottom: 2px; }
+    .criteria-body span { font-size: 12px; color: var(--color-text-mute); }
+
+    /* 流れ矢印 */
+    .flow {
+      display: flex; align-items: center;
+      gap: 8px; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .flow-step {
+      background: var(--color-primary); color: white;
+      padding: 8px 16px; border-radius: 24px;
+      font-size: 13px; font-weight: 700;
+    }
+    .flow-step.sub { background: var(--color-bg-accent); color: var(--color-primary-dark); }
+    .flow-arrow { color: #bbb; font-size: 14px; }
+
+    /* 価値提供カード */
+    .value-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 500px) { .value-cards { grid-template-columns: 1fr; } }
+    .value-card {
+      background: var(--color-bg-light);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .value-card .vc-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+    .value-card ul {
+      list-style: none;
+      font-size: 13px;
+      color: var(--color-text-sub);
+      line-height: 2;
+    }
+    .value-card ul li::before {
+      content: '・';
+      color: var(--color-primary);
+    }
+
+    /* ノート */
+    .note {
+      background: #fef9fb; border-left: 3px solid var(--color-primary);
+      padding: 10px 14px; border-radius: 0 8px 8px 0;
+      font-size: 14px; color: var(--color-text-sub); margin-top: 12px;
+    }
+
+    /* フォームセクション */
+    section.form-section {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(232,67,147,0.06);
+      margin-bottom: 24px;
+    }
+    .form-header {
+      background: linear-gradient(135deg, var(--color-primary), #f06aaa);
+      color: white; text-align: center;
+      padding: 32px 20px 24px;
+    }
+    .form-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: white; }
+    .form-header p { font-size: 13px; color: rgba(255,255,255,0.9); }
+    .form-header .form-items {
+      display: flex; flex-wrap: wrap;
+      gap: 6px; justify-content: center;
+      margin-top: 16px;
+    }
+    .form-item-tag {
+      background: white;
+      border: 1px solid white;
+      color: var(--color-primary);
+      padding: 4px 12px; border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .form-body { padding: 32px 24px; text-align: center; }
+    .form-open-btn {
+      display: inline-block;
+      background: var(--color-primary);
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 16px 48px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    }
+    .form-open-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .form-open-btn:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    .form-open-note { font-size: 12px; color: #999; margin-top: 12px; }
+
+    /* お問い合わせ */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 500px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-card {
+      background: var(--color-bg-light); border-radius: 10px; padding: 16px;
+    }
+    .contact-card .label { font-size: 11px; color: #666; letter-spacing: 1px; margin-bottom: 4px; }
+    .contact-card .value { font-size: 14px; font-weight: 600; color: var(--color-text); }
+    .contact-card a { color: var(--color-text); text-decoration: none; }
+    .contact-card a:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    .contact-card.full { grid-column: 1 / -1; }
+
+    /* フッター */
+    footer {
+      text-align: center; padding: 40px 20px;
+      background: var(--color-bg-accent); color: #666; font-size: 12px;
+    }
+    footer .tagline { font-size: 14px; color: var(--color-primary); margin-bottom: 8px; font-style: italic; }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-tag">ステージ出演者募集中</div>
+  <h1>Iconic Shizuoka 2026<br>ステージ出演者要項</h1>
+  <p class="subtitle">2026.10.11(日) · 10.12(月·祝) ｜ 呉服町通り</p>
+  <a href="#form" class="cta-btn">応募フォームへ進む</a>
+  <div class="flower-line"></div>
+</header>
+
+<!-- ページ内ナビ -->
+<nav class="steps" aria-label="ページ内ナビゲーション">
+  <div class="step-item"><a href="#about">イベント概要</a></div>
+  <span class="step-arrow" aria-hidden="true">›</span>
+  <div class="step-item"><a href="#concept">ステージコンセプト</a></div>
+  <span class="step-arrow" aria-hidden="true">›</span>
+  <div class="step-item"><a href="#slots">出演条件</a></div>
+  <span class="step-arrow" aria-hidden="true">›</span>
+  <div class="step-item"><a href="#selection">選考について</a></div>
+  <span class="step-arrow" aria-hidden="true">›</span>
+  <div class="step-item"><a href="#parking">駐車場案内</a></div>
+  <span class="step-arrow" aria-hidden="true">›</span>
+  <div class="step-item"><a href="#form">応募フォーム</a></div>
+</nav>
+
+<main>
+
+  <!-- 1. イベント概要 -->
+  <section class="section" id="about">
+    <h2>Iconic Shizuoka 2026 とは</h2>
+
+    <div class="concept-box">
+      <div class="concept-main">「挑戦の１ページを彩る」</div>
+      <p>静岡の高校生・大学生に地元の魅力を五感で体験してもらうイベントです。<br>
+      出演者様の「挑戦の１ページ」を若者に届け、静岡への誇りと繋がりを生み出します。</p>
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="label">開催日</div>
+        <div class="value">2026年10月11日(日)<br>10月12日(月・祝)</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">時間</div>
+        <div class="value">11:30 〜 17:00</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">会場</div>
+        <div class="value">呉服町通り（静岡市）</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">目標来場者数</div>
+        <div class="value">30,000人</div>
+      </div>
+      <div class="overview-card full">
+        <div class="label">主催</div>
+        <div class="value">I see's（Iconic Shizuoka 2026 実行委員会）</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ステージコンセプト -->
+  <section class="section" id="concept">
+    <h2>ステージコンセプト</h2>
+
+    <div class="concept-box">
+      <div class="concept-main">「若者カルチャーが交差し、発信が生まれるステージ」</div>
+      <p>上手い人を集めるのではなく、<strong>場を作れる人を選ぶ</strong>。<br>
+      音楽・ダンス・パフォーマンスなど多様な表現が交わり、<br>
+      観るだけでなく"熱量が伝わる体験"を生み出すステージです。</p>
+    </div>
+
+    <p class="sub-title">■ 募集対象</p>
+    <div class="note">学生・一般問わずご応募いただけます。</div>
+
+    <p class="sub-title sub-title--spaced">■ 募集ジャンル</p>
+    <div class="genre-tags">
+      <span class="genre-tag">バンド</span>
+      <span class="genre-tag">弾き語り</span>
+      <span class="genre-tag">ピアノ・楽器演奏</span>
+      <span class="genre-tag">ダンス</span>
+      <span class="genre-tag">DJ</span>
+      <span class="genre-tag">ラップ / フリースタイル</span>
+      <span class="genre-tag">サッカーパフォーマンス</span>
+      <span class="genre-tag">大道芸</span>
+      <span class="genre-tag">ライブペインティング</span>
+      <span class="genre-tag">書道パフォーマンス</span>
+      <span class="genre-tag">その他パフォーマンス</span>
+    </div>
+  </section>
+
+  <!-- 3. 出演条件・待遇 -->
+  <section class="section" id="slots">
+    <h2>出演条件・待遇</h2>
+
+    <p class="sub-title">■ タイムスケジュール</p>
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="label">出演時間</div>
+        <div class="value">1組あたり1時間（転換込み）</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">開始時刻</div>
+        <div class="value">11:30〜（予定）</div>
+      </div>
+      <div class="overview-card full">
+        <div class="label">出演コマ数</div>
+        <div class="value">合計5コマ程度</div>
+      </div>
+    </div>
+
+    <p class="sub-title sub-title--spaced">■ リハーサル・控室</p>
+    <ul style="list-style:none; font-size:14px; color:#555; line-height:2;">
+      <li>・ リハーサルは実施しません。</li>
+      <li>・ 待機場所（控室）は運営側で用意します。</li>
+    </ul>
+
+    <p class="sub-title sub-title--spaced">■ 謝礼</p>
+    <div class="note">出演者には当日イベント内で使える <strong>1,000円分のクーポン</strong> をお渡しします。</div>
+
+    <p class="sub-title sub-title--spaced">■ PA機材について</p>
+    <div class="note">マイク・モニタースピーカーなど、運営が用意する機材と持ち込みが必要な機材の詳細については、<strong>7月開催の説明会</strong>にてご案内します。ご不明な点はお気軽にお問い合わせください。</div>
+  </section>
+
+  <!-- 4. 選考について -->
+  <section class="section" id="selection">
+    <h2>選考について</h2>
+
+    <div class="note" style="margin-bottom:24px;">📅 <strong>一次募集締め切り：6月30日（金）</strong>｜写真・紹介文の提出期限：7月10日（木）</div>
+    <p class="sub-title">■ 応募〜出演決定の流れ</p>
+    <div class="flow" style="margin-bottom:24px;">
+      <span class="flow-step">応募フォーム提出</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step sub">動画・SNS確認</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">出演オファー</span>
+    </div>
+
+    <p class="sub-title">■ 選考で重視するポイント</p>
+    <ul class="criteria-list">
+      <li class="criteria-item">
+        <div class="criteria-num">1</div>
+        <div class="criteria-body">
+          <strong>パフォーマンス力</strong>
+        </div>
+      </li>
+      <li class="criteria-item">
+        <div class="criteria-num">2</div>
+        <div class="criteria-body">
+          <strong>観客を惹きつける力</strong>
+        </div>
+      </li>
+      <li class="criteria-item">
+        <div class="criteria-num">3</div>
+        <div class="criteria-body">
+          <strong>コンセプト・世界観</strong>
+        </div>
+      </li>
+      <li class="criteria-item">
+        <div class="criteria-num">4</div>
+        <div class="criteria-body">
+          <strong>若者ターゲットとの親和性</strong>
+        </div>
+      </li>
+    </ul>
+    <div class="note">⚠️ 出演枠の関係で、全員にオファーできるとは限りません。あらかじめご了承ください。</div>
+  </section>
+
+  <!-- 駐車場案内 -->
+  <section class="section" id="parking">
+    <h2>周辺駐車場案内</h2>
+    <p style="font-size:14px; color:var(--color-text-sub); margin-bottom:4px;"><strong>会場（呉服町通り）からの近さ順</strong>に10箇所をご案内します。ピンをタップすると詳細が表示されます。</p>
+    <p style="font-size:13px; color:var(--color-text-mute); margin-bottom:16px;">イベント当日は満車が予想されます。できるだけ<strong>公共交通機関</strong>のご利用をおすすめします。</p>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <div id="parking-map" style="height:380px; border-radius:10px; overflow:hidden; border:1px solid var(--color-border); margin-bottom:8px;"></div>
+    <p style="font-size:11px; color:var(--color-text-mute); text-align:right; margin-bottom:20px;">
+      <span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><span style="display:inline-block;width:12px;height:12px;background:#e84393;border-radius:50%;"></span> 会場</span>
+      <span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><span style="display:inline-block;width:12px;height:12px;background:#2e7d32;border-radius:50%;"></span> 徒歩3分以内</span>
+      <span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><span style="display:inline-block;width:12px;height:12px;background:#f57c00;border-radius:50%;"></span> 徒歩5分以内</span>
+      <span style="display:inline-flex;align-items:center;gap:4px;"><span style="display:inline-block;width:12px;height:12px;background:#c62828;border-radius:50%;"></span> 徒歩8分以上</span>
+    </p>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%; font-size:13px; border-collapse:collapse; color:var(--color-text);">
+        <thead>
+          <tr style="background:var(--color-bg-accent);">
+            <th style="padding:10px 6px; text-align:center; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark);">#</th>
+            <th style="padding:10px; text-align:left; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark); white-space:nowrap;">駐車場名</th>
+            <th style="padding:10px 8px; text-align:center; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark); white-space:nowrap;">会場から</th>
+            <th style="padding:10px 8px; text-align:center; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark); white-space:nowrap;">台数</th>
+            <th style="padding:10px 8px; text-align:left; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark); white-space:nowrap;">料金目安</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#2e7d32;color:white;border-radius:50%;font-size:11px;font-weight:bold;">1</span></td>
+            <td style="padding:10px;">GSパーク 静岡追手町<br><a href="https://maps.google.com/maps?q=34.9754019,138.3818719" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#2e7d32; font-weight:600; white-space:nowrap;">約58m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩1分</small></td>
+            <td style="padding:10px 8px; text-align:center;">—</td>
+            <td style="padding:10px 8px;">30分300円<br><small style="color:var(--color-text-mute);">夜間最大600円</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border); background:#fafafa;">
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#2e7d32;color:white;border-radius:50%;font-size:11px;font-weight:bold;">2</span></td>
+            <td style="padding:10px;">呉服町タワーパーキング<br><a href="https://maps.google.com/maps?q=34.9758675,138.3804375" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#2e7d32; font-weight:600; white-space:nowrap;">約157m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩2分</small></td>
+            <td style="padding:10px 8px; text-align:center;">445台</td>
+            <td style="padding:10px 8px;">30分250円</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#2e7d32;color:white;border-radius:50%;font-size:11px;font-weight:bold;">3</span></td>
+            <td style="padding:10px;">三井のリパーク 静岡呉服町1丁目<br><a href="https://maps.google.com/maps?q=34.9755258,138.3801142" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#2e7d32; font-weight:600; white-space:nowrap;">約160m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩2分</small></td>
+            <td style="padding:10px 8px; text-align:center;">35台</td>
+            <td style="padding:10px 8px;">最大 昼1,900円<br><small style="color:var(--color-text-mute);">夜間最大600円</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border); background:#fafafa;">
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">4</span></td>
+            <td style="padding:10px;">APパーク1（追手町）<br><a href="https://maps.google.com/maps?q=34.9746191,138.384085" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約219m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩3分</small></td>
+            <td style="padding:10px 8px; text-align:center;">—</td>
+            <td style="padding:10px 8px;">15分100円<br><small style="color:var(--color-text-mute);">夜間最大1,000円</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">5</span></td>
+            <td style="padding:10px;">稲森パーキング追手町<br><a href="https://maps.google.com/maps?q=34.9744968,138.3842267" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約234m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩3分</small></td>
+            <td style="padding:10px 8px; text-align:center;">27台</td>
+            <td style="padding:10px 8px;">15分100円<br><small style="color:var(--color-text-mute);">夜間最大1,000円</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border); background:#fafafa;">
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">6</span></td>
+            <td style="padding:10px;">名鉄協商パーキング 静岡呉服町<br><a href="https://maps.google.com/maps?q=34.9754707,138.37918" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約238m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩3分</small></td>
+            <td style="padding:10px 8px; text-align:center;">4台</td>
+            <td style="padding:10px 8px;">40分200円<br><small style="color:var(--color-text-mute);">最大 昼1,200円 / 夜400円</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">7</span></td>
+            <td style="padding:10px;">静岡呉服町スクエア駐車場<br><a href="https://maps.google.com/maps?q=34.9761685,138.3792246" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約266m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩4分</small></td>
+            <td style="padding:10px 8px; text-align:center;">172台</td>
+            <td style="padding:10px 8px;">60分400円<br><small style="color:var(--color-text-mute);">最大 平日1,000円 / 休日700円</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border); background:#fafafa;">
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">8</span></td>
+            <td style="padding:10px;">スペース 静岡常磐町第1<br><a href="https://maps.google.com/maps?q=34.9725504,138.3823941" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約268m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩4分</small></td>
+            <td style="padding:10px 8px; text-align:center;">—</td>
+            <td style="padding:10px 8px;">30分200円<br><small style="color:var(--color-text-mute);">平日最大1,100円</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#c62828;color:white;border-radius:50%;font-size:11px;font-weight:bold;">9</span></td>
+            <td style="padding:10px;">NPD松坂屋前パーキング<br><a href="https://maps.google.com/maps?q=34.9736059,138.3888396" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#c62828; font-weight:600; white-space:nowrap;">約665m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩8分</small></td>
+            <td style="padding:10px 8px; text-align:center;">—</td>
+            <td style="padding:10px 8px;">30分300円<br><small style="color:var(--color-text-mute);">最大 平日1,300円 / 休日1,800円</small></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#c62828;color:white;border-radius:50%;font-size:11px;font-weight:bold;">10</span></td>
+            <td style="padding:10px;">パークワン静岡駐車場<br><a href="https://maps.google.com/maps?q=34.9745338,138.3890138" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
+            <td style="padding:10px 8px; text-align:center; color:#c62828; font-weight:600; white-space:nowrap;">約667m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩8分</small></td>
+            <td style="padding:10px 8px; text-align:center;">—</td>
+            <td style="padding:10px 8px;">20分150円<br><small style="color:var(--color-text-mute);">最大 平日1,000円 / 休日1,200円</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:12px;">⚠️ 料金・台数は変動する場合があります。最新情報は各駐車場でご確認ください。</div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+    (function() {
+      var el = document.getElementById('parking-map');
+      if (!el || typeof L === 'undefined') return;
+      var map = L.map(el).setView([34.9749, 138.382], 16);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+      }).addTo(map);
+      var venueIcon = L.divIcon({
+        html: '<div style="background:#e84393;color:white;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.35);">★</div>',
+        className: '', iconSize: [36,36], iconAnchor: [18,18]
+      });
+      L.marker([34.9749, 138.3817], {icon: venueIcon}).addTo(map)
+        .bindPopup('<strong style="color:#e84393;">★ 会場</strong><br>呉服町通り（Iconic Shizuoka 2026）');
+      var spots = [
+        {n:1,  name:'GSパーク 静岡追手町',          lat:34.9754019, lng:138.3818719, dist:'約58m・徒歩1分',  cap:'—',    price:'30分300円',      color:'#2e7d32'},
+        {n:2,  name:'呉服町タワーパーキング',          lat:34.9758675, lng:138.3804375, dist:'約157m・徒歩2分', cap:'445台', price:'30分250円',      color:'#2e7d32'},
+        {n:3,  name:'三井のリパーク 静岡呉服町1丁目', lat:34.9755258, lng:138.3801142, dist:'約160m・徒歩2分', cap:'35台',  price:'最大 昼1,900円', color:'#2e7d32'},
+        {n:4,  name:'APパーク1（追手町）',           lat:34.9746191, lng:138.384085,  dist:'約219m・徒歩3分', cap:'—',    price:'15分100円',      color:'#f57c00'},
+        {n:5,  name:'稲森パーキング追手町',            lat:34.9744968, lng:138.3842267, dist:'約234m・徒歩3分', cap:'27台',  price:'15分100円',      color:'#f57c00'},
+        {n:6,  name:'名鉄協商パーキング 静岡呉服町',  lat:34.9754707, lng:138.37918,   dist:'約238m・徒歩3分', cap:'4台',   price:'40分200円',      color:'#f57c00'},
+        {n:7,  name:'静岡呉服町スクエア駐車場',        lat:34.9761685, lng:138.3792246, dist:'約266m・徒歩4分', cap:'172台', price:'60分400円',      color:'#f57c00'},
+        {n:8,  name:'スペース 静岡常磐町第1',          lat:34.9725504, lng:138.3823941, dist:'約268m・徒歩4分', cap:'—',    price:'30分200円',      color:'#f57c00'},
+        {n:9,  name:'NPD松坂屋前パーキング',           lat:34.9736059, lng:138.3888396, dist:'約665m・徒歩8分', cap:'—',    price:'30分300円',      color:'#c62828'},
+        {n:10, name:'パークワン静岡駐車場',             lat:34.9745338, lng:138.3890138, dist:'約667m・徒歩8分', cap:'—',    price:'20分150円',      color:'#c62828'}
+      ];
+      spots.forEach(function(p) {
+        var icon = L.divIcon({
+          html: '<div style="background:'+p.color+';color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">'+p.n+'</div>',
+          className: '', iconSize: [28,28], iconAnchor: [14,14]
+        });
+        L.marker([p.lat, p.lng], {icon: icon}).addTo(map)
+          .bindPopup('<strong>'+p.n+'. '+p.name+'</strong><br>会場から: '+p.dist+'<br>台数: '+p.cap+'<br>料金: '+p.price+'<br><a href="https://maps.google.com/maps?q='+p.lat+','+p.lng+'" target="_blank" rel="noopener" style="color:#e84393;font-size:12px;">📍 Googleマップで開く</a>');
+      });
+    })();
+    </script>
+  </section>
+
+  <!-- 6. お問い合わせ -->
+  <section class="section">
+    <h2>お問い合わせ</h2>
+    <table style="font-size:14px; color:#555; border-collapse:collapse; line-height:1.6;">
+      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">代表</td><td style="padding:6px 0;">樋川 翔</td></tr>
+      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">副代表</td><td style="padding:6px 0;">石川</td></tr>
+      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">ステージ担当部長</td><td style="padding:6px 0;">山田</td></tr>
+      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">TEL</td><td style="padding:6px 0;">090-3935-2911</td></tr>
+      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">MAIL</td><td style="padding:6px 0;"><a href="mailto:iconicshizuoka@gmail.com" style="color:var(--color-text);">iconicshizuoka@gmail.com</a></td></tr>
+    </table>
+  </section>
+
+  <!-- 安全管理・衛生管理に関する注意事項 -->
+  <details style="margin-bottom:24px; background:white; border-radius:12px; padding:24px 28px; box-shadow:0 2px 12px rgba(232,67,147,0.06); border-left:4px solid var(--color-primary); font-size:12px; color:var(--color-text-sub); line-height:1.9;">
+    <summary style="cursor:pointer; font-size:14px; font-weight:700; color:var(--color-text); list-style:none; display:flex; align-items:center; gap:8px;">
+      <span style="color:var(--color-primary);">&#9656;</span> 事故防止及び公衆衛生のための措置に関する事項
+    </summary>
+    <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--color-border);">
+      <p style="font-weight:600; margin-bottom:8px; color:var(--color-text-sub);">I see's（Iconic Shizuoka 2026）における安全管理及び公衆衛生対策について</p>
+      <p style="margin-bottom:10px;">I see's（Iconic Shizuoka 2026）では、来場者、出店者、出演者及び運営スタッフ等、すべての関係者が安全かつ安心して参加できるイベント運営を行うため、事故防止及び公衆衛生の確保に努めます。また、関係法令並びに行政機関等の指導に基づき、適切な安全管理及び衛生管理を実施いたします。</p>
+      <p style="font-weight:600; margin-bottom:4px;">【事故防止対策】</p>
+      <p style="margin-bottom:2px;">・会場内の通行スペースを十分に確保し、来場者動線の整理を行います。</p>
+      <p style="margin-bottom:2px;">・混雑が予想される箇所については、必要に応じて運営スタッフを配置し、来場者誘導を実施します。</p>
+      <p style="margin-bottom:2px;">・会場設営時に危険箇所の確認を行い、転倒事故等の未然防止に努めます。</p>
+      <p style="margin-bottom:2px;">・テント、看板その他設営物については、強風等による転倒・飛散防止のため適切な固定を行います。</p>
+      <p style="margin-bottom:2px;">・事故、急病その他緊急事態発生時に備え、運営スタッフ間の連絡体制を整備します。</p>
+      <p style="margin-bottom:2px;">・来場者等の体調不良や負傷が発生した場合には、速やかに救護対応を行うとともに、必要に応じて消防、警察及び医療機関へ連絡します。</p>
+      <p style="margin-bottom:10px;">・荒天、強風、災害その他安全な運営が困難と判断される場合には、イベント内容の変更又は中止等の措置を講じます。</p>
+      <p style="font-weight:600; margin-bottom:4px;">【感染症対策】</p>
+      <p style="margin-bottom:2px;">・発熱その他体調不良が認められる場合には、来場及び参加の自粛を呼びかけます。</p>
+      <p style="margin-bottom:2px;">・必要に応じて会場内の換気を実施します。</p>
+      <p style="margin-bottom:10px;">・社会状況等に応じて、行政機関等の指導に基づき適切な対応を行います。</p>
+      <p style="font-weight:600; margin-bottom:4px;">【食品衛生対策】</p>
+      <p style="margin-bottom:2px;">・保健所等関係機関の指導に基づき、適切な衛生管理を徹底します。</p>
+      <p style="margin-bottom:2px;">・食材の適切な温度管理及び衛生管理を徹底します。</p>
+      <p style="margin-bottom:2px;">・調理従事者に対し、手洗い及び衛生管理の徹底を求めます。</p>
+      <p style="margin-bottom:2px;">・食品の長時間放置を防止します。</p>
+      <p style="margin-bottom:10px;">・食中毒その他衛生上の問題が発生した場合には、速やかに営業停止その他必要な対応を行います。</p>
+      <p style="font-weight:600; margin-bottom:4px;">【救護体制】</p>
+      <p style="margin-bottom:2px;">・会場内において救護対応可能な運営スタッフを配置します。</p>
+      <p style="margin-bottom:10px;">・応急処置用品を準備し、必要に応じて速やかに救急要請を行います。</p>
+      <p>本内容については、社会状況、行政機関等の指導及び開催内容等に応じて適宜見直しを行います。</p>
+    </div>
+  </details>
+
+  <!-- 7. 応募フォーム -->
+  <section class="form-section" id="form">
+    <div class="form-header">
+      <h2>応募フォーム</h2>
+      <p>以下のフォームからご応募ください。選考結果は個別にご連絡します。</p>
+      <div class="form-items">
+        <span class="form-item-tag">活動名・プロフィール</span>
+        <span class="form-item-tag">ジャンル</span>
+        <span class="form-item-tag">希望出演枠</span>
+        <span class="form-item-tag">SNS・動画リンク</span>
+        <span class="form-item-tag">機材・セッティング</span>
+        <span class="form-item-tag">意気込み</span>
+      </div>
+    </div>
+    <div class="form-body">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0tZziG8gcSePQoByMoWtD-J6q6w3coSBCS2bUh4yja8Hivw/viewform" target="_blank" rel="noopener" class="form-open-btn">応募フォームを開く</a>
+      <p class="form-open-note">別タブで開きます</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="tagline">おいしく、たのしく、彩やかに。― 静岡に「わ」の1ページを。</p>
+  <p>© 2026 I see's / Iconic Shizuoka 2026 実行委員会</p>
+</footer>
+
+</body>
+</html>
