@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHYSICAL CHAMPIONSHIP 参加者募集 | Iconic Shizuoka 2026</title>
+  <meta name="description" content="Iconic Shizuoka 2026 PHYSICAL CHAMPIONSHIP（フィジカルチャンピオンシップ）参加者募集。29歳以下の静岡県民対象、初心者歓迎。">
+  <style>
+    /* ===== カラートークン ===== */
+    :root {
+      --color-primary:      #ff6b35;
+      --color-primary-dark:  #ff4500;
+      --color-bg-dark:       #1a1a1a;
+      --color-bg-card:       #2a2a2a;
+      --color-gold:          #ffd700;
+      --color-text:          #f0f0f0;
+      --color-text-sub:      #bbb;
+      --color-border:        #444;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+      background: var(--color-bg-dark);
+      color: var(--color-text);
+      line-height: 1.8;
+    }
+
+    /* ヘッダー */
+    header {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a1a0a 50%, #1a1a1a 100%);
+      color: white;
+      text-align: center;
+      padding: 64px 20px 56px;
+      border-bottom: 2px solid var(--color-primary);
+    }
+    .header-tag {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 3px;
+      border: 1px solid var(--color-primary);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+    }
+    header h1 {
+      font-size: clamp(26px, 6vw, 44px);
+      font-weight: 900;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header .subtitle {
+      font-size: 14px;
+      color: var(--color-text-sub);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    header .catchcopy {
+      font-size: 16px;
+      color: var(--color-text);
+      font-weight: 700;
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    }
+    .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .cta-btn:focus-visible {
+      outline: 3px solid var(--color-gold);
+      outline-offset: 2px;
+    }
+    .fire-line {
+      margin: 28px auto 0;
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    }
+
+    /* ステップバー */
+    nav.steps {
+      background: #222;
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--color-text-sub);
+    }
+    .step-item a {
+      color: var(--color-text-sub);
+      text-decoration: none;
+      transition: color 0.15s ease-out;
+    }
+    .step-item a:hover { color: var(--color-primary); }
+    .step-item a:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    .step-arrow { color: #666; font-size: 10px; }
+
+    /* メイン */
+    main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* セクション */
+    section.section {
+      background: var(--color-bg-card);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(255,107,53,0.08);
+      border: 1px solid var(--color-border);
+    }
+    section.section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      padding-left: 14px;
+      border-left: 4px solid var(--color-primary);
+      margin-bottom: 24px;
+    }
+
+    .sub-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 24px 0 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* 概要グリッド */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 500px) { .overview-grid { grid-template-columns: 1fr; } }
+    .overview-card {
+      background: #333;
+      border-radius: 10px;
+      padding: 14px 16px;
+      border: 1px solid var(--color-border);
+    }
+    .overview-card .label {
+      font-size: 11px;
+      color: var(--color-text-sub);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .overview-card .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .overview-card.full { grid-column: 1 / -1; }
+
+    /* 応募資格リスト */
+    .eligibility-list {
+      list-style: none;
+      font-size: 14px;
+      color: var(--color-text-sub);
+      line-height: 2.2;
+    }
+    .eligibility-list li::before {
+      content: '\2714';
+      color: var(--color-primary);
+      margin-right: 8px;
+      font-weight: 700;
+    }
+
+    /* 審査基準 */
+    .criteria-list { list-style: none; }
+    .criteria-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 14px;
+      color: var(--color-text-sub);
+    }
+    .criteria-item:last-child { border-bottom: none; }
+    .criteria-num {
+      width: 26px; height: 26px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .criteria-body { flex: 1; }
+    .criteria-body strong { display: block; font-size: 14px; color: var(--color-text); margin-bottom: 2px; }
+    .criteria-body span { font-size: 12px; color: var(--color-text-sub); }
+
+    /* 賞品カード */
+    .prize-card {
+      background: linear-gradient(135deg, #3a2a00, #2a2000);
+      border: 2px solid var(--color-gold);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .prize-card .prize-label {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--color-gold);
+      margin-bottom: 8px;
+    }
+    .prize-card .prize-value {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--color-gold);
+      letter-spacing: 2px;
+    }
+    .prize-sub {
+      font-size: 13px;
+      color: var(--color-text-sub);
+      line-height: 2;
+      margin-top: 12px;
+    }
+
+    /* タグ/チップ */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .tag {
+      background: #333;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* 服装リスト */
+    .dress-list {
+      list-style: none;
+      font-size: 14px;
+      color: var(--color-text-sub);
+      line-height: 2.2;
+    }
+    .dress-list li::before {
+      content: '\25B6';
+      color: var(--color-primary);
+      margin-right: 8px;
+      font-size: 10px;
+    }
+
+    /* 応募フロー */
+    .flow {
+      display: flex; align-items: center;
+      gap: 8px; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .flow-step {
+      background: var(--color-primary); color: white;
+      padding: 8px 16px; border-radius: 24px;
+      font-size: 13px; font-weight: 700;
+    }
+    .flow-step.sub { background: #333; color: var(--color-primary); border: 1px solid var(--color-primary); }
+    .flow-arrow { color: #666; font-size: 14px; }
+
+    /* ステップ詳細 */
+    .step-detail {
+      background: #333;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 3px solid var(--color-primary);
+    }
+    .step-detail .step-num {
+      font-size: 12px;
+      color: var(--color-primary);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .step-detail p {
+      font-size: 14px;
+      color: var(--color-text-sub);
+    }
+    .step-detail a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    .step-detail a:hover { text-decoration: underline; }
+
+    /* 注意事項 */
+    .notice-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--color-text-sub);
+      line-height: 2.2;
+    }
+    .notice-list li {
+      padding-left: 1.2em;
+      text-indent: -1.2em;
+    }
+    .notice-list li::before {
+      content: '\26A0';
+      margin-right: 6px;
+      color: var(--color-primary);
+    }
+
+    /* ノート */
+    .note {
+      background: #333; border-left: 3px solid var(--color-primary);
+      padding: 10px 14px; border-radius: 0 8px 8px 0;
+      font-size: 14px; color: var(--color-text-sub); margin-top: 12px;
+    }
+
+    /* フォームセクション */
+    section.form-section {
+      background: var(--color-bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(255,107,53,0.08);
+      border: 1px solid var(--color-border);
+      margin-bottom: 24px;
+    }
+    .form-header {
+      background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+      color: white; text-align: center;
+      padding: 32px 20px 24px;
+    }
+    .form-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: white; }
+    .form-header p { font-size: 13px; color: rgba(255,255,255,0.9); }
+    .form-body { padding: 32px 24px; text-align: center; }
+    .form-body .or-divider {
+      font-size: 13px;
+      color: var(--color-text-sub);
+      margin: 16px 0;
+    }
+
+    .form-open-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 16px 48px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    }
+    .form-open-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .form-open-btn:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
+
+    .ig-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    }
+    .ig-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .ig-btn:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
+
+    .form-open-note { font-size: 12px; color: #888; margin-top: 12px; }
+
+    /* Google Form iframe */
+    .form-iframe-wrap {
+      margin-top: 24px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+    .form-iframe-wrap iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      background: white;
+    }
+
+    /* フッター */
+    footer {
+      text-align: center; padding: 40px 20px;
+      background: #111; color: #888; font-size: 12px;
+      border-top: 1px solid var(--color-border);
+    }
+    footer .tagline { font-size: 14px; color: var(--color-primary); margin-bottom: 8px; font-style: italic; }
+    footer a { color: var(--color-primary); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-tag">ENTRY OPEN</div>
+  <h1>PHYSICAL<br>CHAMPIONSHIP</h1>
+  <p class="subtitle">presented by Iconic Shizuoka 2026</p>
+  <p class="catchcopy">静岡の若者よ、その肉体を証明せよ。</p>
+  <a href="#form" class="cta-btn">応募する</a>
+  <div class="fire-line"></div>
+</header>
+
+<!-- ページ内ナビ -->
+<nav class="steps" aria-label="ページ内ナビゲーション">
+  <div class="step-item"><a href="#overview">開催概要</a></div>
+  <span class="step-arrow" aria-hidden="true">></span>
+  <div class="step-item"><a href="#eligibility">応募資格</a></div>
+  <span class="step-arrow" aria-hidden="true">></span>
+  <div class="step-item"><a href="#criteria">審査基準</a></div>
+  <span class="step-arrow" aria-hidden="true">></span>
+  <div class="step-item"><a href="#prize">賞品</a></div>
+  <span class="step-arrow" aria-hidden="true">></span>
+  <div class="step-item"><a href="#dress">服装規定</a></div>
+  <span class="step-arrow" aria-hidden="true">></span>
+  <div class="step-item"><a href="#howto">応募方法</a></div>
+  <span class="step-arrow" aria-hidden="true">></span>
+  <div class="step-item"><a href="#form">応募フォーム</a></div>
+</nav>
+
+<main>
+
+  <!-- 1. 開催概要 -->
+  <section class="section" id="overview">
+    <h2>開催概要</h2>
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="label">開催日</div>
+        <div class="value">2026年10月11日(日)</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">時間</div>
+        <div class="value">11:30 ~</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">会場</div>
+        <div class="value">呉服町通り（静岡市）</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">参加費</div>
+        <div class="value" style="color: var(--color-primary);">1,500円</div>
+      </div>
+      <div class="overview-card full">
+        <div class="label">募集期間</div>
+        <div class="value">2026年6月1日 ~ 7月31日</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 応募資格 -->
+  <section class="section" id="eligibility">
+    <h2>応募資格</h2>
+    <ul class="eligibility-list">
+      <li>29歳以下の静岡県在住の方</li>
+      <li>身長・体重の制限はありません</li>
+      <li>筋トレ初心者・大会未経験者も大歓迎</li>
+      <li>性別不問</li>
+    </ul>
+    <div class="note">フィジカルチャンピオンシップは「見せるカラダ」の大会です。競技経験は問いません。日頃のトレーニングの成果を披露するチャンスです!</div>
+  </section>
+
+  <!-- 3. 審査基準 -->
+  <section class="section" id="criteria">
+    <h2>審査基準</h2>
+    <ul class="criteria-list">
+      <li class="criteria-item">
+        <div class="criteria-num">1</div>
+        <div class="criteria-body">
+          <strong>筋肉量</strong>
+          <span>全体的な筋肉の発達度・ボリューム</span>
+        </div>
+      </li>
+      <li class="criteria-item">
+        <div class="criteria-num">2</div>
+        <div class="criteria-body">
+          <strong>バランス</strong>
+          <span>上半身・下半身・左右の均整のとれた体づくり</span>
+        </div>
+      </li>
+      <li class="criteria-item">
+        <div class="criteria-num">3</div>
+        <div class="criteria-body">
+          <strong>コンディション</strong>
+          <span>体脂肪の絞り具合・筋肉の仕上がり</span>
+        </div>
+      </li>
+      <li class="criteria-item">
+        <div class="criteria-num">4</div>
+        <div class="criteria-body">
+          <strong>ポージング</strong>
+          <span>ポーズの正確さ・見せ方の上手さ</span>
+        </div>
+      </li>
+      <li class="criteria-item">
+        <div class="criteria-num">5</div>
+        <div class="criteria-body">
+          <strong>表現力</strong>
+          <span>ステージでの存在感・オーディエンスへのアピール</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 4. 賞品 -->
+  <section class="section" id="prize">
+    <h2>賞品</h2>
+    <div class="prize-card">
+      <div class="prize-label">CHAMPION</div>
+      <div class="prize-value">賞金 10,000円</div>
+    </div>
+    <div class="prize-sub">
+      その他、入賞者にはプロテイン等の副賞を予定しています。<br>
+      詳細は決まり次第お知らせします。
+    </div>
+  </section>
+
+  <!-- 5. 服装規定 -->
+  <section class="section" id="dress">
+    <h2>服装規定</h2>
+    <ul class="dress-list">
+      <li>サーフパンツ着用（ボードショーツ可）</li>
+      <li>裸足での出場可</li>
+      <li>過度なアクセサリーは不可</li>
+      <li>ボディペイント・日焼け止め等は使用可</li>
+    </ul>
+    <div class="note">服装についてご不明な点があれば、お気軽にDMでお問い合わせください。</div>
+  </section>
+
+  <!-- 6. こんな人におすすめ -->
+  <section class="section" id="recommend">
+    <h2>こんな人におすすめ</h2>
+    <div class="tags">
+      <span class="tag">筋トレが趣味</span>
+      <span class="tag">初めて大会に出たい</span>
+      <span class="tag">自分の体を試したい</span>
+      <span class="tag">仲間と競い合いたい</span>
+      <span class="tag">静岡を盛り上げたい</span>
+    </div>
+  </section>
+
+  <!-- 7. 応募方法 -->
+  <section class="section" id="howto">
+    <h2>応募方法</h2>
+    <div class="flow" style="margin-bottom:24px;">
+      <span class="flow-step">Instagram フォロー</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step sub">DM or フォーム送信</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">エントリー完了</span>
+    </div>
+
+    <div class="step-detail">
+      <div class="step-num">STEP 1</div>
+      <p>Iconic Shizuoka の Instagram をフォロー<br>
+        <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">@iconicshizuoka</a>
+      </p>
+    </div>
+    <div class="step-detail">
+      <div class="step-num">STEP 2</div>
+      <p>Instagram DM で「フィジカル参加希望」と送信<br>
+        または下の応募フォームから送信</p>
+    </div>
+    <div class="step-detail">
+      <div class="step-num">STEP 3</div>
+      <p>運営から確認のご連絡をお送りします。<br>
+        エントリー完了!</p>
+    </div>
+  </section>
+
+  <!-- 8. 注意事項 -->
+  <section class="section" id="notice">
+    <h2>注意事項</h2>
+    <ul class="notice-list">
+      <li>参加費 1,500円は当日受付時にお支払いください。</li>
+      <li>天候やその他やむを得ない事情により、内容変更・中止となる場合があります。</li>
+      <li>会場内での撮影・SNS投稿が行われます。ご了承の上ご参加ください。</li>
+      <li>体調不良の方は参加をお控えください。</li>
+      <li>審査結果に対する異議申し立てはお受けできません。</li>
+      <li>未成年の方は保護者の同意が必要です。</li>
+      <li>ドーピング等の禁止薬物の使用が発覚した場合、失格となります。</li>
+    </ul>
+  </section>
+
+  <!-- 9. 応募フォーム -->
+  <section class="form-section" id="form">
+    <div class="form-header">
+      <h2>エントリーする</h2>
+      <p>Instagram DM または応募フォームからご応募ください。</p>
+    </div>
+    <div class="form-body">
+      <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener" class="ig-btn">Instagram DMで応募</a>
+      <div class="or-divider">- または -</div>
+      <!-- Google Form: URLが決まったら href="#" を差し替え -->
+      <a href="#" class="form-open-btn">応募フォームを開く</a>
+      <p class="form-open-note">Google フォームのURLは準備中です</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="tagline">BREAK YOUR LIMITS.</p>
+  <p>主催: I see's（Iconic Shizuoka 2026 実行委員会）</p>
+  <p style="margin-top:8px;">お問い合わせ: <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">Instagram DM</a></p>
+  <p style="margin-top:16px;">&copy; 2026 I see's / Iconic Shizuoka 2026</p>
+</footer>
+
+</body>
+</html>
