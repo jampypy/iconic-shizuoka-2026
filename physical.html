@@ -6,525 +6,516 @@
   <title>PHYSICAL CHAMPIONSHIP 参加者募集 | Iconic Shizuoka 2026</title>
   <meta name="description" content="Iconic Shizuoka 2026 PHYSICAL CHAMPIONSHIP（フィジカルチャンピオンシップ）参加者募集。29歳以下の静岡県民対象、初心者歓迎。">
   <style>
-    /* ===== カラートークン ===== */
     :root {
       --color-primary:      #ff6b35;
-      --color-primary-dark:  #ff4500;
-      --color-bg-dark:       #1a1a1a;
-      --color-bg-card:       #2a2a2a;
-      --color-gold:          #ffd700;
-      --color-text:          #f0f0f0;
-      --color-text-sub:      #bbb;
-      --color-border:        #444;
+      --color-primary-dark:  #e55a2b;
+      --color-bg:            #111;
+      --color-bg-card:       #1c1c1c;
+      --color-bg-nav:        #1a1a1a;
+      --color-bg-secondary:  #333;
+      --color-bg-secondary-hover: #444;
+      --color-gold:          #e8c840;
+      --color-text:          #e8e8e8;
+      --color-text-sub:      #999;
+      --color-text-mute:     #888;
+      --color-border:        #333;
+      --space-4:   4px;
+      --space-8:   8px;
+      --space-16:  16px;
+      --space-24:  24px;
+      --space-32:  32px;
+      --space-48:  48px;
+      --radius-s:  4px;
+      --radius-m:  6px;
+      --transition-fast: 150ms ease-out;
+      --transition-base: 200ms ease-out;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *,
+    *::before,
+    *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
-      background: var(--color-bg-dark);
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--color-bg);
       color: var(--color-text);
       line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ヘッダー */
-    header {
-      background: linear-gradient(135deg, #1a1a1a 0%, #2a1a0a 50%, #1a1a1a 100%);
-      color: white;
-      text-align: center;
-      padding: 64px 20px 56px;
-      border-bottom: 2px solid var(--color-primary);
+    /* --- Utility --- */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
-    .header-tag {
-      display: inline-block;
-      font-size: 12px;
+
+    /* --- Focus --- */
+    .cta-btn:focus-visible,
+    .form-open-btn:focus-visible,
+    .ig-btn:focus-visible,
+    .step-nav a:focus-visible,
+    .step-detail a:focus-visible,
+    footer a:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+
+    /* --- Header --- */
+    header {
+      background: var(--color-bg);
+      color: var(--color-text);
+      text-align: center;
+      padding: var(--space-48) 20px var(--space-48);
+      border-bottom: 3px solid var(--color-primary);
+    }
+    header p.event-name {
+      font-size: 11px;
       letter-spacing: 3px;
-      border: 1px solid var(--color-primary);
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      color: var(--color-primary);
+      text-transform: uppercase;
+      color: var(--color-text-sub);
+      margin-bottom: var(--space-16);
     }
     header h1 {
-      font-size: clamp(26px, 6vw, 44px);
+      font-size: clamp(28px, 7vw, 48px);
       font-weight: 900;
-      letter-spacing: 4px;
-      margin-bottom: 10px;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    header .subtitle {
-      font-size: 14px;
-      color: var(--color-text-sub);
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+      letter-spacing: 6px;
+      line-height: 1.2;
+      margin-bottom: var(--space-8);
+      color: #fff;
     }
     header .catchcopy {
-      font-size: 16px;
-      color: var(--color-text);
-      font-weight: 700;
-      margin-bottom: 28px;
-      letter-spacing: 1px;
+      font-size: 15px;
+      color: var(--color-text-sub);
+      margin-bottom: var(--space-32);
     }
     .cta-btn {
       display: inline-block;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-      color: white;
+      background: var(--color-primary);
+      color: #fff;
       font-weight: 700;
-      font-size: 15px;
-      padding: 14px 36px;
-      border-radius: 50px;
+      font-size: 14px;
+      padding: 12px var(--space-32);
+      border-radius: var(--radius-s);
       text-decoration: none;
       letter-spacing: 1px;
-      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+      transition: background var(--transition-fast);
     }
-    .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .cta-btn:focus-visible {
-      outline: 3px solid var(--color-gold);
-      outline-offset: 2px;
-    }
-    .fire-line {
-      margin: 28px auto 0;
-      width: 60px; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-    }
+    .cta-btn:hover { background: var(--color-primary-dark); }
+    .cta-btn:active { transform: scale(0.98); }
 
-    /* ステップバー */
+    /* --- Nav --- */
     nav.steps {
-      background: #222;
+      background: var(--color-bg-nav);
       border-bottom: 1px solid var(--color-border);
-      padding: 20px;
+      padding: var(--space-16) 20px;
+    }
+    .step-nav {
+      list-style: none;
       display: flex;
       justify-content: center;
-      gap: 6px;
+      gap: var(--space-4);
       flex-wrap: wrap;
     }
-    .step-item {
+    .step-nav li {
+      font-size: 12px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--color-text-sub);
     }
-    .step-item a {
+    .step-nav li:not(:last-child)::after {
+      content: '/';
+      color: var(--color-text-mute);
+      font-size: 10px;
+      margin-left: var(--space-8);
+    }
+    .step-nav a {
       color: var(--color-text-sub);
       text-decoration: none;
-      transition: color 0.15s ease-out;
+      padding: var(--space-4) var(--space-4);
+      border-radius: var(--radius-s);
+      transition: color var(--transition-fast);
     }
-    .step-item a:hover { color: var(--color-primary); }
-    .step-item a:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
+    .step-nav a:hover { color: var(--color-primary); }
+
+    /* --- Main --- */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: var(--space-32) 20px 80px;
     }
-    .step-arrow { color: #666; font-size: 10px; }
 
-    /* メイン */
-    main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
-
-    /* セクション */
+    /* --- Section --- */
     section.section {
       background: var(--color-bg-card);
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 12px rgba(255,107,53,0.08);
       border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      padding: var(--space-32) var(--space-24);
+      margin-bottom: var(--space-24);
     }
     section.section h2 {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--color-text);
-      display: flex;
-      align-items: center;
-      padding-left: 14px;
-      border-left: 4px solid var(--color-primary);
-      margin-bottom: 24px;
+      border-bottom: 2px solid var(--color-primary);
+      padding-bottom: var(--space-8);
+      margin-bottom: var(--space-24);
     }
 
-    .sub-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 24px 0 10px;
-      letter-spacing: 0.5px;
-    }
-
-    /* 概要グリッド */
-    .overview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 500px) { .overview-grid { grid-template-columns: 1fr; } }
-    .overview-card {
-      background: #333;
-      border-radius: 10px;
-      padding: 14px 16px;
-      border: 1px solid var(--color-border);
-    }
-    .overview-card .label {
-      font-size: 11px;
-      color: var(--color-text-sub);
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-    .overview-card .value {
+    /* --- Overview Table --- */
+    .overview-table {
+      width: 100%;
       font-size: 14px;
-      font-weight: 600;
-      color: var(--color-text);
+      border-collapse: collapse;
     }
-    .overview-card.full { grid-column: 1 / -1; }
+    .overview-table th {
+      text-align: left;
+      color: var(--color-text-sub);
+      font-weight: 400;
+      font-size: 12px;
+      padding: 10px 12px 10px 0;
+      white-space: nowrap;
+      width: 80px;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+    }
+    .overview-table td {
+      padding: 10px 0;
+      color: var(--color-text);
+      font-weight: 600;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .overview-table tr:last-child th,
+    .overview-table tr:last-child td { border-bottom: none; }
 
-    /* 応募資格リスト */
-    .eligibility-list {
+    /* --- Plain List --- */
+    .plain-list {
       list-style: none;
       font-size: 14px;
-      color: var(--color-text-sub);
-      line-height: 2.2;
+      color: var(--color-text);
     }
-    .eligibility-list li::before {
-      content: '\2714';
-      color: var(--color-primary);
-      margin-right: 8px;
-      font-weight: 700;
+    .plain-list li {
+      padding: 6px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .plain-list li:last-child { border-bottom: none; }
+    .plain-list li::before {
+      content: '- ';
+      color: var(--color-text-sub);
     }
 
-    /* 審査基準 */
+    /* --- Criteria --- */
     .criteria-list { list-style: none; }
     .criteria-item {
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 12px 0;
+      gap: 12px;
+      padding: 10px 0;
       border-bottom: 1px solid var(--color-border);
       font-size: 14px;
-      color: var(--color-text-sub);
     }
     .criteria-item:last-child { border-bottom: none; }
     .criteria-num {
-      width: 26px; height: 26px;
-      background: var(--color-primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
+      color: var(--color-primary);
       font-weight: 700;
+      font-size: 14px;
       flex-shrink: 0;
-      margin-top: 1px;
+      width: 20px;
     }
-    .criteria-body { flex: 1; }
-    .criteria-body strong { display: block; font-size: 14px; color: var(--color-text); margin-bottom: 2px; }
-    .criteria-body span { font-size: 12px; color: var(--color-text-sub); }
-
-    /* 賞品カード */
-    .prize-card {
-      background: linear-gradient(135deg, #3a2a00, #2a2000);
-      border: 2px solid var(--color-gold);
-      border-radius: 12px;
-      padding: 24px;
-      text-align: center;
-      margin-bottom: 16px;
+    .criteria-body strong {
+      color: var(--color-text);
+      display: block;
     }
-    .prize-card .prize-label {
+    .criteria-body span {
       font-size: 12px;
+      color: var(--color-text-sub);
+    }
+
+    /* --- Prize --- */
+    .prize-box {
+      border: 2px solid var(--color-gold);
+      border-radius: var(--radius-m);
+      padding: var(--space-24);
+      text-align: center;
+      margin-bottom: var(--space-16);
+    }
+    .prize-box .prize-label {
+      font-size: 11px;
       letter-spacing: 3px;
       color: var(--color-gold);
-      margin-bottom: 8px;
+      margin-bottom: var(--space-4);
     }
-    .prize-card .prize-value {
-      font-size: 28px;
+    .prize-box .prize-value {
+      font-size: 24px;
       font-weight: 900;
       color: var(--color-gold);
-      letter-spacing: 2px;
     }
     .prize-sub {
       font-size: 13px;
       color: var(--color-text-sub);
-      line-height: 2;
-      margin-top: 12px;
     }
 
-    /* タグ/チップ */
+    /* --- Tags --- */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
+      gap: var(--space-8);
     }
     .tag {
-      background: #333;
-      color: var(--color-primary);
-      border: 1px solid var(--color-primary);
-      border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    /* 服装リスト */
-    .dress-list {
-      list-style: none;
-      font-size: 14px;
+      background: transparent;
       color: var(--color-text-sub);
-      line-height: 2.2;
-    }
-    .dress-list li::before {
-      content: '\25B6';
-      color: var(--color-primary);
-      margin-right: 8px;
-      font-size: 10px;
+      border: 1px solid var(--color-border);
+      padding: var(--space-4) 12px;
+      font-size: 13px;
+      border-radius: var(--radius-s);
     }
 
-    /* 応募フロー */
-    .flow {
-      display: flex; align-items: center;
-      gap: 8px; flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-    .flow-step {
-      background: var(--color-primary); color: white;
-      padding: 8px 16px; border-radius: 24px;
-      font-size: 13px; font-weight: 700;
-    }
-    .flow-step.sub { background: #333; color: var(--color-primary); border: 1px solid var(--color-primary); }
-    .flow-arrow { color: #666; font-size: 14px; }
-
-    /* ステップ詳細 */
+    /* --- Steps Detail --- */
     .step-detail {
-      background: #333;
-      border-radius: 10px;
-      padding: 16px;
-      margin-bottom: 12px;
-      border-left: 3px solid var(--color-primary);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-border);
     }
+    .step-detail:last-of-type { border-bottom: none; }
     .step-detail .step-num {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--color-primary);
       font-weight: 700;
       letter-spacing: 1px;
-      margin-bottom: 4px;
     }
     .step-detail p {
       font-size: 14px;
-      color: var(--color-text-sub);
+      color: var(--color-text);
+      margin-top: 2px;
     }
     .step-detail a {
       color: var(--color-primary);
       text-decoration: none;
+      transition: color var(--transition-fast);
     }
     .step-detail a:hover { text-decoration: underline; }
 
-    /* 注意事項 */
+    /* --- Notice --- */
     .notice-list {
       list-style: none;
       font-size: 13px;
       color: var(--color-text-sub);
-      line-height: 2.2;
-    }
-    .notice-list li {
-      padding-left: 1.2em;
-      text-indent: -1.2em;
+      line-height: 2;
     }
     .notice-list li::before {
-      content: '\26A0';
-      margin-right: 6px;
+      content: '* ';
       color: var(--color-primary);
     }
 
-    /* ノート */
+    /* --- Note --- */
     .note {
-      background: #333; border-left: 3px solid var(--color-primary);
-      padding: 10px 14px; border-radius: 0 8px 8px 0;
-      font-size: 14px; color: var(--color-text-sub); margin-top: 12px;
-    }
-
-    /* フォームセクション */
-    section.form-section {
-      background: var(--color-bg-card);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(255,107,53,0.08);
-      border: 1px solid var(--color-border);
-      margin-bottom: 24px;
-    }
-    .form-header {
-      background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
-      color: white; text-align: center;
-      padding: 32px 20px 24px;
-    }
-    .form-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: white; }
-    .form-header p { font-size: 13px; color: rgba(255,255,255,0.9); }
-    .form-body { padding: 32px 24px; text-align: center; }
-    .form-body .or-divider {
+      background: var(--color-bg);
+      border-left: 3px solid var(--color-primary);
+      padding: 10px 14px;
       font-size: 13px;
       color: var(--color-text-sub);
-      margin: 16px 0;
+      margin-top: var(--space-16);
+      border-radius: 0 var(--radius-s) var(--radius-s) 0;
     }
 
+    /* --- Form Section --- */
+    section.form-section {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      overflow: hidden;
+      margin-bottom: var(--space-24);
+    }
+    .form-header {
+      background: var(--color-primary);
+      color: #fff;
+      text-align: center;
+      padding: var(--space-24) 20px;
+    }
+    .form-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: var(--space-4);
+    }
+    .form-header p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .form-body {
+      padding: var(--space-32) var(--space-24);
+      text-align: center;
+    }
+    .form-body .or-divider {
+      font-size: 12px;
+      color: var(--color-text-sub);
+      margin: 14px 0;
+    }
     .form-open-btn {
       display: inline-block;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-      color: white;
+      background: var(--color-primary);
+      color: #fff;
       font-weight: 700;
-      font-size: 16px;
-      padding: 16px 48px;
-      border-radius: 50px;
+      font-size: 14px;
+      padding: 12px var(--space-32);
+      border-radius: var(--radius-s);
       text-decoration: none;
-      letter-spacing: 1px;
-      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+      transition: background var(--transition-fast);
     }
-    .form-open-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .form-open-btn:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
-
+    .form-open-btn:hover { background: var(--color-primary-dark); }
+    .form-open-btn:active { transform: scale(0.98); }
     .ig-btn {
       display: inline-block;
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-      color: white;
+      background: var(--color-bg-secondary);
+      color: #fff;
       font-weight: 700;
-      font-size: 15px;
-      padding: 14px 36px;
-      border-radius: 50px;
+      font-size: 14px;
+      padding: 12px var(--space-32);
+      border-radius: var(--radius-s);
       text-decoration: none;
-      letter-spacing: 1px;
-      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-    }
-    .ig-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .ig-btn:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
-
-    .form-open-note { font-size: 12px; color: #888; margin-top: 12px; }
-
-    /* Google Form iframe */
-    .form-iframe-wrap {
-      margin-top: 24px;
-      border-radius: 8px;
-      overflow: hidden;
       border: 1px solid var(--color-border);
+      transition: background var(--transition-fast);
     }
-    .form-iframe-wrap iframe {
-      width: 100%;
-      height: 800px;
-      border: none;
-      background: white;
+    .ig-btn:hover { background: var(--color-bg-secondary-hover); }
+    .ig-btn:active { transform: scale(0.98); }
+    .form-open-note {
+      font-size: 11px;
+      color: var(--color-text-mute);
+      margin-top: 10px;
     }
 
-    /* フッター */
+    /* --- Footer --- */
     footer {
-      text-align: center; padding: 40px 20px;
-      background: #111; color: #888; font-size: 12px;
+      text-align: center;
+      padding: var(--space-32) 20px;
+      background: var(--color-bg);
+      color: var(--color-text-mute);
+      font-size: 12px;
       border-top: 1px solid var(--color-border);
     }
-    footer .tagline { font-size: 14px; color: var(--color-primary); margin-bottom: 8px; font-style: italic; }
-    footer a { color: var(--color-primary); text-decoration: none; }
+    footer p + p { margin-top: var(--space-8); }
+    footer a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
     footer a:hover { text-decoration: underline; }
+
+    /* --- Responsive --- */
+    @media (max-width: 480px) {
+      header h1 {
+        letter-spacing: 3px;
+      }
+      section.section {
+        padding: var(--space-24) var(--space-16);
+      }
+      .form-body {
+        padding: var(--space-24) var(--space-16);
+      }
+      .step-nav {
+        gap: var(--space-4);
+      }
+    }
+
+    @media (min-width: 768px) {
+      header {
+        padding: 64px 20px 64px;
+      }
+      main {
+        padding: var(--space-48) 20px 96px;
+      }
+      section.section {
+        padding: var(--space-48) var(--space-32);
+      }
+      section.section h2 {
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-<!-- ヘッダー -->
 <header>
-  <div class="header-tag">ENTRY OPEN</div>
+  <p class="event-name">Iconic Shizuoka 2026</p>
   <h1>PHYSICAL<br>CHAMPIONSHIP</h1>
-  <p class="subtitle">presented by Iconic Shizuoka 2026</p>
   <p class="catchcopy">静岡の若者よ、その肉体を証明せよ。</p>
-  <a href="#form" class="cta-btn">応募する</a>
-  <div class="fire-line"></div>
+  <a href="#form" class="cta-btn" aria-label="エントリーフォームへ移動">応募する</a>
 </header>
 
-<!-- ページ内ナビ -->
 <nav class="steps" aria-label="ページ内ナビゲーション">
-  <div class="step-item"><a href="#overview">開催概要</a></div>
-  <span class="step-arrow" aria-hidden="true">></span>
-  <div class="step-item"><a href="#eligibility">応募資格</a></div>
-  <span class="step-arrow" aria-hidden="true">></span>
-  <div class="step-item"><a href="#criteria">審査基準</a></div>
-  <span class="step-arrow" aria-hidden="true">></span>
-  <div class="step-item"><a href="#prize">賞品</a></div>
-  <span class="step-arrow" aria-hidden="true">></span>
-  <div class="step-item"><a href="#dress">服装規定</a></div>
-  <span class="step-arrow" aria-hidden="true">></span>
-  <div class="step-item"><a href="#howto">応募方法</a></div>
-  <span class="step-arrow" aria-hidden="true">></span>
-  <div class="step-item"><a href="#form">応募フォーム</a></div>
+  <ul class="step-nav">
+    <li><a href="#overview">概要</a></li>
+    <li><a href="#eligibility">応募資格</a></li>
+    <li><a href="#criteria">審査基準</a></li>
+    <li><a href="#prize">賞品</a></li>
+    <li><a href="#dress">服装</a></li>
+    <li><a href="#howto">応募方法</a></li>
+    <li><a href="#form">フォーム</a></li>
+  </ul>
 </nav>
 
 <main>
 
-  <!-- 1. 開催概要 -->
   <section class="section" id="overview">
     <h2>開催概要</h2>
-    <div class="overview-grid">
-      <div class="overview-card">
-        <div class="label">開催日</div>
-        <div class="value">2026年10月11日(日)</div>
-      </div>
-      <div class="overview-card">
-        <div class="label">時間</div>
-        <div class="value">11:30 ~</div>
-      </div>
-      <div class="overview-card">
-        <div class="label">会場</div>
-        <div class="value">呉服町通り（静岡市）</div>
-      </div>
-      <div class="overview-card">
-        <div class="label">参加費</div>
-        <div class="value" style="color: var(--color-primary);">1,500円</div>
-      </div>
-      <div class="overview-card full">
-        <div class="label">募集期間</div>
-        <div class="value">2026年6月1日 ~ 7月31日</div>
-      </div>
-    </div>
+    <table class="overview-table" aria-label="開催概要">
+      <caption class="visually-hidden">PHYSICAL CHAMPIONSHIP 開催概要</caption>
+      <tr><th scope="row">開催日</th><td>2026年10月11日(日)</td></tr>
+      <tr><th scope="row">時間</th><td>11:30 ~</td></tr>
+      <tr><th scope="row">会場</th><td>呉服町通り（静岡市）</td></tr>
+      <tr><th scope="row">参加費</th><td>1,500円（当日払い）</td></tr>
+      <tr><th scope="row">募集期間</th><td>2026年6月1日 ~ 7月31日</td></tr>
+    </table>
   </section>
 
-  <!-- 2. 応募資格 -->
   <section class="section" id="eligibility">
     <h2>応募資格</h2>
-    <ul class="eligibility-list">
+    <ul class="plain-list">
       <li>29歳以下の静岡県在住の方</li>
-      <li>身長・体重の制限はありません</li>
+      <li>身長・体重の制限なし</li>
       <li>筋トレ初心者・大会未経験者も大歓迎</li>
       <li>性別不問</li>
     </ul>
-    <div class="note">フィジカルチャンピオンシップは「見せるカラダ」の大会です。競技経験は問いません。日頃のトレーニングの成果を披露するチャンスです!</div>
+    <div class="note" role="note">フィジカルチャンピオンシップは「見せるカラダ」の大会です。競技経験は問いません。日頃のトレーニングの成果を披露するチャンスです!</div>
   </section>
 
-  <!-- 3. 審査基準 -->
   <section class="section" id="criteria">
     <h2>審査基準</h2>
-    <ul class="criteria-list">
+    <ul class="criteria-list" role="list">
       <li class="criteria-item">
-        <div class="criteria-num">1</div>
+        <div class="criteria-num" aria-hidden="true">1.</div>
         <div class="criteria-body">
           <strong>筋肉量</strong>
           <span>全体的な筋肉の発達度・ボリューム</span>
         </div>
       </li>
       <li class="criteria-item">
-        <div class="criteria-num">2</div>
+        <div class="criteria-num" aria-hidden="true">2.</div>
         <div class="criteria-body">
           <strong>バランス</strong>
           <span>上半身・下半身・左右の均整のとれた体づくり</span>
         </div>
       </li>
       <li class="criteria-item">
-        <div class="criteria-num">3</div>
+        <div class="criteria-num" aria-hidden="true">3.</div>
         <div class="criteria-body">
           <strong>コンディション</strong>
           <span>体脂肪の絞り具合・筋肉の仕上がり</span>
         </div>
       </li>
       <li class="criteria-item">
-        <div class="criteria-num">4</div>
+        <div class="criteria-num" aria-hidden="true">4.</div>
         <div class="criteria-body">
           <strong>ポージング</strong>
           <span>ポーズの正確さ・見せ方の上手さ</span>
         </div>
       </li>
       <li class="criteria-item">
-        <div class="criteria-num">5</div>
+        <div class="criteria-num" aria-hidden="true">5.</div>
         <div class="criteria-body">
           <strong>表現力</strong>
           <span>ステージでの存在感・オーディエンスへのアピール</span>
@@ -533,78 +524,60 @@
     </ul>
   </section>
 
-  <!-- 4. 賞品 -->
   <section class="section" id="prize">
     <h2>賞品</h2>
-    <div class="prize-card">
+    <div class="prize-box">
       <div class="prize-label">CHAMPION</div>
       <div class="prize-value">賞金 10,000円</div>
     </div>
-    <div class="prize-sub">
-      その他、入賞者にはプロテイン等の副賞を予定しています。<br>
-      詳細は決まり次第お知らせします。
-    </div>
+    <p class="prize-sub">その他、入賞者にはプロテイン等の副賞を予定。詳細は決まり次第お知らせします。</p>
   </section>
 
-  <!-- 5. 服装規定 -->
   <section class="section" id="dress">
     <h2>服装規定</h2>
-    <ul class="dress-list">
+    <ul class="plain-list">
       <li>サーフパンツ着用（ボードショーツ可）</li>
       <li>裸足での出場可</li>
       <li>過度なアクセサリーは不可</li>
       <li>ボディペイント・日焼け止め等は使用可</li>
     </ul>
-    <div class="note">服装についてご不明な点があれば、お気軽にDMでお問い合わせください。</div>
+    <div class="note" role="note">服装についてご不明な点があれば、お気軽にDMでお問い合わせください。</div>
   </section>
 
-  <!-- 6. こんな人におすすめ -->
   <section class="section" id="recommend">
     <h2>こんな人におすすめ</h2>
-    <div class="tags">
-      <span class="tag">筋トレが趣味</span>
-      <span class="tag">初めて大会に出たい</span>
-      <span class="tag">自分の体を試したい</span>
-      <span class="tag">仲間と競い合いたい</span>
-      <span class="tag">静岡を盛り上げたい</span>
+    <div class="tags" role="list" aria-label="おすすめの対象者">
+      <span class="tag" role="listitem">筋トレが趣味</span>
+      <span class="tag" role="listitem">初めて大会に出たい</span>
+      <span class="tag" role="listitem">自分の体を試したい</span>
+      <span class="tag" role="listitem">仲間と競い合いたい</span>
+      <span class="tag" role="listitem">静岡を盛り上げたい</span>
     </div>
   </section>
 
-  <!-- 7. 応募方法 -->
   <section class="section" id="howto">
     <h2>応募方法</h2>
-    <div class="flow" style="margin-bottom:24px;">
-      <span class="flow-step">Instagram フォロー</span>
-      <span class="flow-arrow">&rarr;</span>
-      <span class="flow-step sub">DM or フォーム送信</span>
-      <span class="flow-arrow">&rarr;</span>
-      <span class="flow-step">エントリー完了</span>
-    </div>
-
     <div class="step-detail">
       <div class="step-num">STEP 1</div>
-      <p>Iconic Shizuoka の Instagram をフォロー<br>
+      <p>Iconic Shizuoka の Instagram をフォロー →
         <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">@iconicshizuoka</a>
       </p>
     </div>
     <div class="step-detail">
       <div class="step-num">STEP 2</div>
-      <p>Instagram DM で「フィジカル参加希望」と送信<br>
-        または下の応募フォームから送信</p>
+      <p>Instagram DM で「フィジカル参加希望」と送信、または下の応募フォームから送信</p>
     </div>
     <div class="step-detail">
       <div class="step-num">STEP 3</div>
-      <p>運営から確認のご連絡をお送りします。<br>
-        エントリー完了!</p>
+      <p>運営から確認の連絡 → エントリー完了</p>
     </div>
   </section>
 
-  <!-- 8. 注意事項 -->
   <section class="section" id="notice">
     <h2>注意事項</h2>
     <ul class="notice-list">
       <li>参加費 1,500円は当日受付時にお支払いください。</li>
-      <li>天候やその他やむを得ない事情により、内容変更・中止となる場合があります。</li>
+      <li>天候等により内容変更・中止となる場合があります。</li>
       <li>会場内での撮影・SNS投稿が行われます。ご了承の上ご参加ください。</li>
       <li>体調不良の方は参加をお控えください。</li>
       <li>審査結果に対する異議申し立てはお受けできません。</li>
@@ -613,17 +586,15 @@
     </ul>
   </section>
 
-  <!-- 9. 応募フォーム -->
   <section class="form-section" id="form">
     <div class="form-header">
       <h2>エントリーする</h2>
       <p>Instagram DM または応募フォームからご応募ください。</p>
     </div>
     <div class="form-body">
-      <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener" class="ig-btn">Instagram DMで応募</a>
-      <div class="or-divider">- または -</div>
-      <!-- Google Form: URLが決まったら href="#" を差し替え -->
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGTlL8qOIPdFxVA2tTaP1Ga1F7JycyvxFgxCO4LZWmEiJaVg/viewform" target="_blank" rel="noopener" class="form-open-btn">応募フォームを開く</a>
+      <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener" class="ig-btn" aria-label="Instagram DMで応募（別タブで開きます）">Instagram DMで応募</a>
+      <div class="or-divider">or</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGTlL8qOIPdFxVA2tTaP1Ga1F7JycyvxFgxCO4LZWmEiJaVg/viewform" target="_blank" rel="noopener" class="form-open-btn" aria-label="応募フォームを開く（別タブで開きます）">応募フォームを開く</a>
       <p class="form-open-note">別タブで開きます</p>
     </div>
   </section>
@@ -631,10 +602,9 @@
 </main>
 
 <footer>
-  <p class="tagline">BREAK YOUR LIMITS.</p>
   <p>主催: I see's（Iconic Shizuoka 2026 実行委員会）</p>
-  <p style="margin-top:8px;">お問い合わせ: <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">Instagram DM</a></p>
-  <p style="margin-top:16px;">&copy; 2026 I see's / Iconic Shizuoka 2026</p>
+  <p>お問い合わせ: <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">Instagram DM</a></p>
+  <p>&copy; 2026 I see's / Iconic Shizuoka 2026</p>
 </footer>
 
 </body>
