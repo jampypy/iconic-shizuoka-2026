@@ -363,6 +363,45 @@
     .form-open-btn:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
     .form-open-note { font-size: 12px; color: #999; margin-top: 12px; }
 
+    /* フォームが使えないときの代替応募 */
+    .form-fallback {
+      margin-top: 28px; padding-top: 24px;
+      border-top: 1px solid var(--color-border);
+      text-align: left;
+    }
+    .form-fallback h3 {
+      font-size: 14px; font-weight: 700; color: var(--color-primary-dark);
+      margin-bottom: 8px; text-align: center;
+    }
+    .form-fallback p {
+      font-size: 13px; color: var(--color-text-sub); line-height: 1.9;
+      margin-bottom: 12px;
+    }
+    .form-fallback-btn {
+      display: block; width: fit-content; margin: 0 auto 12px;
+      background: white; color: var(--color-primary-dark);
+      border: 2px solid var(--color-primary);
+      font-weight: 700; font-size: 15px;
+      padding: 12px 32px; border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.2s ease-out, color 0.2s ease-out;
+    }
+    .form-fallback-btn:hover { background: var(--color-bg-accent); }
+    .form-fallback-btn:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    .form-fallback ul {
+      list-style: none; background: var(--color-bg-light);
+      border-radius: 10px; padding: 16px 20px; margin-bottom: 12px;
+    }
+    .form-fallback ul li {
+      font-size: 13px; color: var(--color-text-sub);
+      padding: 5px 0 5px 18px; position: relative; line-height: 1.7;
+    }
+    .form-fallback ul li::before {
+      content: ""; position: absolute; left: 0; top: 13px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--color-primary);
+    }
+
     /* お問い合わせ */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     @media (max-width: 500px) { .contact-grid { grid-template-columns: 1fr; } }
@@ -759,7 +798,24 @@
     </div>
     <div class="form-body">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScqMWcLHVcEcKQiDzqjcsHjpsQLwCK8SsW0eeasQTeOWKpiOg/viewform" target="_blank" rel="noopener" class="form-open-btn">応募フォームを開く</a>
-      <p class="form-open-note">別タブで開きます</p>
+      <p class="form-open-note">別タブで開きます（送信にはGoogleアカウントへのログインが必要です）</p>
+
+      <div class="form-fallback">
+        <h3>フォームが開かない・送信できない場合</h3>
+        <p>応募フォームはGoogleアカウントでのログインが必要なため、ログインできない場合や送信時にエラーが表示される場合があります。そのときは<strong>メールでのご応募も受け付けています</strong>。フォームと同じ内容で選考しますので、下記より遠慮なくお送りください。</p>
+        <a href="mailto:iconicshizuoka@gmail.com?subject=%E3%80%90%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B8%E5%87%BA%E6%BC%94%E5%BF%9C%E5%8B%9F%E3%80%91%E6%B4%BB%E5%8B%95%E5%90%8D%E3%82%92%E3%81%94%E8%A8%98%E5%85%A5%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84" class="form-fallback-btn">メールで応募する</a>
+        <p>件名：<strong>【ステージ出演応募】活動名</strong>／本文に以下をご記入ください。</p>
+        <ul>
+          <li>活動名（ふりがな）・代表者様のお名前</li>
+          <li>ご連絡先（お電話番号・メールアドレス）</li>
+          <li>ジャンル・活動プロフィール（構成人数もお書きください）</li>
+          <li>希望出演枠（10/11・10/12／希望時間帯）</li>
+          <li>SNS・演奏／パフォーマンス動画のURL</li>
+          <li>必要な機材・セッティング</li>
+          <li>意気込み</li>
+        </ul>
+        <p style="margin-bottom:0;">動画データはメールに添付せず、<strong>YouTube・Instagram・Googleドライブなどの共有URL</strong>をお知らせください。</p>
+      </div>
     </div>
   </section>
 
