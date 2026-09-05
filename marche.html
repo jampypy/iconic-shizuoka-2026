@@ -1,778 +1,245 @@
-<html lang="ja"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>出店者募集 | Iconic Shizuoka 2026</title>
-  <style>
-    /* ===== カラートークン ===== */
-    :root {
-      --color-primary:      #e84393;
-      --color-primary-dark: #c2185b;
-      --color-bg-light:     #fdf5f8;
-      --color-bg-accent:    #fce4ec;
-      --color-green:        #2e7d32;
-      --color-green-light:  #e8f5e9;
-      --color-text:         #2a2a2a;
-      --color-text-sub:     #555;
-      --color-text-mute:    #777;
-      --color-border:       #f0dde6;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
-      background: var(--color-bg-light);
-      color: var(--color-text);
-      line-height: 1.8;
-    }
-
-    /* ヘッダー */
-    header {
-      background: linear-gradient(135deg, var(--color-primary) 0%, #f06aaa 100%);
-      color: white;
-      text-align: center;
-      padding: 64px 20px 56px;
-    }
-    .header-tag {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 3px;
-      border: 1px solid rgba(255,255,255,0.7);
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      color: white;
-    }
-    header h1 {
-      font-size: clamp(24px, 5vw, 40px);
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-    header .subtitle {
-      font-size: 14px;
-      color: rgba(255,255,255,0.95);
-      letter-spacing: 1px;
-      margin-bottom: 28px;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: #ffffff;
-      color: var(--color-primary);
-      font-weight: 700;
-      font-size: 15px;
-      padding: 14px 36px;
-      border-radius: 50px;
-      text-decoration: none;
-      letter-spacing: 1px;
-      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-    }
-    .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .cta-btn:focus-visible {
-      outline: 3px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-    .flower-line {
-      margin: 28px auto 0;
-      width: 60px; height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-    }
-
-    /* ステップバー */
-    nav.steps {
-      background: white;
-      border-bottom: 1px solid #f5e6ed;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .step-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: #666;
-    }
-    .step-item a {
-      color: #666;
-      text-decoration: none;
-      transition: color 0.15s ease-out;
-    }
-    .step-item a:hover { color: var(--color-primary); }
-    .step-item a:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-    .step-arrow { color: #ccc; font-size: 10px; }
-
-    /* メイン */
-    main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
-
-    /* セクション */
-    section.section {
-      background: white;
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 12px rgba(232,67,147,0.06);
-    }
-    section.section h2 {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--color-text);
-      display: flex;
-      align-items: center;
-      padding-left: 14px;
-      border-left: 4px solid var(--color-primary);
-      margin-bottom: 24px;
-    }
-
-    .sub-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 24px 0 10px;
-      letter-spacing: 0.5px;
-    }
-    .sub-title--spaced {
-      margin-top: 24px;
-    }
-
-    /* イベント概要 */
-    .overview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 500px) { .overview-grid { grid-template-columns: 1fr; } }
-    .overview-card {
-      background: var(--color-bg-light);
-      border-radius: 10px;
-      padding: 14px 16px;
-    }
-    .overview-card .label {
-      font-size: 11px;
-      color: var(--color-text-sub);
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-    .overview-card .value {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--color-text);
-    }
-    .overview-card.full { grid-column: 1 / -1; }
-
-    /* コンセプト */
-    .concept-box {
-      background: linear-gradient(135deg, var(--color-bg-accent), #fdf0f5);
-      border-radius: 12px;
-      padding: 24px;
-      color: var(--color-text);
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .concept-box .concept-main {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      color: var(--color-primary);
-    }
-    .concept-box p { font-size: 13px; color: var(--color-text-sub); line-height: 1.8; }
-
-    /* 募集枠 */
-    .recruit-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 500px) { .recruit-cards { grid-template-columns: 1fr; } }
-    .recruit-card {
-      border: 2px solid #f5e6ed;
-      border-radius: 12px;
-      padding: 18px;
-    }
-    .recruit-card.highlight { border-color: var(--color-primary); background: #fef9fb; }
-    .recruit-card .rc-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #999;
-      margin-bottom: 6px;
-    }
-    .recruit-card.highlight .rc-label { color: var(--color-primary); }
-    .recruit-card .rc-title { font-size: 14px; font-weight: 700; color: var(--color-text); margin-bottom: 4px; }
-    .recruit-card .rc-count { font-size: 13px; color: #666; }
-    .recruit-card.full { grid-column: 1 / -1; }
-
-    /* 料金テーブル */
-    .price-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
-    .price-table th {
-      background: var(--color-primary); color: white;
-      padding: 10px 14px; text-align: left; font-size: 13px;
-    }
-    .price-table th:first-child { border-radius: 8px 0 0 0; }
-    .price-table th:last-child { border-radius: 0 8px 0 0; }
-    .price-table td { padding: 12px 14px; border-bottom: 1px solid #f5e6ed; }
-    .price-table tr:last-child td { border-bottom: none; }
-    .price-table tr:nth-child(even) td { background: var(--color-bg-light); }
-    .free-badge { background: var(--color-green-light); color: var(--color-green); font-weight: 700; padding: 3px 12px; border-radius: 20px; font-size: 12px; }
-    .price-badge { font-weight: 700; color: var(--color-text); font-size: 15px; }
-    .price-sub { font-size: 12px; color: #666; display: block; margin-top: 2px; }
-
-    /* ブース仕様・備品 */
-    .booth-info {
-      font-size: 14px;
-      color: #444;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .booth-info:last-of-type { border-bottom: none; }
-
-    /* 購買導線テキスト */
-    .purchase-desc { font-size: 14px; color: var(--color-text-sub); }
-
-    /* タイムライン */
-    .timeline { position: relative; padding-left: 24px; }
-    .timeline::before {
-      content: ''; position: absolute;
-      left: 6px; top: 8px; bottom: 8px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--color-primary), #f48fb1);
-    }
-    .timeline-item { display: flex; gap: 16px; margin-bottom: 16px; position: relative; }
-    .timeline-item::before {
-      content: ''; position: absolute;
-      left: -20px; top: 7px;
-      width: 8px; height: 8px;
-      background: var(--color-primary); border-radius: 50%;
-      border: 2px solid var(--color-primary);
-    }
-    .timeline-item.main-event::before { background: var(--color-primary-dark); border-color: var(--color-primary); width: 10px; height: 10px; left: -21px; top: 6px; }
-    .timeline-time { font-weight: 700; color: var(--color-text); min-width: 60px; font-size: 14px; }
-    .timeline-desc { font-size: 14px; color: #444; }
-    .timeline-desc strong { color: var(--color-text); }
-    .timeline-sub { color: var(--color-text-mute); }
-
-    /* チェックリスト */
-    .checklist { list-style: none; }
-    .checklist li {
-      display: flex; align-items: flex-start;
-      gap: 12px; padding: 10px 0;
-      border-bottom: 1px solid #f5f5f5;
-      font-size: 14px; color: #333;
-    }
-    .checklist li:last-child { border-bottom: none; }
-    .chk-box {
-      width: 20px; height: 20px;
-      border: 2px solid #66bb6a; border-radius: 4px;
-      flex-shrink: 0; margin-top: 2px;
-      background: #f1f8e9;
-    }
-
-    /* 流れ矢印 */
-    .flow {
-      display: flex; align-items: center;
-      gap: 8px; flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-    .flow-step {
-      background: var(--color-primary); color: white;
-      padding: 8px 16px; border-radius: 24px;
-      font-size: 13px; font-weight: 700;
-    }
-    .flow-step.accent { background: var(--color-green-light); color: var(--color-green); }
-    .flow-arrow { color: #bbb; font-size: 14px; }
-
-    /* ノート */
-    .note {
-      background: #fef9fb; border-left: 3px solid var(--color-primary);
-      padding: 10px 14px; border-radius: 0 8px 8px 0;
-      font-size: 14px; color: var(--color-text-sub); margin-top: 12px;
-    }
-
-    /* 規約 */
-    .rules { list-style: none; }
-    .rules li {
-      font-size: 13px; padding: 8px 0 8px 16px;
-      border-bottom: 1px solid #f5f5f5;
-      position: relative; color: #555; line-height: 1.7;
-    }
-    .rules li:last-child { border-bottom: none; }
-    .rules li::before { content: '・'; position: absolute; left: 0; color: var(--color-text-mute); }
-
-    .banned-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
-    .banned-item {
-      background: #fff5f5; border: 1px solid #f48fb1;
-      border-radius: 8px; padding: 8px 12px;
-      font-size: 13px; color: #c62828;
-    }
-    .banned-item.full { grid-column: 1 / -1; }
-
-    /* フォームタブ */
-    .form-tabs {
-      display: flex;
-      gap: 0;
-      background: #f0f0f0;
-      padding: 10px;
-      gap: 8px;
-    }
-    .form-tab {
-      flex: 1;
-      padding: 16px 14px;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease-out;
-      font-family: inherit;
-      letter-spacing: 0.5px;
-      background: white;
-      color: #aaa;
-      position: relative;
-    }
-    .form-tab:focus-visible {
-      outline: 3px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-    .form-tab::before {
-      content: '';
-      display: inline-block;
-      width: 18px; height: 18px;
-      border: 2px solid #ccc;
-      border-radius: 50%;
-      vertical-align: middle;
-      margin-right: 8px;
-      transition: all 0.2s ease-out;
-      background: white;
-    }
-    .form-tab.active {
-      background: white;
-      color: var(--color-primary);
-      border-color: var(--color-primary);
-      box-shadow: 0 2px 8px rgba(232,67,147,0.15);
-    }
-    .form-tab.active::before {
-      background: var(--color-primary);
-      border-color: var(--color-primary);
-      box-shadow: inset 0 0 0 3px white;
-    }
-    .form-tab:not(.active):hover {
-      background: #fafafa;
-      color: #888;
-      border-color: #ddd;
-    }
-
-    /* フォームセクション */
-    section.form-section {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(232,67,147,0.06);
-      margin-bottom: 24px;
-    }
-    .form-header {
-      background: linear-gradient(135deg, var(--color-primary), #f06aaa);
-      color: white; text-align: center;
-      padding: 32px 20px 24px;
-    }
-    .form-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; border-left: none; padding-left: 0; color: white; }
-    .form-header p { font-size: 13px; color: white; }
-    .form-header .form-items {
-      display: flex; flex-wrap: wrap;
-      gap: 6px; justify-content: center;
-      margin-top: 16px;
-    }
-    .form-item-tag {
-      background: white;
-      border: 1px solid white;
-      color: var(--color-primary);
-      padding: 4px 12px; border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-    .form-body { padding: 32px 24px; text-align: center; }
-    .form-open-btn {
-      display: inline-block;
-      background: var(--color-primary);
-      color: white;
-      font-weight: 700;
-      font-size: 16px;
-      padding: 16px 48px;
-      border-radius: 50px;
-      text-decoration: none;
-      letter-spacing: 1px;
-      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-    }
-    .form-open-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .form-open-btn:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
-    .form-open-note { font-size: 12px; color: #999; margin-top: 12px; }
-
-    /* お問い合わせ */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 500px) { .contact-grid { grid-template-columns: 1fr; } }
-    .contact-card {
-      background: var(--color-bg-light); border-radius: 10px; padding: 16px;
-    }
-    .contact-card .label { font-size: 11px; color: #666; letter-spacing: 1px; margin-bottom: 4px; }
-    .contact-card .value { font-size: 14px; font-weight: 600; color: var(--color-text); }
-    .contact-card a { color: var(--color-text); text-decoration: none; }
-    .contact-card a:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-    .contact-card.full { grid-column: 1 / -1; }
-
-    /* フッター */
-    footer {
-      text-align: center; padding: 40px 20px;
-      background: var(--color-bg-accent); color: #666; font-size: 12px;
-    }
-    footer .tagline { font-size: 14px; color: var(--color-primary); margin-bottom: 8px; font-style: italic; }
-  </style>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>出店者募集 | Iconic Shizuoka 2026</title>
+<meta name="description" content="Iconic Shizuoka 2026 出店者募集。2026年10月11日（日）・12日（月・祝）呉服町通り。飲食・物販あわせて約30組。初出店者・学生枠は出店料無料。">
+<meta property="og:title" content="出店者募集 | Iconic Shizuoka 2026">
+<meta property="og:description" content="あなたの「挑戦の１ページ」を、呉服町通りで。2026年10月11日（日）・12日（月・祝）。飲食・物販あわせて約30組を募集します。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iconicshizuoka.pages.dev/marche.html">
+<meta property="og:image" content="https://iconicshizuoka.pages.dev/assets/img/hero_wide.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F9D9E7">
+<link rel="icon" type="image/png" href="assets/img/logo_mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Montserrat:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/page.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
 </head>
 <body>
+<a class="skip" href="#main">本文へ</a>
 
-<!-- ヘッダー -->
-<header>
-  <div class="header-tag">出店者募集中</div>
-  <h1>Iconic Shizuoka 2026<br>出店者要項</h1>
-  <p class="subtitle">2026.10.11(日) · 10.12(月·祝) ｜ 呉服町通り</p>
-  <a href="#form" class="cta-btn">応募フォームへ進む</a>
-  <div class="flower-line"></div>
+<header class="site-header">
+  <div class="container site-header__in">
+    <a class="brand" href="index.html" aria-label="Iconic Shizuoka 2026 公式サイトへ">
+      <img class="brand__mark" src="assets/img/logo_mark.png" alt="" width="44" height="31">
+      <span class="brand__name">Iconic Shizuoka <em>2026</em></span>
+    </a>
+    <div class="site-header__tools">
+      <a class="site-header__back" href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 12H5M11 18l-6-6 6-6"/></svg>
+        <span>公式サイトへ戻る</span>
+      </a>
+      <a class="btn btn--sm btn--solid" href="#form">応募する</a>
+    </div>
+  </div>
 </header>
 
-<!-- ページ内ナビ -->
-<nav class="steps" aria-label="ページ内ナビゲーション">
-  <div class="step-item"><a href="#about">イベント概要</a></div>
-  <span class="step-arrow" aria-hidden="true">›</span>
-  <div class="step-item"><a href="#recruit">募集内容・料金</a></div>
-  <span class="step-arrow" aria-hidden="true">›</span>
-  <div class="step-item"><a href="#day">当日の流れ</a></div>
-  <span class="step-arrow" aria-hidden="true">›</span>
-  <div class="step-item"><a href="#parking">駐車場案内</a></div>
-  <span class="step-arrow" aria-hidden="true">›</span>
-  <div class="step-item"><a href="#rules">規約</a></div>
-  <span class="step-arrow" aria-hidden="true">›</span>
-  <div class="step-item"><a href="#form">応募フォーム</a></div>
+<main id="main">
+
+<section class="phero">
+  <div class="phero__bg" aria-hidden="true"><img class="phero__petals" src="assets/img/petals.webp" alt=""></div>
+  <div class="container phero__in">
+    <div class="phero__copy">
+      <p class="phero__eyebrow">Marché — 随時受付中</p>
+      <h1 class="phero__title">出店者要項<em>Call for Sellers</em></h1>
+      <p class="phero__lead">あなたの「挑戦の１ページ」を、呉服町通りで。</p>
+      <p class="phero__meta"><span><b>2026.10.11</b>日</span><span><b>10.12</b>月・祝</span><span>呉服町通り（静岡市葵区）</span></p>
+      <div class="phero__actions">
+        <a class="btn btn--solid" href="#form">応募フォームへ進む</a>
+        <a class="btn" href="#recruit">募集内容・料金を見る</a>
+      </div>
+    </div>
+    <div class="phero__visual">
+      <div class="phero__frame">
+        <img class="phero__photo" src="assets/img/hero_wide.jpg" alt="白いテントが並ぶマルシェの様子" width="909" height="613">
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="pagenav" aria-label="ページ内ナビゲーション">
+  <div class="container">
+    <ul>
+      <li><a href="#about">イベント概要</a></li>
+      <li><a href="#recruit">募集内容</a></li>
+      <li><a href="#price">出店料</a></li>
+      <li><a href="#funnel">購買導線</a></li>
+      <li><a href="#day">当日の流れ</a></li>
+      <li><a href="#parking">駐車場案内</a></li>
+      <li><a href="#bring">持ち物</a></li>
+      <li><a href="#rules">規約</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+      <li><a href="#form">応募フォーム</a></li>
+    </ul>
+  </div>
 </nav>
 
-<main>
-
-  <!-- 1. イベント概要 -->
-  <section class="section" id="about">
-    <h2>Iconic Shizuoka 2026 とは</h2>
-
-    <div class="concept-box">
-      <div class="concept-main">「挑戦の１ページを彩る」</div>
-      <p>静岡の高校生・大学生に地元の魅力を五感で体験してもらうイベントです。<br>
-      出店者様の「挑戦の１ページ」を若者に届け、静岡への誇りと繋がりを生み出します。</p>
+<section class="section section--doc" id="about">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">Iconic Shizuoka 2026 とは</h2><span class="chapter__en">About</span></header>
+    <div class="creed" data-reveal>
+      <q>挑戦の１ページを彩る</q>
+      <p>静岡の高校生・大学生に地元の魅力を五感で体験してもらうイベントです。出店者様の「挑戦の１ページ」を若者に届け、静岡への誇りと繋がりを生み出します。</p>
     </div>
+    <dl class="spec" data-reveal style="margin-top:clamp(28px,4vw,44px)">
+      <div><dt>開催日</dt><dd><b>2026年10月11日（日）・12日（月・祝）</b></dd></div>
+      <div><dt>時間</dt><dd><b>11:30 – 17:00</b></dd></div>
+      <div><dt>会場</dt><dd>呉服町通り（静岡市葵区）</dd></div>
+      <div><dt>目標来場者数</dt><dd><b>30,000人</b></dd></div>
+      <div><dt>主催</dt><dd>I see's（Iconic Shizuoka 2026 実行委員会）</dd></div>
+    </dl>
+  </div>
+</section>
 
-    <div class="overview-grid">
-      <div class="overview-card">
-        <div class="label">開催日</div>
-        <div class="value">2026年10月11日(日)<br>10月12日(月・祝)</div>
+<section class="section section--doc" id="recruit">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">募集内容</h2><span class="chapter__en">Who we're looking for</span></header>
+    <h3 class="subhead" data-reveal>こんな方を募集しています（約30組）</h3>
+    <div class="cards" data-reveal>
+      <div class="card">
+        <span class="k">初出店者様</span>
+        <h3>はじめて出店に挑戦する方</h3>
+        <p>物販 3〜6組 ／ 出店料：<strong>無料</strong></p>
+        <p>※ Iconic Shizuoka への出店経験ではなく、イベント・マルシェへの出店自体が初めての方が対象です。</p>
       </div>
-      <div class="overview-card">
-        <div class="label">時間</div>
-        <div class="value">11:30 〜 17:00</div>
+      <div class="card">
+        <span class="k">学生枠</span>
+        <h3>学生出店者</h3>
+        <p>先着3組・希望制 ／ 出店料：<strong>無料</strong></p>
       </div>
-      <div class="overview-card">
-        <div class="label">会場</div>
-        <div class="value">呉服町通り（静岡市）</div>
-      </div>
-      <div class="overview-card">
-        <div class="label">目標来場者数</div>
-        <div class="value">30,000人</div>
-      </div>
-      <div class="overview-card full">
-        <div class="label">主催</div>
-        <div class="value">I see's（Iconic Shizuoka 2026 実行委員会）</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. 募集内容 -->
-  <section class="section" id="recruit">
-    <h2>募集内容</h2>
-
-    <p class="sub-title">■ こんな方を募集しています（約30組）</p>
-    <div class="recruit-cards">
-      <div class="recruit-card highlight">
-        <div class="rc-label">初出店者様</div>
-        <div class="rc-title">はじめて出店に挑戦する方</div>
-        <div class="rc-desc" style="font-size:12px;color:#d9534f;margin-top:4px;">※ Iconic Shizuoka への出店経験ではなく、イベント・マルシェへの出店自体が初めての方が対象です</div>
-        <div class="rc-count">物販 3〜6組 ／ 出店料：無料</div>
-      </div>
-      <div class="recruit-card highlight">
-        <div class="rc-label">学生枠</div>
-        <div class="rc-title">学生出店者</div>
-        <div class="rc-count">先着3組・希望制 ／ 出店料：無料</div>
-      </div>
-      <div class="recruit-card">
-        <div class="rc-label">おまち外の出店者様</div>
-        <div class="rc-title">静岡の新しい側面を持つ方</div>
-        <div class="rc-count">飲食 14〜16組 / 物販 5〜7組</div>
+      <div class="card">
+        <span class="k">おまち外の出店者様</span>
+        <h3>静岡の新しい側面を持つ方</h3>
+        <p>飲食 14〜16組 ／ 物販 5〜7組</p>
       </div>
     </div>
-    <div class="note">応募対象：「Iconic Shizuoka 2026」の趣旨にご賛同いただける県内の方・法人</div>
-    <div class="note" style="margin-top:8px;">📅 <strong>一次募集締め切り：6月30日（金）</strong>｜写真・紹介文の提出期限：7月10日（木）</div>
-  </section>
+    <p class="note" data-reveal>応募対象：「Iconic Shizuoka 2026」の趣旨にご賛同いただける県内の方・法人</p>
+    <p class="note" data-reveal><strong>ただいま随時受付中です。</strong>枠が埋まり次第、締め切ります。写真・紹介文は出店決定後にご提出いただきます。</p>
+  </div>
+</section>
 
-  <!-- 3. 出店料 -->
-  <section class="section">
-    <h2>出店料</h2>
-
-    <table class="price-table">
-      <tbody><tr><th>区分</th><th>料金（1日あたり）</th></tr>
-      <tr>
-        <td>飲食出店者様</td>
-        <td><span class="price-badge">3,000円</span><span class="price-sub">2日間出店の場合は6,000円</span></td>
-      </tr>
-      <tr>
-        <td>物販出店者様</td>
-        <td><span class="price-badge">2,000円</span><span class="price-sub">2日間出店の場合は4,000円</span></td>
-      </tr>
-      <tr>
-        <td>初出店者様 / 学生枠</td>
-        <td><span class="free-badge">無料</span></td>
-      </tr>
-    </tbody></table>
-    <div class="note">※ 出店料は<strong>現金のみ</strong>となります。イベント終了後、本部にてお支払いください。</div>
-    <div class="note">※「初出店者様」とは、イベントやマルシェへの出店自体が初めての方を指します。他イベントでの出店経験がある方は通常の出店料が適用されます。</div>
-
-    <p class="sub-title sub-title--spaced">■ ブース仕様・備品</p>
-    <div class="booth-info">
-      ブースサイズ：最大 <strong>3m × 3m</strong>（原則、1出店者様につき1小間）
-    </div>
-    <div class="booth-info">
-      備品の貸出：テント <strong>5,000円</strong> ／ 長机 <strong>2,000円</strong> ／ アウトドアチェア <strong>1,000円</strong>
-    </div>
-    <div class="note">※ 備品の貸出はイベント初出店者様を優先させていただきます。テント等を各自でご用意いただくことも可能です。</div>
-  </section>
-
-  <!-- 4. 購買導線 -->
-  <section class="section">
-    <h2>来場者の購買導線</h2>
-    <div class="flow">
-      <span class="flow-step">割引券の配布</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-step">商品購入</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-step accent">ラッキードロー参加</span>
-    </div>
-    <div class="purchase-desc">
-      1,500円（1,000円以上）のお買い上げでガチャガチャに参加できます。景品は静岡にゆかりのある豪華景品をご用意します。<br>
-      運営から出店者様への<strong>SNS紹介</strong>（昨年インサイト30万以上）もあります。
-    </div>
-    <div class="note" style="margin-top:12px;">※ 割引券については、後日精算も含めて追ってご説明いたします。</div>
-  </section>
-
-  <!-- 5. 当日の流れ -->
-  <section class="section" id="day">
-    <h2>当日の流れ</h2>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="timeline-time">07:30〜</span>
-        <span class="timeline-desc">搬入<br><small class="timeline-sub">①7:30〜8:15　②8:30〜9:15　③9:30〜10:00（各10店舗）</small></span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-time">09:45</span>
-        <span class="timeline-desc">挨拶</span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-time">10:15</span>
-        <span class="timeline-desc">全体最終確認・写真撮影</span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-time">11:00</span>
-        <span class="timeline-desc">オープニングセレモニー</span>
-      </div>
-      <div class="timeline-item main-event">
-        <span class="timeline-time">11:30</span>
-        <span class="timeline-desc"><strong>イベントスタート</strong></span>
-      </div>
-      <div class="timeline-item main-event">
-        <span class="timeline-time">17:00</span>
-        <span class="timeline-desc"><strong>イベント終了・搬出準備</strong></span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-time">17:30〜</span>
-        <span class="timeline-desc">搬出<br><small class="timeline-sub">①17:30〜17:50　②17:50〜18:10　③18:10〜18:30（各10店舗）</small></span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-time">18:30</span>
-        <span class="timeline-desc">完全撤収</span>
-      </div>
-    </div>
-    <div class="note">搬入・搬出の希望時間は応募フォームにてお選びください。</div>
-  </section>
-
-  <!-- 駐車場案内 -->
-  <section class="section" id="parking">
-    <h2>周辺駐車場案内</h2>
-    <p style="font-size:14px; color:var(--color-text-sub); margin-bottom:4px;"><strong>会場（呉服町通り）からの近さ順</strong>に10箇所をご案内します。ピンをタップすると詳細が表示されます。</p>
-    <p style="font-size:13px; color:var(--color-text-mute); margin-bottom:16px;">イベント当日は満車が予想されます。できるだけ<strong>公共交通機関</strong>のご利用をおすすめします。</p>
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
-    <div id="parking-map" style="height: 380px; border-radius: 10px; overflow: hidden; border: 1px solid var(--color-border); margin-bottom: 8px; position: relative;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="https://a.tile.openstreetmap.org/16/57959/25963.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(107px, -130px, 0px); opacity: 1;"><img alt="" src="https://b.tile.openstreetmap.org/16/57959/25964.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(107px, 126px, 0px); opacity: 1;"><img alt="" src="https://c.tile.openstreetmap.org/16/57958/25963.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-149px, -130px, 0px); opacity: 1;"><img alt="" src="https://b.tile.openstreetmap.org/16/57960/25963.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(363px, -130px, 0px); opacity: 1;"><img alt="" src="https://a.tile.openstreetmap.org/16/57958/25964.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-149px, 126px, 0px); opacity: 1;"><img alt="" src="https://c.tile.openstreetmap.org/16/57960/25964.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(363px, 126px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -18px; margin-top: -18px; width: 36px; height: 36px; transform: translate3d(266px, 189px, 0px); z-index: 189;"><div style="background:#e84393;color:white;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.35);">★</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(274px, 160px, 0px); z-index: 160;"><div style="background:#2e7d32;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">1</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(207px, 134px, 0px); z-index: 134;"><div style="background:#2e7d32;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">2</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(192px, 153px, 0px); z-index: 153;"><div style="background:#2e7d32;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">3</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(377px, 205px, 0px); z-index: 205;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">4</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(383px, 212px, 0px); z-index: 212;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">5</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(148px, 156px, 0px); z-index: 156;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">6</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(150px, 117px, 0px); z-index: 117;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">7</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(298px, 322px, 0px); z-index: 322;"><div style="background:#f57c00;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">8</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(598px, 262px, 0px); z-index: 262;"><div style="background:#c62828;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">9</div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -14px; margin-top: -14px; width: 28px; height: 28px; transform: translate3d(606px, 209px, 0px); z-index: 209;"><div style="background:#c62828;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">10</div></div></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.48377e+07px, 6.64685e+06px, 0px) scale(32768);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors</div></div></div></div>
-    <p style="font-size:11px; color:var(--color-text-mute); text-align:right; margin-bottom:20px;">
-      <span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><span style="display:inline-block;width:12px;height:12px;background:#e84393;border-radius:50%;"></span> 会場</span>
-      <span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><span style="display:inline-block;width:12px;height:12px;background:#2e7d32;border-radius:50%;"></span> 徒歩3分以内</span>
-      <span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><span style="display:inline-block;width:12px;height:12px;background:#f57c00;border-radius:50%;"></span> 徒歩5分以内</span>
-      <span style="display:inline-flex;align-items:center;gap:4px;"><span style="display:inline-block;width:12px;height:12px;background:#c62828;border-radius:50%;"></span> 徒歩8分以上</span>
-    </p>
-
-    <div style="overflow-x:auto;">
-      <table style="width:100%; font-size:13px; border-collapse:collapse; color:var(--color-text);">
-        <thead>
-          <tr style="background:var(--color-bg-accent);">
-            <th style="padding:10px 6px; text-align:center; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark);">#</th>
-            <th style="padding:10px; text-align:left; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark); white-space:nowrap;">駐車場名</th>
-            <th style="padding:10px 8px; text-align:center; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark); white-space:nowrap;">会場から</th>
-            <th style="padding:10px 8px; text-align:center; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark); white-space:nowrap;">台数</th>
-            <th style="padding:10px 8px; text-align:left; border-bottom:2px solid var(--color-primary); color:var(--color-primary-dark); white-space:nowrap;">料金目安</th>
-          </tr>
-        </thead>
+<section class="section section--doc" id="price">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">出店料</h2><span class="chapter__en">Fee</span></header>
+    <div class="ratewrap" data-reveal>
+      <table class="rate">
+        <caption>1日あたりの出店料</caption>
+        <thead><tr><th>区分</th><th>料金（1日あたり）</th></tr></thead>
         <tbody>
-          <tr style="border-bottom:1px solid var(--color-border);">
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#2e7d32;color:white;border-radius:50%;font-size:11px;font-weight:bold;">1</span></td>
-            <td style="padding:10px;">GSパーク 静岡追手町<br><a href="https://maps.google.com/maps?q=34.9754019,138.3818719" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#2e7d32; font-weight:600; white-space:nowrap;">約58m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩1分</small></td>
-            <td style="padding:10px 8px; text-align:center;">—</td>
-            <td style="padding:10px 8px;">30分300円<br><small style="color:var(--color-text-mute);">夜間最大600円</small></td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--color-border); background:#fafafa;">
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#2e7d32;color:white;border-radius:50%;font-size:11px;font-weight:bold;">2</span></td>
-            <td style="padding:10px;">呉服町タワーパーキング<br><a href="https://maps.google.com/maps?q=34.9758675,138.3804375" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#2e7d32; font-weight:600; white-space:nowrap;">約157m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩2分</small></td>
-            <td style="padding:10px 8px; text-align:center;">445台</td>
-            <td style="padding:10px 8px;">30分250円</td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--color-border);">
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#2e7d32;color:white;border-radius:50%;font-size:11px;font-weight:bold;">3</span></td>
-            <td style="padding:10px;">三井のリパーク 静岡呉服町1丁目<br><a href="https://maps.google.com/maps?q=34.9755258,138.3801142" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#2e7d32; font-weight:600; white-space:nowrap;">約160m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩2分</small></td>
-            <td style="padding:10px 8px; text-align:center;">35台</td>
-            <td style="padding:10px 8px;">最大 昼1,900円<br><small style="color:var(--color-text-mute);">夜間最大600円</small></td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--color-border); background:#fafafa;">
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">4</span></td>
-            <td style="padding:10px;">APパーク1（追手町）<br><a href="https://maps.google.com/maps?q=34.9746191,138.384085" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約219m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩3分</small></td>
-            <td style="padding:10px 8px; text-align:center;">—</td>
-            <td style="padding:10px 8px;">15分100円<br><small style="color:var(--color-text-mute);">夜間最大1,000円</small></td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--color-border);">
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">5</span></td>
-            <td style="padding:10px;">稲森パーキング追手町<br><a href="https://maps.google.com/maps?q=34.9744968,138.3842267" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約234m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩3分</small></td>
-            <td style="padding:10px 8px; text-align:center;">27台</td>
-            <td style="padding:10px 8px;">15分100円<br><small style="color:var(--color-text-mute);">夜間最大1,000円</small></td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--color-border); background:#fafafa;">
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">6</span></td>
-            <td style="padding:10px;">名鉄協商パーキング 静岡呉服町<br><a href="https://maps.google.com/maps?q=34.9754707,138.37918" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約238m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩3分</small></td>
-            <td style="padding:10px 8px; text-align:center;">4台</td>
-            <td style="padding:10px 8px;">40分200円<br><small style="color:var(--color-text-mute);">最大 昼1,200円 / 夜400円</small></td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--color-border);">
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">7</span></td>
-            <td style="padding:10px;">静岡呉服町スクエア駐車場<br><a href="https://maps.google.com/maps?q=34.9761685,138.3792246" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約266m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩4分</small></td>
-            <td style="padding:10px 8px; text-align:center;">172台</td>
-            <td style="padding:10px 8px;">60分400円<br><small style="color:var(--color-text-mute);">最大 平日1,000円 / 休日700円</small></td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--color-border); background:#fafafa;">
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#f57c00;color:white;border-radius:50%;font-size:11px;font-weight:bold;">8</span></td>
-            <td style="padding:10px;">スペース 静岡常磐町第1<br><a href="https://maps.google.com/maps?q=34.9725504,138.3823941" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#f57c00; font-weight:600; white-space:nowrap;">約268m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩4分</small></td>
-            <td style="padding:10px 8px; text-align:center;">—</td>
-            <td style="padding:10px 8px;">30分200円<br><small style="color:var(--color-text-mute);">平日最大1,100円</small></td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--color-border);">
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#c62828;color:white;border-radius:50%;font-size:11px;font-weight:bold;">9</span></td>
-            <td style="padding:10px;">NPD松坂屋前パーキング<br><a href="https://maps.google.com/maps?q=34.9736059,138.3888396" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#c62828; font-weight:600; white-space:nowrap;">約665m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩8分</small></td>
-            <td style="padding:10px 8px; text-align:center;">—</td>
-            <td style="padding:10px 8px;">30分300円<br><small style="color:var(--color-text-mute);">最大 平日1,300円 / 休日1,800円</small></td>
-          </tr>
-          <tr>
-            <td style="padding:10px 6px; text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#c62828;color:white;border-radius:50%;font-size:11px;font-weight:bold;">10</span></td>
-            <td style="padding:10px;">パークワン静岡駐車場<br><a href="https://maps.google.com/maps?q=34.9745338,138.3890138" target="_blank" rel="noopener" style="font-size:11px;color:var(--color-primary);text-decoration:none;">📍 Googleマップ</a></td>
-            <td style="padding:10px 8px; text-align:center; color:#c62828; font-weight:600; white-space:nowrap;">約667m<br><small style="font-weight:normal; color:var(--color-text-mute);">徒歩8分</small></td>
-            <td style="padding:10px 8px; text-align:center;">—</td>
-            <td style="padding:10px 8px;">20分150円<br><small style="color:var(--color-text-mute);">最大 平日1,000円 / 休日1,200円</small></td>
-          </tr>
+          <tr><th scope="row">飲食出店者様</th><td class="num">3,000円<span class="sub">2日間出店の場合は6,000円</span></td></tr>
+          <tr><th scope="row">物販出店者様</th><td class="num">2,000円<span class="sub">2日間出店の場合は4,000円</span></td></tr>
+          <tr><th scope="row">初出店者様 / 学生枠</th><td class="num free">無料</td></tr>
         </tbody>
       </table>
     </div>
+    <p class="note" data-reveal>出店料は<strong>現金のみ</strong>となります。イベント終了後、本部にてお支払いください。</p>
+    <p class="note" data-reveal>「初出店者様」とは、イベントやマルシェへの出店自体が初めての方を指します。他イベントでの出店経験がある方は通常の出店料が適用されます。</p>
 
-    <div class="note" style="margin-top:12px;">⚠️ 料金・台数は変動する場合があります。最新情報は各駐車場でご確認ください。</div>
+    <h3 class="subhead" data-reveal>ブース仕様・備品</h3>
+    <dl class="spec" data-reveal>
+      <div><dt>ブースサイズ</dt><dd>最大 <b>3m × 3m</b><span class="muted">原則、1出店者様につき1小間</span></dd></div>
+      <div><dt>テント</dt><dd><b>5,000円</b><span class="muted">貸出</span></dd></div>
+      <div><dt>長机</dt><dd><b>2,000円</b><span class="muted">貸出</span></dd></div>
+      <div><dt>アウトドアチェア</dt><dd><b>1,000円</b><span class="muted">貸出</span></dd></div>
+    </dl>
+    <p class="note" data-reveal>備品の貸出はイベント初出店者様を優先させていただきます。テント等を各自でご用意いただくことも可能です。</p>
+  </div>
+</section>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
-    <script>
-    (function() {
-      var el = document.getElementById('parking-map');
-      if (!el || typeof L === 'undefined') return;
-      var map = L.map(el).setView([34.9749, 138.382], 16);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        maxZoom: 19
-      }).addTo(map);
-      var venueIcon = L.divIcon({
-        html: '<div style="background:#e84393;color:white;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.35);">★</div>',
-        className: '', iconSize: [36,36], iconAnchor: [18,18]
-      });
-      L.marker([34.9749, 138.3817], {icon: venueIcon}).addTo(map)
-        .bindPopup('<strong style="color:#e84393;">★ 会場</strong><br>呉服町通り（Iconic Shizuoka 2026）');
-      var spots = [
-        {n:1,  name:'GSパーク 静岡追手町',          lat:34.9754019, lng:138.3818719, dist:'約58m・徒歩1分',  cap:'—',    price:'30分300円',      color:'#2e7d32'},
-        {n:2,  name:'呉服町タワーパーキング',          lat:34.9758675, lng:138.3804375, dist:'約157m・徒歩2分', cap:'445台', price:'30分250円',      color:'#2e7d32'},
-        {n:3,  name:'三井のリパーク 静岡呉服町1丁目', lat:34.9755258, lng:138.3801142, dist:'約160m・徒歩2分', cap:'35台',  price:'最大 昼1,900円', color:'#2e7d32'},
-        {n:4,  name:'APパーク1（追手町）',           lat:34.9746191, lng:138.384085,  dist:'約219m・徒歩3分', cap:'—',    price:'15分100円',      color:'#f57c00'},
-        {n:5,  name:'稲森パーキング追手町',            lat:34.9744968, lng:138.3842267, dist:'約234m・徒歩3分', cap:'27台',  price:'15分100円',      color:'#f57c00'},
-        {n:6,  name:'名鉄協商パーキング 静岡呉服町',  lat:34.9754707, lng:138.37918,   dist:'約238m・徒歩3分', cap:'4台',   price:'40分200円',      color:'#f57c00'},
-        {n:7,  name:'静岡呉服町スクエア駐車場',        lat:34.9761685, lng:138.3792246, dist:'約266m・徒歩4分', cap:'172台', price:'60分400円',      color:'#f57c00'},
-        {n:8,  name:'スペース 静岡常磐町第1',          lat:34.9725504, lng:138.3823941, dist:'約268m・徒歩4分', cap:'—',    price:'30分200円',      color:'#f57c00'},
-        {n:9,  name:'NPD松坂屋前パーキング',           lat:34.9736059, lng:138.3888396, dist:'約665m・徒歩8分', cap:'—',    price:'30分300円',      color:'#c62828'},
-        {n:10, name:'パークワン静岡駐車場',             lat:34.9745338, lng:138.3890138, dist:'約667m・徒歩8分', cap:'—',    price:'20分150円',      color:'#c62828'}
-      ];
-      spots.forEach(function(p) {
-        var icon = L.divIcon({
-          html: '<div style="background:'+p.color+';color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">'+p.n+'</div>',
-          className: '', iconSize: [28,28], iconAnchor: [14,14]
-        });
-        L.marker([p.lat, p.lng], {icon: icon}).addTo(map)
-          .bindPopup('<strong>'+p.n+'. '+p.name+'</strong><br>会場から: '+p.dist+'<br>台数: '+p.cap+'<br>料金: '+p.price+'<br><a href="https://maps.google.com/maps?q='+p.lat+','+p.lng+'" target="_blank" rel="noopener" style="color:#e84393;font-size:12px;">📍 Googleマップで開く</a>');
-      });
-    })();
-    </script>
-  </section>
-
-  <!-- 6. 当日の持ち物 -->
-  <section class="section">
-    <h2>当日の持ち物・準備事項</h2>
-    <ul class="checklist">
-      <li><span class="chk-box"></span>テント・机・椅子（貸出利用の場合は応募フォームで申込）</li>
-      <li><span class="chk-box"></span>おもり（柱1本につき20kg以上を目安・強風対策として必須）</li>
-      <li><span class="chk-box"></span>各店名の表示板（立看板は店前50cm以内 / テントより高いのぼり旗等は禁止）</li>
-      <li><span class="chk-box"></span>消火器（火器を使用する場合のみ）</li>
-      <li><span class="chk-box"></span><span>花瓶または花を置けるもの <strong>【フラワーストリート企画へのご協力をお願いします】</strong><small style="color:#666; line-height:1.8; display:block; margin-top:4px;">当日の会場（呉服町通り）を花で彩る「フラワーストリート」企画を実施します。各出店者様のブースに花を飾ることで会場全体を華やかに演出するイベント内企画です（企画書参照）。ぜひご協力ください。</small></span></li>
-      <li><span class="chk-box"></span>【食品出店者】保健所への届出・保険加入等（各自でご対応ください）</li>
+<section class="section section--doc" id="funnel">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">来場者の購買導線</h2><span class="chapter__en">Customer flow</span></header>
+    <ul class="flow" data-reveal>
+      <li>割引券の配布</li>
+      <li class="arrow" aria-hidden="true"></li>
+      <li>商品購入</li>
+      <li class="arrow" aria-hidden="true"></li>
+      <li>ラッキードロー参加</li>
     </ul>
-  </section>
+    <div class="doc" data-reveal style="margin-top:22px">
+      <p>1,500円（1,000円以上）のお買い上げでガチャガチャに参加できます。景品は静岡にゆかりのある豪華景品をご用意します。</p>
+      <p>運営から出店者様への<strong>SNS紹介</strong>（昨年インサイト30万以上）もあります。</p>
+    </div>
+    <p class="note" data-reveal>割引券については、後日精算も含めて追ってご説明いたします。</p>
+  </div>
+</section>
 
-  <!-- 7. 規約 -->
-  <section class="section" id="rules">
-    <h2>会場使用に関する規約</h2>
-    <ul class="rules">
+<section class="section section--doc" id="day">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">当日の流れ</h2><span class="chapter__en">Timetable</span></header>
+    <ol class="timeline" data-reveal>
+      <li><span class="t">07:30 –</span><p>搬入<span class="sub">① 7:30〜8:15　② 8:30〜9:15　③ 9:30〜10:00（各10店舗）</span></p></li>
+      <li><span class="t">09:45</span><p>挨拶</p></li>
+      <li><span class="t">10:15</span><p>全体最終確認・写真撮影</p></li>
+      <li><span class="t">11:00</span><p>オープニングセレモニー</p></li>
+      <li><span class="t">11:30</span><p><strong>イベントスタート</strong></p></li>
+      <li><span class="t">17:00</span><p><strong>イベント終了・搬出準備</strong></p></li>
+      <li><span class="t">17:30 –</span><p>搬出<span class="sub">① 17:30〜17:50　② 17:50〜18:10　③ 18:10〜18:30（各10店舗）</span></p></li>
+      <li><span class="t">18:30</span><p>完全撤収</p></li>
+    </ol>
+    <p class="note" data-reveal>搬入・搬出の希望時間は応募フォームにてお選びください。</p>
+  </div>
+</section>
+
+<section class="section section--doc" id="parking">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">周辺駐車場案内</h2><span class="chapter__en">Parking</span></header>
+    <div class="doc" data-reveal>
+      <p><strong>会場（呉服町通り）からの近さ順</strong>に10箇所をご案内します。ピンをタップすると詳細が表示されます。</p>
+      <p>イベント当日は満車が予想されます。できるだけ<strong>公共交通機関</strong>のご利用をおすすめします。</p>
+    </div>
+    <div class="mapbox" data-reveal style="margin-top:20px"><div id="parking-map"></div></div>
+    <p class="legend">
+      <span><i style="background:#D6559C"></i>会場</span>
+      <span><i style="background:#2E7D32"></i>徒歩3分以内</span>
+      <span><i style="background:#C87A22"></i>徒歩5分以内</span>
+      <span><i style="background:#C0392B"></i>徒歩8分以上</span>
+    </p>
+    <div class="ratewrap" data-reveal style="margin-top:22px">
+      <table class="ptable">
+        <caption class="visually-hidden">会場周辺の駐車場一覧</caption>
+        <thead><tr><th class="c">#</th><th>駐車場名</th><th class="c">会場から</th><th class="c">台数</th><th>料金目安</th></tr></thead>
+        <tbody>
+          <tr><td class="c"><span class="pin near">1</span></td><td class="name">GSパーク 静岡追手町<br><a href="https://maps.google.com/maps?q=34.9754019,138.3818719" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num near">約58m<span class="sub">徒歩1分</span></td><td class="c">—</td><td>30分300円<span class="sub">夜間最大600円</span></td></tr>
+          <tr><td class="c"><span class="pin near">2</span></td><td class="name">呉服町タワーパーキング<br><a href="https://maps.google.com/maps?q=34.9758675,138.3804375" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num near">約157m<span class="sub">徒歩2分</span></td><td class="c">445台</td><td>30分250円</td></tr>
+          <tr><td class="c"><span class="pin near">3</span></td><td class="name">三井のリパーク 静岡呉服町1丁目<br><a href="https://maps.google.com/maps?q=34.9755258,138.3801142" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num near">約160m<span class="sub">徒歩2分</span></td><td class="c">35台</td><td>最大 昼1,900円<span class="sub">夜間最大600円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">4</span></td><td class="name">APパーク1（追手町）<br><a href="https://maps.google.com/maps?q=34.9746191,138.384085" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid">約219m<span class="sub">徒歩3分</span></td><td class="c">—</td><td>15分100円<span class="sub">夜間最大1,000円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">5</span></td><td class="name">稲森パーキング追手町<br><a href="https://maps.google.com/maps?q=34.9744968,138.3842267" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid">約234m<span class="sub">徒歩3分</span></td><td class="c">27台</td><td>15分100円<span class="sub">夜間最大1,000円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">6</span></td><td class="name">名鉄協商パーキング 静岡呉服町<br><a href="https://maps.google.com/maps?q=34.9754707,138.37918" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid">約238m<span class="sub">徒歩3分</span></td><td class="c">4台</td><td>40分200円<span class="sub">最大 昼1,200円 / 夜400円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">7</span></td><td class="name">静岡呉服町スクエア駐車場<br><a href="https://maps.google.com/maps?q=34.9761685,138.3792246" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid">約266m<span class="sub">徒歩4分</span></td><td class="c">172台</td><td>60分400円<span class="sub">最大 平日1,000円 / 休日700円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">8</span></td><td class="name">スペース 静岡常磐町第1<br><a href="https://maps.google.com/maps?q=34.9725504,138.3823941" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid">約268m<span class="sub">徒歩4分</span></td><td class="c">—</td><td>30分200円<span class="sub">平日最大1,100円</span></td></tr>
+          <tr><td class="c"><span class="pin far">9</span></td><td class="name">NPD松坂屋前パーキング<br><a href="https://maps.google.com/maps?q=34.9736059,138.3888396" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num far">約665m<span class="sub">徒歩8分</span></td><td class="c">—</td><td>30分300円<span class="sub">最大 平日1,300円 / 休日1,800円</span></td></tr>
+          <tr><td class="c"><span class="pin far">10</span></td><td class="name">パークワン静岡駐車場<br><a href="https://maps.google.com/maps?q=34.9745338,138.3890138" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num far">約667m<span class="sub">徒歩8分</span></td><td class="c">—</td><td>20分150円<span class="sub">最大 平日1,000円 / 休日1,200円</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note note--warn" data-reveal>料金・台数は変動する場合があります。最新情報は各駐車場でご確認ください。</p>
+  </div>
+</section>
+
+<section class="section section--doc" id="bring">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">当日の持ち物・準備事項</h2><span class="chapter__en">Checklist</span></header>
+    <ul class="checklist" data-reveal>
+      <li>テント・机・椅子（貸出利用の場合は応募フォームで申込）</li>
+      <li>おもり（柱1本につき20kg以上を目安・強風対策として必須）</li>
+      <li>各店名の表示板（立看板は店前50cm以内 / テントより高いのぼり旗等は禁止）</li>
+      <li>消火器（火器を使用する場合のみ）</li>
+      <li>花瓶または花を置けるもの <strong>【フラワーストリート企画へのご協力をお願いします】</strong><small>当日の会場（呉服町通り）を花で彩る「フラワーストリート」企画を実施します。各出店者様のブースに花を飾ることで会場全体を華やかに演出するイベント内企画です（企画書参照）。ぜひご協力ください。</small></li>
+      <li>【食品出店者】保健所への届出・保険加入等（各自でご対応ください）</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--doc" id="rules">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">会場使用に関する規約</h2><span class="chapter__en">Terms of use</span></header>
+    <ol class="cautions" data-reveal>
       <li>当日は主催者の判断を優先させていただきます。</li>
       <li>出展ブースの配置は主催者に一任いただきます。（競合する出店同士の場合はブースを離す等の対応を取ります）</li>
       <li>各店名の表示板は出店者でご準備ください。立看板等は店前から50cm以内とし、テントより高いのぼり旗・店名等の設置は禁止です。</li>
@@ -786,130 +253,140 @@
       <li>会場敷地内は禁煙です。指定の喫煙所をご利用ください。</li>
       <li>ブース内の備品・貴重品の管理は出店者各自でお願いします。紛失・破損・盗難等の責任は負いかねます。</li>
       <li>写真・動画撮影があります。SNS等にアップする場合は撮影対象者の許可を必ず取るようお願いします。</li>
+    </ol>
+
+    <h3 class="subhead" data-reveal>販売禁止商品</h3>
+    <ul class="chips" data-reveal>
+      <li>動物・化粧品・医薬品</li>
+      <li>危険な刃物類・モデルガン</li>
+      <li>アダルト関連・盗品</li>
+      <li>ブランド造品・複製ソフト</li>
+      <li>政治・宗教活動に関わる商品・勧誘等</li>
     </ul>
 
-    <p class="sub-title sub-title--spaced">■ 販売禁止商品</p>
-    <div class="banned-grid">
-      <div class="banned-item">動物・化粧品・医薬品</div>
-      <div class="banned-item">危険な刃物類・モデルガン</div>
-      <div class="banned-item">アダルト関連・盗品</div>
-      <div class="banned-item">ブランド造品・複製ソフト</div>
-      <div class="banned-item full">政治・宗教活動に関わる商品・勧誘等</div>
-    </div>
-
-    <p class="sub-title sub-title--spaced">■ キャンセル・中止について</p>
-    <ul class="rules">
+    <h3 class="subhead" data-reveal>キャンセル・中止について</h3>
+    <ul class="bullets" data-reveal>
       <li>キャンセルされる場合は、<strong>前日までに</strong>事務局へメールまたはお電話でご連絡ください。</li>
       <li>当日体調不良の場合は無理せず出店をお控えください。その際は速やかにご連絡ください。</li>
       <li>小雨決行。荒天（警報レベルの風雨）の場合は延期とします。</li>
       <li>台風・暴風・暴雨・雷等の警報発令、熱中症・食中毒の集団発生等、実行委員会が実施不可能と判断した場合はマルシェの全部または一部を中止・一時中断します。</li>
       <li>中止・延期によって生じた損害について、実行委員会は補償しません。</li>
     </ul>
-  </section>
+  </div>
+</section>
 
-  <!-- 8. お問い合わせ -->
-  <section class="section">
-    <h2>お問い合わせ</h2>
-    <table style="font-size:14px; color:#555; border-collapse:collapse; line-height:1.6;">
-      <tbody><tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">代表</td><td style="padding:6px 0;">樋川 翔</td></tr>
-      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">副代表</td><td style="padding:6px 0;">石川</td></tr>
-      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">マルシェ担当部長</td><td style="padding:6px 0;">大村</td></tr>
-      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">TEL</td><td style="padding:6px 0;">090-3935-2911</td></tr>
-      <tr><td style="padding:6px 16px 6px 0; color:#999; font-size:12px; white-space:nowrap;">MAIL</td><td style="padding:6px 0;"><a href="mailto:iconicshizuoka@gmail.com" style="color:var(--color-text);">iconicshizuoka@gmail.com</a></td></tr>
-    </tbody></table>
-  </section>
-
-  <!-- 安全管理・衛生管理に関する注意事項 -->
-  <details open="" style="margin-bottom:24px; background:white; border-radius:12px; padding:24px 28px; box-shadow:0 2px 12px rgba(232,67,147,0.06); border-left:4px solid var(--color-primary); font-size:12px; color:var(--color-text-sub); line-height:1.9;">
-    <summary style="cursor:pointer; font-size:14px; font-weight:700; color:var(--color-text); list-style:none; display:flex; align-items:center; gap:8px;">
-      <span style="color:var(--color-primary);">▸</span> 事故防止及び公衆衛生のための措置に関する事項
-    </summary>
-    <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--color-border);">
-      <p style="font-weight:600; margin-bottom:8px; color:var(--color-text-sub);">I see's（Iconic Shizuoka 2026）における安全管理及び公衆衛生対策について</p>
-      <p style="margin-bottom:10px;">I see's（Iconic Shizuoka 2026）では、来場者、出店者、出演者及び運営スタッフ等、すべての関係者が安全かつ安心して参加できるイベント運営を行うため、事故防止及び公衆衛生の確保に努めます。また、関係法令並びに行政機関等の指導に基づき、適切な安全管理及び衛生管理を実施いたします。</p>
-      <p style="font-weight:600; margin-bottom:4px;">【事故防止対策】</p>
-      <p style="margin-bottom:2px;">・会場内の通行スペースを十分に確保し、来場者動線の整理を行います。</p>
-      <p style="margin-bottom:2px;">・混雑が予想される箇所については、必要に応じて運営スタッフを配置し、来場者誘導を実施します。</p>
-      <p style="margin-bottom:2px;">・会場設営時に危険箇所の確認を行い、転倒事故等の未然防止に努めます。</p>
-      <p style="margin-bottom:2px;">・テント、看板その他設営物については、強風等による転倒・飛散防止のため適切な固定を行います。</p>
-      <p style="margin-bottom:2px;">・事故、急病その他緊急事態発生時に備え、運営スタッフ間の連絡体制を整備します。</p>
-      <p style="margin-bottom:2px;">・来場者等の体調不良や負傷が発生した場合には、速やかに救護対応を行うとともに、必要に応じて消防、警察及び医療機関へ連絡します。</p>
-      <p style="margin-bottom:10px;">・荒天、強風、災害その他安全な運営が困難と判断される場合には、イベント内容の変更又は中止等の措置を講じます。</p>
-      <p style="font-weight:600; margin-bottom:4px;">【感染症対策】</p>
-      <p style="margin-bottom:2px;">・発熱その他体調不良が認められる場合には、来場及び参加の自粛を呼びかけます。</p>
-      <p style="margin-bottom:2px;">・必要に応じて会場内の換気を実施します。</p>
-      <p style="margin-bottom:10px;">・社会状況等に応じて、行政機関等の指導に基づき適切な対応を行います。</p>
-      <p style="font-weight:600; margin-bottom:4px;">【食品衛生対策】</p>
-      <p style="margin-bottom:2px;">・保健所等関係機関の指導に基づき、適切な衛生管理を徹底します。</p>
-      <p style="margin-bottom:2px;">・食材の適切な温度管理及び衛生管理を徹底します。</p>
-      <p style="margin-bottom:2px;">・調理従事者に対し、手洗い及び衛生管理の徹底を求めます。</p>
-      <p style="margin-bottom:2px;">・食品の長時間放置を防止します。</p>
-      <p style="margin-bottom:10px;">・食中毒その他衛生上の問題が発生した場合には、速やかに営業停止その他必要な対応を行います。</p>
-      <p style="font-weight:600; margin-bottom:4px;">【救護体制】</p>
-      <p style="margin-bottom:2px;">・会場内において救護対応可能な運営スタッフを配置します。</p>
-      <p style="margin-bottom:10px;">・応急処置用品を準備し、必要に応じて速やかに救急要請を行います。</p>
-      <p>本内容については、社会状況、行政機関等の指導及び開催内容等に応じて適宜見直しを行います。</p>
-    </div>
-  </details>
-
-  <!-- 9. 応募フォーム -->
-  <section class="form-section" id="form">
-    <div class="form-header">
-      <h2>応募フォーム</h2>
-      <p>出店区分に合わせてフォームをお選びください。</p>
-      <div class="form-items">
-        <span class="form-item-tag">お店の紹介文</span>
-        <span class="form-item-tag">販売商品</span>
-        <span class="form-item-tag">Instagram写真</span>
-        <span class="form-item-tag">出店場所の希望</span>
-        <span class="form-item-tag">搬入時間の希望</span>
-        <span class="form-item-tag">備品の貸出希望</span>
-        <span class="form-item-tag">アレルギー情報</span>
+<section class="section section--doc" id="contact">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">お問い合わせ</h2><span class="chapter__en">Contact</span></header>
+    <dl class="spec" data-reveal>
+      <div><dt>代表</dt><dd>樋川 翔</dd></div>
+      <div><dt>副代表</dt><dd>石川</dd></div>
+      <div><dt>マルシェ担当部長</dt><dd>大村</dd></div>
+      <div><dt>TEL</dt><dd><a href="tel:09039352911">090-3935-2911</a></dd></div>
+      <div><dt>MAIL</dt><dd><a href="mailto:iconicshizuoka@gmail.com">iconicshizuoka@gmail.com</a></dd></div>
+    </dl>
+    <details class="disclose" data-reveal style="margin-top:clamp(28px,4vw,40px)">
+      <summary>事故防止及び公衆衛生のための措置に関する事項</summary>
+      <div class="disclose__body">
+        <p>I see's（Iconic Shizuoka 2026）では、来場者、出店者、出演者及び運営スタッフ等、すべての関係者が安全かつ安心して参加できるイベント運営を行うため、事故防止及び公衆衛生の確保に努めます。また、関係法令並びに行政機関等の指導に基づき、適切な安全管理及び衛生管理を実施いたします。</p>
+        <h4>事故防止対策</h4>
+        <ul>
+          <li>会場内の通行スペースを十分に確保し、来場者動線の整理を行います。</li>
+          <li>混雑が予想される箇所については、必要に応じて運営スタッフを配置し、来場者誘導を実施します。</li>
+          <li>会場設営時に危険箇所の確認を行い、転倒事故等の未然防止に努めます。</li>
+          <li>テント、看板その他設営物については、強風等による転倒・飛散防止のため適切な固定を行います。</li>
+          <li>事故、急病その他緊急事態発生時に備え、運営スタッフ間の連絡体制を整備します。</li>
+          <li>来場者等の体調不良や負傷が発生した場合には、速やかに救護対応を行うとともに、必要に応じて消防、警察及び医療機関へ連絡します。</li>
+          <li>荒天、強風、災害その他安全な運営が困難と判断される場合には、イベント内容の変更又は中止等の措置を講じます。</li>
+        </ul>
+        <h4>感染症対策</h4>
+        <ul>
+          <li>発熱その他体調不良が認められる場合には、来場及び参加の自粛を呼びかけます。</li>
+          <li>必要に応じて会場内の換気を実施します。</li>
+          <li>社会状況等に応じて、行政機関等の指導に基づき適切な対応を行います。</li>
+        </ul>
+        <h4>食品衛生対策</h4>
+        <ul>
+          <li>保健所等関係機関の指導に基づき、適切な衛生管理を徹底します。</li>
+          <li>食材の適切な温度管理及び衛生管理を徹底します。</li>
+          <li>調理従事者に対し、手洗い及び衛生管理の徹底を求めます。</li>
+          <li>食品の長時間放置を防止します。</li>
+          <li>食中毒その他衛生上の問題が発生した場合には、速やかに営業停止その他必要な対応を行います。</li>
+        </ul>
+        <h4>救護体制</h4>
+        <ul>
+          <li>会場内において救護対応可能な運営スタッフを配置します。</li>
+          <li>応急処置用品を準備し、必要に応じて速やかに救急要請を行います。</li>
+        </ul>
+        <p>本内容については、社会状況、行政機関等の指導及び開催内容等に応じて適宜見直しを行います。</p>
       </div>
+    </details>
+  </div>
+</section>
+
+<section class="apply" id="form">
+  <img class="apply__daisy" src="assets/img/daisy.webp" alt="" aria-hidden="true">
+  <div class="container" data-reveal>
+    <p class="apply__label">Entry</p>
+    <h2 class="apply__title">応募フォーム</h2>
+    <p class="apply__text">出店区分に合わせてフォームをお選びください。フォームでは次の内容をおうかがいします。</p>
+    <ul class="formitems">
+      <li>お店の紹介文</li>
+      <li>販売商品</li>
+      <li>Instagram写真</li>
+      <li>出店場所の希望</li>
+      <li>搬入時間の希望</li>
+      <li>備品の貸出希望</li>
+      <li>アレルギー情報</li>
+    </ul>
+    <div class="formpick">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHSXr5umVXZLyBg6wwnqoSpHH5oNzIRxmYAGyTgzF6dbkYig/viewform" target="_blank" rel="noopener">
+        <span class="k">Food</span>
+        <span class="t">飲食店用フォーム</span>
+        <span class="g">フォームを開く <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScXxyOD5OSisDfNcvLKYtnclnZ-plgHi2D9zim-bAVKj5_XKQ/viewform" target="_blank" rel="noopener">
+        <span class="k">Goods</span>
+        <span class="t">物販用フォーム</span>
+        <span class="g">フォームを開く <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+      </a>
     </div>
-    <div class="form-tabs" role="tablist" aria-label="出店区分の選択">
-      <button class="form-tab form-tab-food active" onclick="switchForm('food')" role="tab" aria-selected="true" aria-controls="form-food">飲食店用</button>
-      <button class="form-tab form-tab-shop" onclick="switchForm('shop')" role="tab" aria-selected="false" aria-controls="form-shop">物販用</button>
-    </div>
-    <div class="form-body" id="form-food" role="tabpanel">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHSXr5umVXZLyBg6wwnqoSpHH5oNzIRxmYAGyTgzF6dbkYig/viewform" target="_blank" rel="noopener" class="form-open-btn">飲食店用フォームを開く</a>
-      <p class="form-open-note">別タブで開きます</p>
-    </div>
-    <div class="form-body" id="form-shop" style="display:none;" role="tabpanel">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScXxyOD5OSisDfNcvLKYtnclnZ-plgHi2D9zim-bAVKj5_XKQ/viewform" target="_blank" rel="noopener" class="form-open-btn">物販用フォームを開く</a>
-      <p class="form-open-note">別タブで開きます</p>
-    </div>
-  </section>
+    <p class="apply__note">どちらも別のタブで開きます</p>
+  </div>
+</section>
 
 </main>
 
-<footer>
-  <p class="tagline">おいしく、たのしく、彩やかに。― 静岡に「わ」の1ページを。</p>
-  <p>© 2026 I see's / Iconic Shizuoka 2026 実行委員会</p>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="index.html" aria-label="Iconic Shizuoka 2026 公式サイトへ">
+          <img class="brand__mark" src="assets/img/logo_mark.png" alt="" width="44" height="31">
+          <span class="brand__name">Iconic Shizuoka <em>2026</em></span>
+        </a>
+        <p class="footer__tag">おいしく、たのしく、彩やかに。<br>− 静岡に「わ」の1ページを。−</p>
+        <p class="footer__contact">主催：I see's（Iconic Shizuoka 2026 実行委員会）<br>お問い合わせ：<a href="mailto:iconicshizuoka@gmail.com">iconicshizuoka@gmail.com</a></p>
+      </div>
+      <div>
+        <p class="footer__h">ページ</p>
+        <ul class="footer__links">
+          <li><a href="index.html">公式サイト</a></li>
+          <li><a href="stage.html">ステージ出演者募集</a></li>
+          <li><a href="physical.html">PHYSICAL CHAMPIONSHIP</a></li>
+          <li><a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 I see's / Iconic Shizuoka 2026 実行委員会</span>
+      <span class="footer__en">Gofukucho Street, Shizuoka — Oct. 11 &amp; 12, 2026</span>
+    </div>
+  </div>
 </footer>
 
-<script>
-  function switchForm(type) {
-    document.getElementById('form-food').style.display = type === 'food' ? 'block' : 'none';
-    document.getElementById('form-shop').style.display = type === 'shop' ? 'block' : 'none';
-    var foodTab = document.querySelector('.form-tab-food');
-    var shopTab = document.querySelector('.form-tab-shop');
-    foodTab.classList.toggle('active', type === 'food');
-    shopTab.classList.toggle('active', type === 'shop');
-    foodTab.setAttribute('aria-selected', type === 'food');
-    shopTab.setAttribute('aria-selected', type === 'shop');
-  }
-
-  document.querySelector('[role="tablist"]').addEventListener('keydown', function(e) {
-    var tabs = Array.from(this.querySelectorAll('[role="tab"]'));
-    var idx = tabs.indexOf(document.activeElement);
-    if (e.key === 'ArrowRight' && idx < tabs.length - 1) {
-      tabs[idx + 1].focus(); tabs[idx + 1].click();
-    } else if (e.key === 'ArrowLeft' && idx > 0) {
-      tabs[idx - 1].focus(); tabs[idx - 1].click();
-    }
-  });
-</script>
-
-
-</body></html>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<script src="assets/js/parking-map.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

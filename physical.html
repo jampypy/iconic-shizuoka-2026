@@ -1,582 +1,174 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHYSICAL CHAMPIONSHIP 参加者募集 | Iconic Shizuoka 2026</title>
-  <meta name="description" content="Iconic Shizuoka 2026 PHYSICAL CHAMPIONSHIP（フィジカルチャンピオンシップ）参加者募集。29歳以下の静岡県民対象、初心者歓迎。">
-  <style>
-    :root {
-      --color-primary:      #ff6b35;
-      --color-primary-dark:  #e55a2b;
-      --color-bg:            #111;
-      --color-bg-card:       #1c1c1c;
-      --color-bg-nav:        #1a1a1a;
-      --color-bg-secondary:  #333;
-      --color-bg-secondary-hover: #444;
-      --color-gold:          #e8c840;
-      --color-text:          #e8e8e8;
-      --color-text-sub:      #999;
-      --color-text-mute:     #888;
-      --color-border:        #333;
-      --space-4:   4px;
-      --space-8:   8px;
-      --space-16:  16px;
-      --space-24:  24px;
-      --space-32:  32px;
-      --space-48:  48px;
-      --radius-s:  4px;
-      --radius-m:  6px;
-      --transition-fast: 150ms ease-out;
-      --transition-base: 200ms ease-out;
-    }
-
-    *,
-    *::before,
-    *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-      background: var(--color-bg);
-      color: var(--color-text);
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* --- Utility --- */
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    /* --- Focus --- */
-    .cta-btn:focus-visible,
-    .form-open-btn:focus-visible,
-    .ig-btn:focus-visible,
-    .step-nav a:focus-visible,
-    .step-detail a:focus-visible,
-    footer a:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 3px;
-    }
-
-    /* --- Header --- */
-    header {
-      background: var(--color-bg);
-      color: var(--color-text);
-      text-align: center;
-      padding: var(--space-48) 20px var(--space-48);
-      border-bottom: 3px solid var(--color-primary);
-    }
-    header p.event-name {
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--color-text-sub);
-      margin-bottom: var(--space-16);
-    }
-    header h1 {
-      font-size: clamp(28px, 7vw, 48px);
-      font-weight: 900;
-      letter-spacing: 6px;
-      line-height: 1.2;
-      margin-bottom: var(--space-8);
-      color: #fff;
-    }
-    header .catchcopy {
-      font-size: 15px;
-      color: var(--color-text-sub);
-      margin-bottom: var(--space-32);
-    }
-    .cta-btn {
-      display: inline-block;
-      background: var(--color-primary);
-      color: #fff;
-      font-weight: 700;
-      font-size: 14px;
-      padding: 12px var(--space-32);
-      border-radius: var(--radius-s);
-      text-decoration: none;
-      letter-spacing: 1px;
-      transition: background var(--transition-fast);
-    }
-    .cta-btn:hover { background: var(--color-primary-dark); }
-    .cta-btn:active { transform: scale(0.98); }
-
-    /* --- Nav --- */
-    nav.steps {
-      background: var(--color-bg-nav);
-      border-bottom: 1px solid var(--color-border);
-      padding: var(--space-16) 20px;
-    }
-    .step-nav {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: var(--space-4);
-      flex-wrap: wrap;
-    }
-    .step-nav li {
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-    }
-    .step-nav li:not(:last-child)::after {
-      content: '/';
-      color: var(--color-text-mute);
-      font-size: 10px;
-      margin-left: var(--space-8);
-    }
-    .step-nav a {
-      color: var(--color-text-sub);
-      text-decoration: none;
-      padding: var(--space-4) var(--space-4);
-      border-radius: var(--radius-s);
-      transition: color var(--transition-fast);
-    }
-    .step-nav a:hover { color: var(--color-primary); }
-
-    /* --- Main --- */
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: var(--space-32) 20px 80px;
-    }
-
-    /* --- Section --- */
-    section.section {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-m);
-      padding: var(--space-32) var(--space-24);
-      margin-bottom: var(--space-24);
-    }
-    section.section h2 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--color-text);
-      border-bottom: 2px solid var(--color-primary);
-      padding-bottom: var(--space-8);
-      margin-bottom: var(--space-24);
-    }
-
-    /* --- Overview Table --- */
-    .overview-table {
-      width: 100%;
-      font-size: 14px;
-      border-collapse: collapse;
-    }
-    .overview-table th {
-      text-align: left;
-      color: var(--color-text-sub);
-      font-weight: 400;
-      font-size: 12px;
-      padding: 10px 12px 10px 0;
-      white-space: nowrap;
-      width: 80px;
-      border-bottom: 1px solid var(--color-border);
-      vertical-align: top;
-    }
-    .overview-table td {
-      padding: 10px 0;
-      color: var(--color-text);
-      font-weight: 600;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .overview-table tr:last-child th,
-    .overview-table tr:last-child td { border-bottom: none; }
-
-    /* --- Plain List --- */
-    .plain-list {
-      list-style: none;
-      font-size: 14px;
-      color: var(--color-text);
-    }
-    .plain-list li {
-      padding: 6px 0;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .plain-list li:last-child { border-bottom: none; }
-    .plain-list li::before {
-      content: '- ';
-      color: var(--color-text-sub);
-    }
-
-    /* --- Criteria --- */
-    .criteria-list { list-style: none; }
-    .criteria-item {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--color-border);
-      font-size: 14px;
-    }
-    .criteria-item:last-child { border-bottom: none; }
-    .criteria-num {
-      color: var(--color-primary);
-      font-weight: 700;
-      font-size: 14px;
-      flex-shrink: 0;
-      width: 20px;
-    }
-    .criteria-body strong {
-      color: var(--color-text);
-      display: block;
-    }
-    .criteria-body span {
-      font-size: 12px;
-      color: var(--color-text-sub);
-    }
-
-    /* --- Prize --- */
-    .prize-box {
-      border: 2px solid var(--color-gold);
-      border-radius: var(--radius-m);
-      padding: var(--space-24);
-      text-align: center;
-      margin-bottom: var(--space-16);
-    }
-    .prize-box .prize-label {
-      font-size: 11px;
-      letter-spacing: 3px;
-      color: var(--color-gold);
-      margin-bottom: var(--space-4);
-    }
-    .prize-box .prize-value {
-      font-size: 24px;
-      font-weight: 900;
-      color: var(--color-gold);
-    }
-    .prize-sub {
-      font-size: 13px;
-      color: var(--color-text-sub);
-    }
-
-    /* --- Tags --- */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-8);
-    }
-    .tag {
-      background: transparent;
-      color: var(--color-text-sub);
-      border: 1px solid var(--color-border);
-      padding: var(--space-4) 12px;
-      font-size: 13px;
-      border-radius: var(--radius-s);
-    }
-
-    /* --- Steps Detail --- */
-    .step-detail {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .step-detail:last-of-type { border-bottom: none; }
-    .step-detail .step-num {
-      font-size: 11px;
-      color: var(--color-primary);
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .step-detail p {
-      font-size: 14px;
-      color: var(--color-text);
-      margin-top: 2px;
-    }
-    .step-detail a {
-      color: var(--color-primary);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-    }
-    .step-detail a:hover { text-decoration: underline; }
-
-    /* --- Notice --- */
-    .notice-list {
-      list-style: none;
-      font-size: 13px;
-      color: var(--color-text-sub);
-      line-height: 2;
-    }
-    .notice-list li::before {
-      content: '* ';
-      color: var(--color-primary);
-    }
-
-    /* --- Note --- */
-    .note {
-      background: var(--color-bg);
-      border-left: 3px solid var(--color-primary);
-      padding: 10px 14px;
-      font-size: 13px;
-      color: var(--color-text-sub);
-      margin-top: var(--space-16);
-      border-radius: 0 var(--radius-s) var(--radius-s) 0;
-    }
-
-    /* --- Form Section --- */
-    section.form-section {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-m);
-      overflow: hidden;
-      margin-bottom: var(--space-24);
-    }
-    .form-header {
-      background: var(--color-primary);
-      color: #fff;
-      text-align: center;
-      padding: var(--space-24) 20px;
-    }
-    .form-header h2 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: var(--space-4);
-    }
-    .form-header p {
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.85);
-    }
-    .form-body {
-      padding: var(--space-32) var(--space-24);
-      text-align: center;
-    }
-    .form-body .or-divider {
-      font-size: 12px;
-      color: var(--color-text-sub);
-      margin: 14px 0;
-    }
-    .form-open-btn {
-      display: inline-block;
-      background: var(--color-primary);
-      color: #fff;
-      font-weight: 700;
-      font-size: 14px;
-      padding: 12px var(--space-32);
-      border-radius: var(--radius-s);
-      text-decoration: none;
-      transition: background var(--transition-fast);
-    }
-    .form-open-btn:hover { background: var(--color-primary-dark); }
-    .form-open-btn:active { transform: scale(0.98); }
-    .ig-btn {
-      display: inline-block;
-      background: var(--color-bg-secondary);
-      color: #fff;
-      font-weight: 700;
-      font-size: 14px;
-      padding: 12px var(--space-32);
-      border-radius: var(--radius-s);
-      text-decoration: none;
-      border: 1px solid var(--color-border);
-      transition: background var(--transition-fast);
-    }
-    .ig-btn:hover { background: var(--color-bg-secondary-hover); }
-    .ig-btn:active { transform: scale(0.98); }
-    .form-open-note {
-      font-size: 11px;
-      color: var(--color-text-mute);
-      margin-top: 10px;
-    }
-
-    /* --- Footer --- */
-    footer {
-      text-align: center;
-      padding: var(--space-32) 20px;
-      background: var(--color-bg);
-      color: var(--color-text-mute);
-      font-size: 12px;
-      border-top: 1px solid var(--color-border);
-    }
-    footer p + p { margin-top: var(--space-8); }
-    footer a {
-      color: var(--color-primary);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-    }
-    footer a:hover { text-decoration: underline; }
-
-    /* --- Responsive --- */
-    @media (max-width: 480px) {
-      header h1 {
-        letter-spacing: 3px;
-      }
-      section.section {
-        padding: var(--space-24) var(--space-16);
-      }
-      .form-body {
-        padding: var(--space-24) var(--space-16);
-      }
-      .step-nav {
-        gap: var(--space-4);
-      }
-    }
-
-    @media (min-width: 768px) {
-      header {
-        padding: 64px 20px 64px;
-      }
-      main {
-        padding: var(--space-48) 20px 96px;
-      }
-      section.section {
-        padding: var(--space-48) var(--space-32);
-      }
-      section.section h2 {
-        font-size: 20px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHYSICAL CHAMPIONSHIP 参加者募集 | Iconic Shizuoka 2026</title>
+<meta name="description" content="Iconic Shizuoka 2026 PHYSICAL CHAMPIONSHIP（フィジカルチャンピオンシップ）参加者募集。29歳以下の静岡県民対象、初心者歓迎。2026年10月11日（日）呉服町通り。">
+<meta property="og:title" content="PHYSICAL CHAMPIONSHIP 参加者募集 | Iconic Shizuoka 2026">
+<meta property="og:description" content="静岡の若者よ、その肉体を証明せよ。2026年10月11日（日）呉服町通り。29歳以下の静岡県民対象、初心者歓迎。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iconicshizuoka.pages.dev/physical.html">
+<meta property="og:image" content="https://iconicshizuoka.pages.dev/assets/img/physique.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F9D9E7">
+<link rel="icon" type="image/png" href="assets/img/logo_mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Montserrat:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/page.css">
 </head>
 <body>
+<a class="skip" href="#main">本文へ</a>
 
-<header>
-  <p class="event-name">Iconic Shizuoka 2026</p>
-  <h1>PHYSICAL<br>CHAMPIONSHIP</h1>
-  <p class="catchcopy">静岡の若者よ、その肉体を証明せよ。</p>
-  <a href="#form" class="cta-btn" aria-label="エントリーフォームへ移動">応募する</a>
+<header class="site-header">
+  <div class="container site-header__in">
+    <a class="brand" href="index.html" aria-label="Iconic Shizuoka 2026 公式サイトへ">
+      <img class="brand__mark" src="assets/img/logo_mark.png" alt="" width="44" height="31">
+      <span class="brand__name">Iconic Shizuoka <em>2026</em></span>
+    </a>
+    <div class="site-header__tools">
+      <a class="site-header__back" href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 12H5M11 18l-6-6 6-6"/></svg>
+        <span>公式サイトへ戻る</span>
+      </a>
+      <a class="btn btn--sm btn--solid" href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
 </header>
 
-<nav class="steps" aria-label="ページ内ナビゲーション">
-  <ul class="step-nav">
-    <li><a href="#overview">概要</a></li>
-    <li><a href="#eligibility">応募資格</a></li>
-    <li><a href="#criteria">審査基準</a></li>
-    <li><a href="#prize">賞品</a></li>
-    <li><a href="#dress">服装</a></li>
-    <li><a href="#howto">応募方法</a></li>
-    <li><a href="#form">フォーム</a></li>
-  </ul>
+<main id="main">
+
+<section class="phero">
+  <div class="phero__bg" aria-hidden="true"><img class="phero__petals" src="assets/img/petals.webp" alt=""></div>
+  <div class="container phero__in">
+    <div class="phero__copy">
+      <p class="phero__eyebrow">Physical Championship</p>
+      <h1 class="phero__title">参加者募集<em>PHYSICAL CHAMPIONSHIP</em></h1>
+      <p class="phero__lead">静岡の若者よ、その肉体を証明せよ。</p>
+      <p class="phero__meta"><span><b>2026.10.11</b>日</span><span><b>11:30 –</b></span><span>呉服町通り（静岡市葵区）</span></p>
+      <div class="phero__actions">
+        <a class="btn btn--solid" href="#apply">エントリーする</a>
+        <a class="btn" href="#overview">募集内容を見る</a>
+      </div>
+    </div>
+    <div class="phero__visual">
+      <div class="phero__frame">
+        <img class="phero__photo" src="assets/img/physique.jpg" alt="ステージでポージングする選手たち" width="463" height="313">
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="pagenav" aria-label="ページ内ナビゲーション">
+  <div class="container">
+    <ul>
+      <li><a href="#overview">開催概要</a></li>
+      <li><a href="#eligibility">応募資格</a></li>
+      <li><a href="#criteria">審査基準</a></li>
+      <li><a href="#prize">賞品</a></li>
+      <li><a href="#dress">服装規定</a></li>
+      <li><a href="#recommend">こんな人に</a></li>
+      <li><a href="#howto">応募方法</a></li>
+      <li><a href="#notice">注意事項</a></li>
+      <li><a href="#apply">エントリー</a></li>
+    </ul>
+  </div>
 </nav>
 
-<main>
+<section class="section section--doc" id="overview">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">開催概要</h2><span class="chapter__en">Overview</span></header>
+    <dl class="spec" data-reveal>
+      <div><dt>開催日</dt><dd><b>2026年10月11日（日）</b></dd></div>
+      <div><dt>時間</dt><dd><b>11:30 –</b></dd></div>
+      <div><dt>会場</dt><dd>呉服町通り（静岡市葵区）</dd></div>
+      <div><dt>参加費</dt><dd><b>1,500円</b><span class="muted">当日受付時にお支払いください</span></dd></div>
+      <div><dt>募集</dt><dd>随時受付中<span class="muted">定員に達し次第、締め切ります</span></dd></div>
+    </dl>
+  </div>
+</section>
 
-  <section class="section" id="overview">
-    <h2>開催概要</h2>
-    <table class="overview-table" aria-label="開催概要">
-      <caption class="visually-hidden">PHYSICAL CHAMPIONSHIP 開催概要</caption>
-      <tr><th scope="row">開催日</th><td>2026年10月11日(日)</td></tr>
-      <tr><th scope="row">時間</th><td>11:30 ~</td></tr>
-      <tr><th scope="row">会場</th><td>呉服町通り（静岡市）</td></tr>
-      <tr><th scope="row">参加費</th><td>1,500円（当日払い）</td></tr>
-      <tr><th scope="row">募集期間</th><td>2026年6月1日 ~ 7月31日</td></tr>
-    </table>
-  </section>
-
-  <section class="section" id="eligibility">
-    <h2>応募資格</h2>
-    <ul class="plain-list">
+<section class="section section--doc" id="eligibility">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">応募資格</h2><span class="chapter__en">Eligibility</span></header>
+    <ul class="bullets" data-reveal>
       <li>29歳以下の静岡県在住の方</li>
       <li>身長・体重の制限なし</li>
       <li>筋トレ初心者・大会未経験者も大歓迎</li>
       <li>性別不問</li>
       <li>裸足での参加（シューズ・スリッパ類の着用不可）</li>
     </ul>
-    <div class="note" role="note">フィジカルチャンピオンシップは「見せるカラダ」の大会です。競技経験は問いません。日頃のトレーニングの成果を披露するチャンスです!</div>
-  </section>
+    <p class="note" data-reveal>フィジカルチャンピオンシップは<strong>「見せるカラダ」</strong>の大会です。競技経験は問いません。日頃のトレーニングの成果を披露するチャンスです！</p>
+  </div>
+</section>
 
-  <section class="section" id="criteria">
-    <h2>審査基準</h2>
-    <ul class="criteria-list" role="list">
-      <li class="criteria-item">
-        <div class="criteria-num" aria-hidden="true">1.</div>
-        <div class="criteria-body">
-          <strong>筋肉量</strong>
-          <span>全体的な筋肉の発達度・ボリューム</span>
-        </div>
-      </li>
-      <li class="criteria-item">
-        <div class="criteria-num" aria-hidden="true">2.</div>
-        <div class="criteria-body">
-          <strong>バランス</strong>
-          <span>上半身・下半身・左右の均整のとれた体づくり</span>
-        </div>
-      </li>
-      <li class="criteria-item">
-        <div class="criteria-num" aria-hidden="true">3.</div>
-        <div class="criteria-body">
-          <strong>コンディション</strong>
-          <span>体脂肪の絞り具合・筋肉の仕上がり</span>
-        </div>
-      </li>
-      <li class="criteria-item">
-        <div class="criteria-num" aria-hidden="true">4.</div>
-        <div class="criteria-body">
-          <strong>ポージング</strong>
-          <span>ポーズの正確さ・見せ方の上手さ</span>
-        </div>
-      </li>
-      <li class="criteria-item">
-        <div class="criteria-num" aria-hidden="true">5.</div>
-        <div class="criteria-body">
-          <strong>表現力</strong>
-          <span>ステージでの存在感・オーディエンスへのアピール</span>
-        </div>
-      </li>
-    </ul>
-  </section>
+<section class="section section--doc" id="criteria">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">審査基準</h2><span class="chapter__en">Judging</span></header>
+    <ol class="numlist" data-reveal>
+      <li><span class="n">01</span><div><strong>筋肉量</strong><span>全体的な筋肉の発達度・ボリューム</span></div></li>
+      <li><span class="n">02</span><div><strong>バランス</strong><span>上半身・下半身・左右の均整のとれた体づくり</span></div></li>
+      <li><span class="n">03</span><div><strong>コンディション</strong><span>体脂肪の絞り具合・筋肉の仕上がり</span></div></li>
+      <li><span class="n">04</span><div><strong>ポージング</strong><span>ポーズの正確さ・見せ方の上手さ</span></div></li>
+      <li><span class="n">05</span><div><strong>表現力</strong><span>ステージでの存在感・オーディエンスへのアピール</span></div></li>
+    </ol>
+  </div>
+</section>
 
-  <section class="section" id="prize">
-    <h2>賞品</h2>
-    <div class="prize-box">
-      <div class="prize-label">CHAMPION</div>
-      <div class="prize-value">賞金 10,000円</div>
+<section class="section section--doc" id="prize">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">賞品</h2><span class="chapter__en">Prize</span></header>
+    <div class="highlight" data-reveal>
+      <span class="highlight__label">Champion</span>
+      <span class="highlight__value">賞金 10,000円</span>
     </div>
-    <p class="prize-sub">その他、入賞者にはプロテイン等の副賞を予定。詳細は決まり次第お知らせします。</p>
-  </section>
+    <div class="doc" data-reveal><p>その他、入賞者にはプロテイン等の副賞を予定しています。詳細は決まり次第お知らせします。</p></div>
+  </div>
+</section>
 
-  <section class="section" id="dress">
-    <h2>服装規定</h2>
-    <ul class="plain-list">
+<section class="section section--doc" id="dress">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">服装規定</h2><span class="chapter__en">Dress code</span></header>
+    <ul class="bullets" data-reveal>
       <li>サーフパンツ着用（ボードショーツ可）</li>
       <li>裸足での出場（シューズ・スリッパ類の着用不可）</li>
       <li>過度なアクセサリーは不可</li>
       <li>ボディペイント・日焼け止め等は使用可</li>
     </ul>
-    <div class="note" role="note">服装についてご不明な点があれば、お気軽にDMでお問い合わせください。</div>
-  </section>
+    <p class="note" data-reveal>服装についてご不明な点があれば、お気軽に <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">Instagram のDM</a> でお問い合わせください。</p>
+  </div>
+</section>
 
-  <section class="section" id="recommend">
-    <h2>こんな人におすすめ</h2>
-    <div class="tags" role="list" aria-label="おすすめの対象者">
-      <span class="tag" role="listitem">筋トレが趣味</span>
-      <span class="tag" role="listitem">初めて大会に出たい</span>
-      <span class="tag" role="listitem">自分の体を試したい</span>
-      <span class="tag" role="listitem">仲間と競い合いたい</span>
-      <span class="tag" role="listitem">静岡を盛り上げたい</span>
-    </div>
-  </section>
+<section class="section section--doc" id="recommend">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">こんな人におすすめ</h2><span class="chapter__en">For you</span></header>
+    <ul class="chips" data-reveal>
+      <li>筋トレが趣味</li>
+      <li>初めて大会に出たい</li>
+      <li>自分の体を試したい</li>
+      <li>仲間と競い合いたい</li>
+      <li>静岡を盛り上げたい</li>
+    </ul>
+  </div>
+</section>
 
-  <section class="section" id="howto">
-    <h2>応募方法</h2>
-    <div class="step-detail">
-      <div class="step-num">STEP 1</div>
-      <p>Iconic Shizuoka の Instagram をフォロー →
-        <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">@iconicshizuoka</a>
-      </p>
-    </div>
-    <div class="step-detail">
-      <div class="step-num">STEP 2</div>
-      <p>Instagram DM で「フィジカル参加希望」と送信、または下の応募フォームから送信</p>
-    </div>
-    <div class="step-detail">
-      <div class="step-num">STEP 3</div>
-      <p>運営から確認の連絡 → エントリー完了</p>
-    </div>
-  </section>
+<section class="section section--doc" id="howto">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">応募方法</h2><span class="chapter__en">How to apply</span></header>
+    <ol class="steps" data-reveal>
+      <li><span class="n">STEP 1</span><p>Iconic Shizuoka の Instagram をフォロー → <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">@iconicshizuoka</a></p></li>
+      <li><span class="n">STEP 2</span><p>Instagram の DM で「フィジカル参加希望」と送信、または下の応募フォームから送信</p></li>
+      <li><span class="n">STEP 3</span><p>運営から確認の連絡 → エントリー完了</p></li>
+    </ol>
+  </div>
+</section>
 
-  <section class="section" id="notice">
-    <h2>注意事項</h2>
-    <ul class="notice-list">
+<section class="section section--doc" id="notice">
+  <div class="container">
+    <header class="chapter" data-reveal><span class="chapter__rule"></span><h2 class="chapter__title">注意事項</h2><span class="chapter__en">Notice</span></header>
+    <ol class="cautions" data-reveal>
       <li>参加費 1,500円は当日受付時にお支払いください。</li>
       <li>天候等により内容変更・中止となる場合があります。</li>
       <li>会場内での撮影・SNS投稿が行われます。ご了承の上ご参加ください。</li>
@@ -584,29 +176,55 @@
       <li>審査結果に対する異議申し立てはお受けできません。</li>
       <li>未成年の方は保護者の同意が必要です。</li>
       <li>ドーピング等の禁止薬物の使用が発覚した場合、失格となります。</li>
-    </ul>
-  </section>
+    </ol>
+  </div>
+</section>
 
-  <section class="form-section" id="form">
-    <div class="form-header">
-      <h2>エントリーする</h2>
-      <p>Instagram DM または応募フォームからご応募ください。</p>
+<section class="apply" id="apply">
+  <img class="apply__daisy" src="assets/img/daisy.webp" alt="" aria-hidden="true">
+  <div class="container" data-reveal>
+    <p class="apply__label">Entry</p>
+    <h2 class="apply__title">エントリーする</h2>
+    <p class="apply__text">Instagram の DM、または応募フォームからご応募ください。ご不明な点も DM でお気軽にどうぞ。</p>
+    <div class="apply__actions">
+      <a class="btn btn--solid" href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">Instagram DMで応募</a>
+      <span class="apply__or">or</span>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfGTlL8qOIPdFxVA2tTaP1Ga1F7JycyvxFgxCO4LZWmEiJaVg/viewform" target="_blank" rel="noopener">応募フォームを開く</a>
     </div>
-    <div class="form-body">
-      <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener" class="ig-btn" aria-label="Instagram DMで応募（別タブで開きます）">Instagram DMで応募</a>
-      <div class="or-divider">or</div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGTlL8qOIPdFxVA2tTaP1Ga1F7JycyvxFgxCO4LZWmEiJaVg/viewform" target="_blank" rel="noopener" class="form-open-btn" aria-label="応募フォームを開く（別タブで開きます）">応募フォームを開く</a>
-      <p class="form-open-note">別タブで開きます</p>
-    </div>
-  </section>
+    <p class="apply__note">どちらも別のタブで開きます</p>
+  </div>
+</section>
 
 </main>
 
-<footer>
-  <p>主催: I see's（Iconic Shizuoka 2026 実行委員会）</p>
-  <p>お問い合わせ: <a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">Instagram DM</a></p>
-  <p>&copy; 2026 I see's / Iconic Shizuoka 2026</p>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="index.html" aria-label="Iconic Shizuoka 2026 公式サイトへ">
+          <img class="brand__mark" src="assets/img/logo_mark.png" alt="" width="44" height="31">
+          <span class="brand__name">Iconic Shizuoka <em>2026</em></span>
+        </a>
+        <p class="footer__tag">おいしく、たのしく、彩やかに。<br>− 静岡に「わ」の1ページを。−</p>
+        <p class="footer__contact">主催：I see's（Iconic Shizuoka 2026 実行委員会）<br>お問い合わせ：<a href="mailto:iconicshizuoka@gmail.com">iconicshizuoka@gmail.com</a></p>
+      </div>
+      <div>
+        <p class="footer__h">ページ</p>
+        <ul class="footer__links">
+          <li><a href="index.html">公式サイト</a></li>
+          <li><a href="marche.html">出店者募集</a></li>
+          <li><a href="stage.html">ステージ出演者募集</a></li>
+          <li><a href="https://www.instagram.com/iconicshizuoka" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 I see's / Iconic Shizuoka 2026 実行委員会</span>
+      <span class="footer__en">Gofukucho Street, Shizuoka — Oct. 11 &amp; 12, 2026</span>
+    </div>
+  </div>
 </footer>
 
+<script src="assets/js/site.js"></script>
 </body>
 </html>
