@@ -252,7 +252,7 @@
 
 /* ページ内ナビ：右端をぼかして「まだ続きがある」ことを示す */
 @media (max-width:820px){
-  .pagenav{position:relative}
+  /* position は sticky のまま。sticky も配置済み要素なので ::after の基準になる */
   .pagenav::after{content:"";position:absolute;right:0;top:0;bottom:1px;width:40px;background:linear-gradient(90deg,rgba(255,248,251,0),rgba(255,248,251,.96));pointer-events:none}
 }
 
@@ -303,4 +303,16 @@
   .ptable td[data-l]::before{content:attr(data-l) "：";margin-right:.35em}
   .ptable td.c[data-l]{text-align:left}
   .ptable .sub{display:inline;margin-left:.5em;color:var(--ink-2)}
+}
+
+/* 目次から飛んだとき、見出しが固定ヘッダー＋ページ内ナビの下に隠れないようにする */
+.section--doc,.apply,.closed{scroll-margin-top:132px}
+
+/* 応募ボタン：狭い画面では縦に積み、「or」を中央に置く */
+@media (max-width:560px){
+  .apply__actions{flex-direction:column;align-items:stretch;gap:10px}
+  .apply__actions .btn{justify-content:center}
+  .apply__or{text-align:center;padding:2px 0}
+  .phero__actions{flex-direction:column;align-items:stretch}
+  .phero__actions .btn{justify-content:center}
 }
