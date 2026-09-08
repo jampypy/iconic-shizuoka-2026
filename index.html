@@ -17,6 +17,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Montserrat:wght@500;600;700;800&display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/page.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
 </head>
 <body>
 <a class="skip" href="#main">本文へ</a>
@@ -274,10 +276,49 @@
         <p class="access__lead">JR静岡駅から徒歩約10分。伊勢丹、静岡市役所、PARCOに囲まれた、静岡のまちなかの目抜き通りが会場です。</p>
         <ul class="access__notes">
           <li>当日は会場周辺の混雑が予想されます。公共交通機関のご利用をおすすめします。</li>
-          <li>お車の場合は <a href="marche.html#parking">周辺駐車場のご案内</a> をご覧ください。</li>
+          <li>お車の場合は <a href="#parking">周辺駐車場のご案内</a> をご覧ください。</li>
         </ul>
         <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%91%89%E6%9C%8D%E7%94%BA%E9%80%9A%E3%82%8A+%E9%9D%99%E5%B2%A1%E5%B8%82%E8%91%B5%E5%8C%BA" target="_blank" rel="noopener">Google マップで開く</a>
       </div>
+    </div>
+
+    <div class="parkbox" id="parking" data-reveal>
+      <h3 class="subhead">お車でお越しの方へ ─ 周辺駐車場</h3>
+      <div class="doc">
+        <p>会場の呉服町通りは歩行者向けの通りです。当日は周辺の駐車場も満車が予想されますので、<strong>できるだけ公共交通機関のご利用をおすすめします</strong>。</p>
+        <p>お車の場合は、会場からの近さ順に10か所をご案内します。地図のピンをタップすると、料金や台数が表示されます。</p>
+      </div>
+      <div class="mapbox" style="margin-top:20px"><div id="parking-map"></div></div>
+      <p class="legend">
+        <span><i style="background:#D6559C"></i>会場</span>
+        <span><i style="background:#2E7D32"></i>徒歩3分以内</span>
+        <span><i style="background:#C87A22"></i>徒歩5分以内</span>
+        <span><i style="background:#C0392B"></i>徒歩8分以上</span>
+      </p>
+      <details class="disclose" style="margin-top:18px">
+        <summary>駐車場の一覧を見る（料金・台数）</summary>
+        <div class="disclose__body">
+          <div class="ratewrap">
+<table class="ptable">
+        <caption class="visually-hidden">会場周辺の駐車場一覧</caption>
+        <thead><tr><th class="c">#</th><th>駐車場名</th><th class="c">会場から</th><th class="c">台数</th><th>料金目安</th></tr></thead>
+        <tbody>
+          <tr><td class="c"><span class="pin near">1</span></td><td class="name">GSパーク 静岡追手町<br><a href="https://maps.google.com/maps?q=34.9754019,138.3818719" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num near" data-l="会場から">約58m<span class="sub">徒歩1分</span></td><td class="c" data-l="台数">—</td><td data-l="料金目安">30分300円<span class="sub">夜間最大600円</span></td></tr>
+          <tr><td class="c"><span class="pin near">2</span></td><td class="name">呉服町タワーパーキング<br><a href="https://maps.google.com/maps?q=34.9758675,138.3804375" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num near" data-l="会場から">約157m<span class="sub">徒歩2分</span></td><td class="c" data-l="台数">445台</td><td data-l="料金目安">30分250円</td></tr>
+          <tr><td class="c"><span class="pin near">3</span></td><td class="name">三井のリパーク 静岡呉服町1丁目<br><a href="https://maps.google.com/maps?q=34.9755258,138.3801142" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num near" data-l="会場から">約160m<span class="sub">徒歩2分</span></td><td class="c" data-l="台数">35台</td><td data-l="料金目安">最大 昼1,900円<span class="sub">夜間最大600円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">4</span></td><td class="name">APパーク1（追手町）<br><a href="https://maps.google.com/maps?q=34.9746191,138.384085" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid" data-l="会場から">約219m<span class="sub">徒歩3分</span></td><td class="c" data-l="台数">—</td><td data-l="料金目安">15分100円<span class="sub">夜間最大1,000円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">5</span></td><td class="name">稲森パーキング追手町<br><a href="https://maps.google.com/maps?q=34.9744968,138.3842267" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid" data-l="会場から">約234m<span class="sub">徒歩3分</span></td><td class="c" data-l="台数">27台</td><td data-l="料金目安">15分100円<span class="sub">夜間最大1,000円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">6</span></td><td class="name">名鉄協商パーキング 静岡呉服町<br><a href="https://maps.google.com/maps?q=34.9754707,138.37918" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid" data-l="会場から">約238m<span class="sub">徒歩3分</span></td><td class="c" data-l="台数">4台</td><td data-l="料金目安">40分200円<span class="sub">最大 昼1,200円 / 夜400円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">7</span></td><td class="name">静岡呉服町スクエア駐車場<br><a href="https://maps.google.com/maps?q=34.9761685,138.3792246" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid" data-l="会場から">約266m<span class="sub">徒歩4分</span></td><td class="c" data-l="台数">172台</td><td data-l="料金目安">60分400円<span class="sub">最大 平日1,000円 / 休日700円</span></td></tr>
+          <tr><td class="c"><span class="pin mid">8</span></td><td class="name">スペース 静岡常磐町第1<br><a href="https://maps.google.com/maps?q=34.9725504,138.3823941" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num mid" data-l="会場から">約268m<span class="sub">徒歩4分</span></td><td class="c" data-l="台数">—</td><td data-l="料金目安">30分200円<span class="sub">平日最大1,100円</span></td></tr>
+          <tr><td class="c"><span class="pin far">9</span></td><td class="name">NPD松坂屋前パーキング<br><a href="https://maps.google.com/maps?q=34.9736059,138.3888396" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num far" data-l="会場から">約665m<span class="sub">徒歩8分</span></td><td class="c" data-l="台数">—</td><td data-l="料金目安">30分300円<span class="sub">最大 平日1,300円 / 休日1,800円</span></td></tr>
+          <tr><td class="c"><span class="pin far">10</span></td><td class="name">パークワン静岡駐車場<br><a href="https://maps.google.com/maps?q=34.9745338,138.3890138" target="_blank" rel="noopener">Googleマップ</a></td><td class="c num far" data-l="会場から">約667m<span class="sub">徒歩8分</span></td><td class="c" data-l="台数">—</td><td data-l="料金目安">20分150円<span class="sub">最大 平日1,000円 / 休日1,200円</span></td></tr>
+        </tbody>
+      </table>
+          </div>
+          <p style="margin-top:12px">料金・台数は変動する場合があります。最新情報は各駐車場でご確認ください。</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -375,11 +416,11 @@
       </div>
       <div class="team__list" data-reveal data-reveal-delay="100">
         <dl class="roles">
-          <div><dt>代表</dt><dd>樋川 翔（静岡大学）／杉山 歩羽花（静岡大学）／後藤 祐磨（静岡産業技術専門学校）</dd></div>
-          <div><dt>副代表</dt><dd>石川 惇平（常葉大学）／川合 深月（静岡県立大学）</dd></div>
-          <div><dt>代表代行</dt><dd>能見 日菜（上智大学）／阿部 夢翔（常葉大学）／山本 楓（静岡大学）</dd></div>
-          <div><dt>幹事長</dt><dd>ガルシア・アドルフォ（静岡県立大学）</dd></div>
-          <div><dt>副幹事長</dt><dd>小久保 陽平（常葉大学）／伊波 凜（静岡大学）／後藤 夏日心（常葉大学）／山﨑 光陽（静岡大学）</dd></div>
+          <div><dt>代表</dt><dd>樋川 翔／杉山 歩羽花／後藤 祐磨</dd></div>
+          <div><dt>副代表</dt><dd>石川 惇平／川合 深月</dd></div>
+          <div><dt>代表代行</dt><dd>能見 日菜／阿部 夢翔／山本 楓</dd></div>
+          <div><dt>幹事長</dt><dd>ガルシア・アドルフォ</dd></div>
+          <div><dt>副幹事長</dt><dd>小久保 陽平／伊波 凜／後藤 夏日心／山﨑 光陽</dd></div>
         </dl>
         <p class="team__h">部署</p>
         <ul class="depts">
@@ -455,6 +496,8 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<script src="assets/js/parking-map.js"></script>
 <script src="assets/js/site.js"></script>
 </body>
 </html>

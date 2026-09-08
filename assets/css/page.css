@@ -230,9 +230,10 @@
 .formpick .g svg{width:14px;height:14px;transition:transform .3s var(--ease)}
 .formpick a:hover .g svg{transform:translateX(4px)}
 
-/* 募集ページは狭い画面でも応募ボタンを優先して出す（戻る導線はロゴが担う） */
+/* 募集ページは狭い画面でも応募ボタンを優先して出す（戻る導線はロゴが担う）
+   トップページ（戻る導線なし）には効かせない */
 @media (max-width:480px){
-  .site-header__tools .btn{display:inline-flex}
+  .site-header__tools:has(.site-header__back) .btn{display:inline-flex}
   .site-header__back{display:none}
 }
 
