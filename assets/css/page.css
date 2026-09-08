@@ -235,3 +235,12 @@
   .site-header__tools .btn{display:inline-flex}
   .site-header__back{display:none}
 }
+
+/* ---- 募集終了のお知らせ ---- */
+.closed{background:var(--plum);color:var(--plum-text)}
+.closed .container{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;padding:20px 0}
+.closed b{font-family:var(--f-mincho);font-size:1.05rem;font-weight:600;letter-spacing:.1em;color:#F5C3DD}
+.closed span{font-size:.88rem;color:var(--plum-muted)}
+.closed a{color:#F5C3DD;border-bottom:1px solid rgba(245,195,221,.55)}
+.phero__eyebrow.is-closed{color:var(--ink-2)}
+.phero__eyebrow.is-closed::before{background:var(--ink-3)}
