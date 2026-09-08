@@ -244,3 +244,63 @@
 .closed a{color:#F5C3DD;border-bottom:1px solid rgba(245,195,221,.55)}
 .phero__eyebrow.is-closed{color:var(--ink-2)}
 .phero__eyebrow.is-closed::before{background:var(--ink-3)}
+
+/* ==========================================================
+   スマートフォン向けの読みやすさ
+   横スクロールしないと読めない表を、縦に積んで全部見えるようにする
+   ========================================================== */
+
+/* ページ内ナビ：右端をぼかして「まだ続きがある」ことを示す */
+@media (max-width:820px){
+  .pagenav{position:relative}
+  .pagenav::after{content:"";position:absolute;right:0;top:0;bottom:1px;width:40px;background:linear-gradient(90deg,rgba(255,248,251,0),rgba(255,248,251,.96));pointer-events:none}
+}
+
+/* 出店料の表 → 1件ずつのブロックに */
+@media (max-width:560px){
+  .rate{min-width:0}
+  .rate caption{padding-bottom:4px}
+  .rate thead{display:none}
+  .rate tbody,.rate tr,.rate th,.rate td{display:block;width:100%}
+  .rate tr{padding:16px 0;border-bottom:1px solid var(--line)}
+  .rate th,.rate td{padding:0;border:0}
+  .rate tbody th{font-family:var(--f-mincho);font-size:1rem;font-weight:600;letter-spacing:.04em;margin-bottom:6px}
+  .rate td.num{font-size:1.3rem}
+}
+
+/* 駐車場の表 → 1件ずつのカードに。項目名は data-l から出す */
+@media (max-width:700px){
+  .ptable{min-width:0;font-size:.9rem}
+  .ptable thead{display:none}
+  .ptable tbody,.ptable tr,.ptable td{display:block;width:100%}
+  .ptable tr{position:relative;padding:16px 0 16px 38px;border-bottom:1px solid var(--line)}
+  .ptable td{padding:3px 0;border:0;text-align:left}
+  .ptable td.c:first-child{position:absolute;left:0;top:16px;width:auto;padding:0}
+  .ptable .name{font-size:.98rem;margin-bottom:4px}
+  .ptable td[data-l]{display:grid;grid-template-columns:5.5em 1fr;gap:10px;align-items:baseline}
+  .ptable td[data-l]::before{content:attr(data-l);font-family:var(--f-gothic);font-size:.75rem;font-weight:400;letter-spacing:.08em;color:var(--pink-ink)}
+  .ptable .sub{display:inline;margin:0 0 0 .5em;font-size:.8rem}
+}
+
+/* 小さすぎるラベルを底上げ */
+@media (max-width:600px){
+  .phero__eyebrow,.apply__label,.highlight__label,.card .k,.formpick .k{font-size:.75rem}
+  .spec dt,.steps .n,.numlist span,.checklist small{font-size:.78rem}
+  .ptable .sub,.rate .sub,.timeline .sub,.spec .muted{font-size:.8rem}
+  .legend{font-size:.76rem;justify-content:flex-start}
+}
+
+/* 見出しと本文の間隔を、狭い画面ではもう少し詰める */
+@media (max-width:600px){
+  .chapter{margin-bottom:26px}
+  .section--doc{padding:44px 0}
+  .subhead{margin:30px 0 12px}
+}
+
+/* 駐車場カード：項目名を値の前にそのまま置く（グリッドだと補足が別行に落ちるため） */
+@media (max-width:700px){
+  .ptable td[data-l]{display:block;text-align:left;grid-template-columns:none}
+  .ptable td[data-l]::before{content:attr(data-l) "：";margin-right:.35em}
+  .ptable td.c[data-l]{text-align:left}
+  .ptable .sub{display:inline;margin-left:.5em;color:var(--ink-2)}
+}

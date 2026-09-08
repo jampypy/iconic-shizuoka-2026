@@ -318,3 +318,20 @@ html.nav-open{overflow:hidden}
   .js [data-reveal]{opacity:1;transform:none;transition:none}
   .feature__media img,.join__card,.btn{transition:none}
 }
+
+/* ==========================================================
+   スマートフォン向けの読みやすさ
+   ========================================================== */
+@media (max-width:600px){
+  /* 開催概要・実行委員会・2025の記録：項目名と内容を縦に積む */
+  .info__list>div,.roles>div,.archive__list>div{grid-template-columns:1fr;gap:4px}
+  .info__list dt,.roles dt,.archive__list dt{padding-top:0}
+  .info__list dd,.roles dd,.archive__list dd{font-size:.94rem}
+  /* ラベルが小さくなりすぎないように */
+  .info__list dt,.roles dt,.archive__list dt,.team__h,.footer__h,.ig__label{font-size:.76rem}
+  .feature__cat,.more__title small,.concept__note{font-size:.75rem}
+  /* 協力学生団体は1列に */
+  .partners{columns:1}
+  /* 見出しまわりの余白 */
+  .chapter{margin-bottom:26px}
+}
