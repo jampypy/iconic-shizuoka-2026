@@ -68,7 +68,8 @@ section{scroll-margin-top:88px}
 .mobile-nav .btn{align-self:flex-start;margin-top:20px;border-bottom:1px solid var(--pink-deep)}
 html.nav-open{overflow:hidden}
 html.nav-open body{overflow:visible}
-@media (max-width:1100px){.nav{display:none}.menu-btn{display:block}}
+@media (max-height:760px){.mobile-nav a{padding:8px 0;font-size:1.08rem;line-height:1.5}.mobile-nav .btn{margin-top:14px}}
+@media (max-width:1279px){.nav{display:none}.menu-btn{display:block}}
 @media (max-width:480px){.site-header__tools .btn{display:none}.brand__name{font-size:1.02rem}}
 
 /* chapter header (numbered like the proposal deck) */
@@ -90,7 +91,7 @@ html.nav-open body{overflow:visible}
 /* hero */
 .hero{position:relative;overflow:hidden;padding:clamp(40px,6vw,88px) 0 clamp(56px,8vw,120px)}
 .hero__bg{position:absolute;inset:0;z-index:0;background:linear-gradient(105deg,var(--blush) 0%,var(--blush-2) 36%,var(--lilac-2) 62%,var(--lilac) 100%);pointer-events:none}
-.hero__bouquet{position:absolute;left:34%;top:-6%;width:min(560px,58vw);opacity:.55;mix-blend-mode:multiply;transform:translateX(-50%)}
+.hero__bouquet{position:absolute;left:34%;top:-6%;width:min(560px,58vw);opacity:.55;mix-blend-mode:multiply;transform:translateX(-50%);-webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent);mask-image:linear-gradient(to bottom,#000 72%,transparent)}
 .hero__petals{position:absolute;left:-8%;bottom:-10%;width:min(600px,80vw);opacity:.7}
 .hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(20px,3vw,40px);align-items:center}
 .hero__copy{grid-column:1/8}
@@ -139,6 +140,7 @@ html.nav-open body{overflow:visible}
 /* 01 policy */
 .about__text{grid-column:1/8}
 .about__visual{grid-column:8/13;align-self:center}
+.about__cap{margin-top:16px;text-align:center;font-size:.72rem;letter-spacing:.14em;color:var(--ink-2)}
 .about__lead{font-family:var(--f-mincho);font-size:clamp(1.55rem,3vw,2.55rem);font-weight:600;line-height:1.5;letter-spacing:.06em}
 .about__lead .accent{display:block;color:var(--pink-deep);text-shadow:3px 3px 0 var(--lilac);margin-top:.15em}
 .about__body{margin-top:clamp(24px,3vw,36px);max-width:34em;display:grid;gap:1.1em;font-size:.97rem}

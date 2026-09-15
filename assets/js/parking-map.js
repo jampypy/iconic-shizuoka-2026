@@ -20,7 +20,10 @@
   ];
 
   function init() {
-    var map = L.map(el).setView([34.9749, 138.382], 16);
+    var map = L.map(el, { zoomSnap: 0.25 });
+    var pts = [VENUE].concat(spots.map(function (p) { return [p.lat, p.lng]; }));
+    var fit = function () { map.invalidateSize(); map.fitBounds(pts, { padding: [22, 22], maxZoom: 16 }); };
+    fit();
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19
@@ -48,8 +51,9 @@
     });
 
     // <details> の中など、隠れた状態で初期化された場合に描画がずれるのを防ぐ
-    setTimeout(function () { map.invalidateSize(); }, 200);
+    setTimeout(fit, 200);
     el.__map = map;
+    el.__fit = fit;
   }
 
   if ('IntersectionObserver' in window) {
@@ -64,6 +68,6 @@
   // 折りたたみの中にある場合、開いたときにサイズを取り直す
   var box = el.closest('details');
   if (box) box.addEventListener('toggle', function () {
-    if (box.open && el.__map) setTimeout(function () { el.__map.invalidateSize(); }, 60);
+    if (box.open && el.__fit) setTimeout(el.__fit, 60);
   });
 })();
