@@ -1,5 +1,5 @@
 /* Iconic Shizuoka 2026 - page.css
-   募集ページ（marche / stage / physical）用。site.css のトークンと部品を前提に追加分だけ定義する。 */
+   募集ページ（marche / stage）用。site.css のトークンと部品を前提に追加分だけ定義する。 */
 
 /* ---- サブページのヘッダー（トップへ戻る導線つき） ---- */
 .site-header__back{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;letter-spacing:.1em;color:var(--ink-2);white-space:nowrap;transition:color .3s}
