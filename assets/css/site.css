@@ -370,3 +370,22 @@ div.join__card{cursor:default}
 .ig__sub .btn{margin-top:14px}
 .team__ig{margin-top:14px;font-size:.84rem;letter-spacing:.06em}
 .team__ig a{color:var(--pink-ink);border-bottom:1px solid var(--pink)}
+
+/* 当日の様子・協賛企業 */
+:root{--ui-accent:var(--pink-deep);--ui-ink:var(--ink);--ui-ink-2:var(--ink-2);--ui-line:var(--line);--ui-bg:#fff;--ui-r:var(--r)}
+.gallery__grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.2vw,16px)}
+.gallery__grid li{position:relative;overflow:hidden;border-radius:var(--r);background:var(--blush-2)}
+.gallery__grid a{display:block}
+.gallery__grid img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 1s var(--ease)}
+.gallery__grid a:hover img{transform:scale(1.04)}
+.gallery__cap{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);font-size:.66rem;letter-spacing:.08em;line-height:1.5;color:var(--ink);background:rgba(255,255,255,.92);padding:4px 9px;border-radius:4px;pointer-events:none}
+.gallery__note{margin-top:14px;font-size:.76rem;letter-spacing:.08em;color:var(--ink-2)}
+@media (max-width:820px){.gallery__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sponsors{margin:clamp(32px,4vw,48px) 0}
+.sponsors__label{font-size:.76rem;letter-spacing:.2em;color:var(--pink-ink);margin-bottom:14px}
+.sponsors .mq{padding:10px 0}
+.sponsors__logo{display:grid;place-items:center;height:96px;padding:0 26px;background:#fff;border-radius:var(--r);box-shadow:0 10px 24px -18px rgba(59,47,56,.45)}
+.sponsors__logo img{height:56px;width:auto;max-width:240px;object-fit:contain}
+.sponsors__logo--text{font-family:var(--f-mincho);font-weight:600;font-size:1.15rem;letter-spacing:.1em;color:var(--ink);white-space:nowrap}
+@media (max-width:760px){.sponsors__logo{height:76px;padding:0 18px}.sponsors__logo img{height:42px;max-width:180px}.sponsors__logo--text{font-size:1rem}}
+@media (prefers-reduced-motion:reduce){.gallery__grid img{transition:none}}

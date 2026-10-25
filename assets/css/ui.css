@@ -1,0 +1,49 @@
+/* =========================================================
+   動き・部品（ui-motion-parts）
+   部品ごとに「@part 名前」で区切ってある。pick.py で使う部品だけ書き出す
+   スマホとPCの切り替えは 760px（ここだけはCSS変数にできないので、変えるなら全部の 760/761 を置き換える）
+   ========================================================= */
+
+/* 色・形の変数。サイトの :root に同じ名前で書けば上書きできる（:where なので、どこに書いてもサイトが勝つ） */
+:where(:root){
+  --ui-accent:#1f5fbf;        /* 主役の色：ボタン・選択中・線 */
+  --ui-accent-ink:#fff;       /* 主役の色の上に乗る文字 */
+  --ui-accent-soft:#eaf1fb;   /* 主役の色のうすい背景 */
+  --ui-ink:#1a1a1c; --ui-ink-2:#4b5563; --ui-ink-3:#6b7280;
+  --ui-bg:#fff; --ui-surf:#f3f5f8; --ui-line:#d8dde5; --ui-field-line:#8a94a3;
+  --ui-warm:#d9573b;          /* 比べる相手（インフォグラフィックの「前」）・削除 */
+  --ui-r-s:6px; --ui-r:10px; --ui-r-l:16px;
+  --ui-gap-s:16px; --ui-gap:24px;
+  --ui-fs-s:14px; --ui-tap:48px;
+  --ui-ease:cubic-bezier(.2,.7,.2,1);
+  --ui-shadow:0 24px 48px -24px rgba(0,0,0,.3);
+}
+
+/* @part lb モーダル（写真の拡大） */
+[data-lb] a{cursor:zoom-in}
+.lb{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);max-height:92vh;overflow:visible}
+.lb::backdrop{background:rgba(8,14,24,.86);backdrop-filter:blur(3px)}
+.lb[open]{animation:lbIn .25s var(--ui-ease)}
+@keyframes lbIn{from{opacity:0;transform:scale(.96)}}
+.lb figure{margin:0}
+.lb img{max-width:min(1100px,94vw);max-height:84vh;width:auto;height:auto;border-radius:var(--ui-r);display:block}
+.lb figcaption{color:#e5e7eb;text-align:center;margin-top:10px;font-size:var(--ui-fs-s);font-variant-numeric:tabular-nums}
+.lb button{position:absolute;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.95);color:var(--ui-ink);display:grid;place-items:center;cursor:pointer}
+.lb-x{top:-12px;right:-12px}
+.lb-p{left:-24px;top:calc(50% - 40px)}.lb-n{right:-24px;top:calc(50% - 40px)}
+@media (max-width:760px){.lb-p{left:4px}.lb-n{right:4px}.lb-x{right:4px;top:-56px}}
+
+/* @part mq 流れるロゴ帯 */
+.mq-track{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--ui-gap)}
+.mq.on{display:flex;align-items:center;gap:var(--ui-gap-s)}
+.mq-view{flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mq.on .mq-track{flex-wrap:nowrap;justify-content:flex-start;gap:0;width:max-content;animation:mq var(--mq-dur,40s) linear infinite}
+.mq.on .mq-track>li{flex:none;padding-right:var(--mq-gap,56px)}
+.mq.on:hover .mq-track,.mq.on:focus-within .mq-track,.mq.stop .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq-tg{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--ui-line);background:var(--ui-bg);color:var(--ui-ink-2);display:grid;place-items:center;cursor:pointer}
+.mq-tg:hover{border-color:var(--ui-accent);color:var(--ui-accent)}
+.mq-tg svg{width:18px;height:18px}
+.mq-tg svg:last-child,.mq-tg[aria-pressed="true"] svg:first-child{display:none}
+.mq-tg[aria-pressed="true"] svg:last-child{display:block}
+
