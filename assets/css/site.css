@@ -389,3 +389,25 @@ div.join__card{cursor:default}
 .sponsors__logo--text{font-family:var(--f-mincho);font-weight:600;font-size:1.15rem;letter-spacing:.1em;color:var(--ink);white-space:nowrap}
 @media (max-width:760px){.sponsors__logo{height:76px;padding:0 18px}.sponsors__logo img{height:42px;max-width:180px}.sponsors__logo--text{font-size:1rem}}
 @media (prefers-reduced-motion:reduce){.gallery__grid img{transition:none}}
+
+/* トップ：お礼・協賛・本編への案内 */
+.thanks{padding:clamp(48px,7vw,88px) 0 clamp(44px,6vw,72px);overflow:hidden}
+.shops{scroll-margin-top:96px}
+.thanks__title{scroll-margin-top:140px}
+#contents{overflow-x:clip}
+.thanks .sponsors{margin:clamp(32px,4vw,44px) auto 0;max-width:1100px}
+.thanks .sponsors__label{color:#F5C3DD;text-align:center}
+.thanks .sponsors__logo{box-shadow:none}
+.thanks .mq-tg{background:transparent;color:var(--plum-text);border-color:rgba(255,255,255,.35)}
+.guide{margin-top:clamp(36px,5vw,56px);padding-top:clamp(28px,4vw,40px);border-top:1px solid var(--plum-line)}
+.guide__label{font-size:.78rem;letter-spacing:.2em;color:#F5C3DD}
+.guide__list{list-style:none;margin:16px auto 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.guide__list a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid rgba(255,255,255,.3);border-radius:999px;font-size:.88rem;letter-spacing:.08em;color:var(--plum-text);transition:background .25s,border-color .25s}
+.guide__list a:hover{background:rgba(255,255,255,.08);border-color:#F5C3DD}
+.guide__list svg{width:14px;height:14px}
+.guide__main{display:inline-flex;align-items:center;gap:10px;margin-top:22px;min-height:48px;padding:0 28px;border-radius:999px;background:var(--pink-deep);color:#fff;font-size:.92rem;letter-spacing:.14em}
+.guide__main svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.guide__main:hover svg{transform:translateY(3px)}
+.sponsor__more{margin-top:14px;font-size:.86rem}
+.sponsor__more a{color:var(--pink-ink);border-bottom:1px solid currentColor}
+@media (max-width:760px){.guide__list{display:grid;grid-template-columns:1fr 1fr}.guide__list a{width:100%;justify-content:center;padding:0 10px;font-size:.82rem}.guide__list li:last-child{grid-column:1/-1}}
